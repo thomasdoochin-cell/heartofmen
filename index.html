@@ -27,7 +27,15 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: radial-gradient(circle at 50% 30%, #1b2735 0%, #090a0f 70%);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(9, 10, 15, 0.55),
+          rgba(9, 10, 15, 0.75)
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: #f5f7fa;
       text-align: center;
       padding: 1.5rem;
@@ -43,12 +51,14 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
     }
 
     p {
       font-size: clamp(1rem, 2.5vw, 1.25rem);
       line-height: 1.6;
-      color: #aab4c2;
+      color: #dbe2ec;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
     }
 
     .dot {
