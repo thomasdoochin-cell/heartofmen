@@ -3,112 +3,1020 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
+  <title>Living Leadership | Heart of Men</title>
+  <meta name="description" content="Living Leadership — an 8-month journey for men ready to weave their masculine initiative with their soul's whisper to lead a life worthy of a legacy. A Heart of Men program." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --black: #0e0c09;
+      --green: #1e2a1c;
+      --brown: #433b32;
+      --gold: #b99b56;
+      --gold-soft: rgba(185, 155, 86, 0.85);
+      --cream: #e8dfc8;
+      --cream-muted: #c9bfa8;
       color-scheme: dark;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-image: linear-gradient(
-          to bottom,
-          rgba(9, 10, 15, 0.55),
-          rgba(9, 10, 15, 0.75)
-        ),
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #f5f7fa;
-      text-align: center;
-      padding: 1.5rem;
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
-    main {
-      max-width: 34rem;
-    }
+    img { display: block; max-width: 100%; }
 
-    h1 {
-      font-size: clamp(2.25rem, 6vw, 3.5rem);
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      line-height: 1.15;
+      color: var(--cream);
     }
 
-    p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      line-height: 1.6;
-      color: #dbe2ec;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+    section { position: relative; overflow: hidden; }
+
+    .section-pad { padding: 6rem 1.5rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 3; }
+
+    .eyebrow {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
     }
 
-    .dot {
-      display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      margin: 0 0.15rem;
+    .section-header {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------- Photo-behind-text sections ---------- */
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    /* ---------- Split (image one side, text other; image shown at full size) ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .split-img img { width: 100%; height: auto; }
+
+    .split-text p { margin-bottom: 1.25rem; color: var(--cream); }
+    .split-text p:last-child { margin-bottom: 0; }
+    .split-text .muted { color: var(--cream-muted); }
+
+    .big-line { font-size: 1.5em; line-height: 1.4; }
+
+    /* ---------- Inline testimonial ---------- */
+    .inline-t {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+      max-width: 640px;
+      text-align: left;
+    }
+
+    .inline-t-photo {
+      flex: 0 0 auto;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: #5b8cff;
-      animation: pulse 1.4s ease-in-out infinite;
+      background: #2a2418;
+      border: 1px solid var(--gold);
+      overflow: hidden;
     }
 
-    .dot:nth-child(2) {
-      animation-delay: 0.2s;
+    .inline-t-photo img, .tcard-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .dot:nth-child(3) {
-      animation-delay: 0.4s;
+    .inline-t-quote {
+      font-style: italic;
+      color: var(--cream);
+      font-size: 1rem;
+      margin-bottom: 0.5rem !important;
     }
 
-    @keyframes pulse {
-      0%,
-      100% {
-        opacity: 0.3;
-        transform: translateY(0);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-0.25rem);
-      }
+    .inline-t-attr {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0 !important;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .dot {
-        animation: none;
-        opacity: 0.8;
-      }
+    .inline-t-attr span { color: var(--cream-muted); font-style: italic; letter-spacing: 0; }
+
+    .inline-t-stack { display: flex; flex-direction: column; gap: 2rem; }
+
+    /* Hero testimonial: centered, no photo */
+    .hero-t { max-width: 640px; margin: 4rem auto 0; text-align: center; }
+    .hero-t-quote { font-style: italic; color: var(--cream); font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .hero-t-attr { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.06em; }
+
+    /* ---------- Testimonial cards (light tiles) ---------- */
+    .t-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .tcard {
+      background: rgba(240, 235, 224, 0.75);
+      padding: 2.5rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      border: 3px solid #0e0c09;
+    }
+
+    .tcard-quote {
+      color: #2a2418;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .tcard-footer {
+      margin-top: auto;
+      border-top: 1px solid #cfc4a8;
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .tcard-photo {
+      flex: 0 0 auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #c9bfa8;
+      overflow: hidden;
+    }
+
+    .tcard-name { font-weight: 600; color: #1e1a12; font-size: 1rem; line-height: 1.3; }
+
+    .tcard-role {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #857a60;
+      margin-top: 0.2rem;
+    }
+
+    /* ---------- Centered standalone testimonial (pricing) ---------- */
+    .t-center { text-align: center; max-width: 680px; margin: 4.5rem auto 0; }
+    .t-center-quote { font-size: 1.35rem; line-height: 1.6; margin-bottom: 1.75rem; }
+    .t-center-quote strong { color: var(--gold); }
+    .t-center-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #2a2418;
+      border: 1px solid var(--gold);
+      margin: 0 auto 1.25rem;
+      overflow: hidden;
+    }
+    .t-center-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) sepia(0.85) saturate(1.6) brightness(0.95) hue-rotate(-12deg);
+    }
+    .t-center-rule { width: 44px; height: 1px; background: var(--gold); margin: 0 auto 1rem; }
+    .t-center-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.04em; }
+    .t-center-title { font-size: 0.82rem; color: var(--cream-muted); margin-top: 0.25rem; }
+
+    /* ---------- Gold sections (dark text) ---------- */
+    .on-gold h2 { color: var(--black); }
+
+    /* ---------- CTA form spacing ---------- */
+    .cta-note {
+      color: var(--cream);
+      font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+      line-height: 1.5;
+      max-width: 700px;
+      margin: 1.75rem auto 0;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .fs-form { flex-direction: column !important; }
+      .fs-form input { border-right: 1px solid #2a2418 !important; border-bottom: none !important; width: 100% !important; }
+      .fs-form button { width: 100% !important; }
+    }
+
+    /* ---------- Tiles ---------- */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .tile {
+      border: 1px solid rgba(185, 155, 86, 0.45);
+      background: rgba(14, 12, 9, 0.65);
+      padding: 3rem 2.5rem;
+    }
+
+    .tile p { margin-bottom: 1.5rem; color: var(--cream-muted); }
+    .tile p:last-child { margin-bottom: 0; }
+    .tile p strong { color: var(--cream); }
+    .tile p strong.gold { color: var(--gold); font-size: 1.35em; line-height: 1.45; display: inline-block; }
+
+    /* ---------- Light (beige) sections ---------- */
+    .light-sec { background: #f0ebe0; }
+    .light-sec h2 { color: #1e1a12; }
+    .light-sec .split-text p { color: #1e1a12; }
+    .light-sec .split-text .muted { color: #1e1a12; }
+
+    /* ---------- Hand-drawn underline ---------- */
+    .hd-line { display: block; width: 240px; height: 12px; margin: -0.5rem 0 1.5rem; }
+    .hd-wrap { display: inline-block; }
+    .hd-wrap .hd-line { width: 100%; height: 10px; margin: 0.1em 0 0; }
+
+    .bigger { font-size: 1.35em; line-height: 1.4; }
+    .gold-text { color: var(--gold); }
+
+    /* ---------- "Any further" photo with stacked tiles ---------- */
+    .further-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .further-img { position: relative; align-self: stretch; min-height: 560px; }
+
+    .further-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .further-tiles {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+      margin-left: -5rem;
+      padding: 2.5rem 0;
+    }
+
+    .further-tiles .tile { background: rgba(14, 12, 9, 0.82); }
+
+    /* ---------- Structure numbered items ---------- */
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .num-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.75rem;
+      padding: 1.75rem;
+      background: rgba(240, 235, 224, 0.75);
+      margin-bottom: 1.5rem;
+    }
+
+    .num-item:last-child { margin-bottom: 0; }
+
+    .num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .num-item h3 { font-size: 1.5rem; margin-bottom: 0.35rem; color: #1e1a12; }
+
+    .num-meta {
+      color: #8a6f33;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    .num-item p { color: #3f382e; font-size: 0.98rem; }
+
+    /* ---------- Pricing ---------- */
+    .price-card {
+      background: #16110c;
+      border: 1px solid rgba(185, 155, 86, 0.55);
+      position: relative;
+    }
+
+    .price-card h3 {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge-band {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--gold);
+      color: #0e0c09;
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.45rem;
+    }
+
+    .price-big {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin: 1.75rem 0 0.4rem;
+    }
+
+    .price-big span {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-left: 0.35rem;
+    }
+
+    .price-sub {
+      color: var(--cream);
+      margin-bottom: 1.5rem !important;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(185, 155, 86, 0.35);
+    }
+
+    .price-card ul { list-style: none; }
+
+    .price-card li {
+      padding-left: 1.9rem;
+      position: relative;
+      margin-bottom: 0.9rem;
+      color: var(--cream-muted);
+      font-size: 0.98rem;
+    }
+
+    .price-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0.32em;
+      width: 1.15rem;
+      height: 1.15rem;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #0e0c09;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1.15rem;
+      text-align: center;
+    }
+
+    .quiet-link {
+      display: inline-block;
+      margin-top: 1.75rem;
+      color: rgba(185, 155, 86, 0.75);
+      font-size: 0.92rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .quiet-link:hover { color: var(--gold); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+      color: var(--cream);
+      margin-bottom: 2.75rem;
+    }
+
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(185, 155, 86, 0.25);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--cream-muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .split { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      .split-img { order: -1; }
+      .t-grid { grid-template-columns: 1fr; }
+      .tile-grid { grid-template-columns: 1fr; }
+      .rhythm-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .section-pad { padding: 4.5rem 1.5rem; }
+      .tile { padding: 2.25rem 1.5rem; }
+      .further-grid { grid-template-columns: 1fr; }
+      .further-img { min-height: 320px; }
+      .further-tiles { margin-left: 0; padding: 0; margin-top: -3rem; }
+    }
+
+    @media (max-width: 680px) {
+      .shifts-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>this shit is about to pop</h1>
-    <p>
-      We're putting the finishing touches on something new.
-      Please check back shortly.
-    </p>
-    <p style="margin-top: 1.5rem;" aria-hidden="true">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </p>
-  </main>
+
+  <!-- ========== 1. HERO ========== -->
+  <section class="hero">
+    <img class="bg-img" src="./Images/Landshot.webp" alt="" style="opacity:0.55;" />
+    <div class="bg-overlay" style="background:rgba(14,12,9,0.6);"></div>
+    <div class="container" style="max-width:1100px;">
+      <p class="eyebrow">Heart of Men</p>
+      <h1><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span></h1>
+      <p class="hero-sub">Be the f'n best at who you really are</p>
+
+      <div id="fs-form-wrap-hero" style="max-width:480px;margin:0 auto;">
+        <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+        </form>
+      </div>
+      <div id="fs-success-hero" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
+      </div>
+
+      <p class="cta-note">An 8-month journey for men ready to weave their <span class="gold-text">masculine initiative</span> with their <span class="gold-text">soul's whisper</span> to lead a life <span class="gold-text">worthy of a legacy</span></p>
+
+      <div class="hero-t">
+        <p class="hero-t-quote">"I pole-vaulted across a chasm because of you all by seeing that I could lead something that actually mattered to me."</p>
+        <p class="hero-t-attr">— John Jernigan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2. INTRO ========== -->
+  <section style="background:var(--brown);">
+    <div class="split">
+      <div class="split-img">
+        <img src="./Images/Intro.png" alt="A winding path through the mountains" />
+      </div>
+      <div class="split-text">
+        <h2 class="section-header">There doesn't have to be a gap between your <span style="color:var(--green);">powerful expression</span> and <span style="color:var(--gold);">the good, the true, and the beautiful.</span></h2>
+        <p>Do you know what is most important to you?</p>
+        <p>Is the way you spend your time, money, and attention a testament to this?</p>
+        <p>Are the actions you take on behalf of what's most important outwardly effective and deeply internally fulfilling?</p>
+        <p class="big-line"><strong>If you're a no to any of these questions, <span style="color:var(--gold);">this is for you.</span></strong></p>
+        <div class="inline-t-stack" style="margin-top:3rem;">
+          <div class="inline-t">
+            <div class="inline-t-photo"><img src="./Images/Lature.png" alt="Lature Van Duren" /></div>
+            <div>
+              <p class="inline-t-quote">"I didn't know what game I was playing. I was doing the wrong things right and the right things wrong."</p>
+              <p class="inline-t-attr">— Lature Van Duren, <span>Heart of Men Participant</span></p>
+            </div>
+          </div>
+          <div class="inline-t">
+            <div class="inline-t-photo"><img src="./Images/John.png" alt="John Jernigan" /></div>
+            <div>
+              <p class="inline-t-quote">"Before this program, my deepest fear was to die with my heart's work latent"</p>
+              <p class="inline-t-attr">— John Jernigan, <span>Heart of Men Participant</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. THOMAS ========== -->
+  <section class="light-sec">
+    <div class="split">
+      <div class="split-text">
+        <h2 class="section-header">Hello There, <span class="hd-wrap">I'm Thomas<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:#944830;"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span></h2>
+        <p class="muted">In my early 20s, I founded and ran a successful startup. I ended up selling the company after 8 years because I felt I was ultimately abandoning something precious in who I really was in my leadership.</p>
+        <p class="muted">I fled to the other end of the spectrum: 22 acres with a solar-powered, spring-fed abode in the Appalachian Mountains. I wrote the best poetry in my life in these years, but I ultimately felt stagnant, fragmented, and self-imploding as I had abandoned my ambition.</p>
+        <p class="muted">My life the past several years has been an experiment to take <strong style="color:#944830;">courageous, inspired action, on behalf of what's actually most important</strong>.</p>
+        <p>It's through this lens that I look out on the world and see:</p>
+        <p>1) Powerful men with impressive skillsets and initiatives who are <span style="font-style:italic;">not living what's actually most important to them</span> OR</p>
+        <p>2) Brothers awake to the deeper currents of Life <span style="font-style:italic;">unable to take bold, consistent action in service.</span></p>
+      </div>
+      <div class="split-img">
+        <img src="./Images/Thomas.png" alt="Thomas" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. BRIDGE ========== -->
+  <section style="background:var(--brown);">
+    <div class="split">
+      <div class="split-img">
+        <img src="./Images/Bridge.jpeg" alt="A bridge in the mountains" />
+      </div>
+      <div class="split-text">
+        <h2 class="section-header"><strong><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span> is the bridge of these two worlds.</strong></h2>
+        <p class="big-line">Over the next 8 months, you are going to lead yourself into a life built around what's actually most important to you. In doing so, you're going to create the future worthy of our sons and daughters.</p>
+        <div class="inline-t-stack" style="margin-top:3rem;">
+          <div class="inline-t">
+            <div class="inline-t-photo"><img src="./Images/Colin.png" alt="Colin Olexa" /></div>
+            <div>
+              <p class="inline-t-quote">"I couldn't do the things I'm doing now that I've really wanted to for a long time because I didn't believe in who I was. With Heart of Men, I'm just starting to, and now I'm doing this stuff I actually love."</p>
+              <p class="inline-t-attr">— Colin Olexa</p>
+            </div>
+          </div>
+          <div class="inline-t">
+            <div class="inline-t-photo"><img src="./Images/Justin.jpeg" alt="Justin Cole" /></div>
+            <div>
+              <p class="inline-t-quote">"In essence, I know who I am in a way that I never have before. I can feel it. My wife and children can feel it. My employees can feel it."</p>
+              <p class="inline-t-attr">— Justin Cole</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="padding-bottom:5.5rem;">
+      <div id="fs-form-wrap-bridge" style="max-width:480px;margin:0 auto;">
+        <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+        </form>
+      </div>
+      <div id="fs-success-bridge" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. WHAT REAL DUDES SAY ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <img class="bg-img" src="./Images/Real Dudes Talking.jpeg" alt="" style="opacity:0.75;" />
+    <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
+    <div class="container" style="text-align:center;">
+      <h2 class="section-header">What Real Dudes Say After Heart of Men</h2>
+      <div class="t-grid">
+        <div class="tcard">
+          <p class="tcard-quote">"The qualities instilled in me through this journey are playing a major role in how I am a father and will forever shape the future of my children...it's been huge, so thank you, guys. I'll carry what I've learned here into the raising of these children, which is pretty awesome to think about."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Matt2.png" alt="Matt MacVitte" /></div>
+            <div>
+              <p class="tcard-name">Matt MacVitte</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"I went from ruminating, solving and moving through the guidance of my mind to developing a relationship with my heart that cracked open a new world."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Nate.jpg" alt="Nate Rubio" /></div>
+            <div>
+              <p class="tcard-name">Nate Rubio</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"This space exposes the truth amidst a complex world that keeps us shrouded in confusion and misdirection."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Jake.jpg" alt="Jake Rosenberg" /></div>
+            <div>
+              <p class="tcard-name">Jake Rosenberg</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. WHAT IT'S NOT ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <div class="container">
+      <h2 class="section-header" style="text-align:center;">Before we go further, I need you to know:</h2>
+      <div class="further-grid">
+        <div class="further-img"><img src="./Images/any further.png" alt="" /></div>
+        <div class="further-tiles">
+        <div class="tile">
+          <p>This brotherhood will not integrate all of your shadows. Nor will you leave these 8 months an enlightened man indefinitely beyond collapse, numbness, or distraction. You will still have bad days and hard moments.</p>
+          <p><strong class="gold">But what I can promise: you will know what's most important and have the clarity, capacity, and courage to take consistent action on its behalf.</strong></p>
+        </div>
+        <div class="tile">
+          <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
+          <p><strong class="gold">This journey feels much more like that hike you've always wanted to go in with your best dude friends to that mountaintop meadow. Where at the top you're feasted with honey wine and fire-braised Elk that you know you've earned.</strong></p>
+        </div>
+        </div>
+      </div>
+
+      <div class="inline-t-stack" style="max-width:640px;margin:4rem auto 0;">
+        <div class="inline-t">
+          <div class="inline-t-photo"><img src="./Images/Jakuen2.png" alt="Jakuen De La Paz" /></div>
+          <div>
+            <p class="inline-t-quote" style="font-size:1.35em;">"I want to acknowledge your fear and your resistance to opening up in this work and this transformation. Because Heart of Men will change your life, and you will wake up one day the kind of man you did not think was possible: connected, nourished, and free."</p>
+            <p class="inline-t-attr">— Jakuen De La Paz</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:4rem;">
+        <div id="fs-form-wrap-not" style="max-width:480px;margin:0 auto;">
+          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+            <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+          </form>
+        </div>
+        <div id="fs-success-not" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. STRUCTURE / OUR RHYTHM ========== -->
+  <section class="section-pad" style="background:var(--green);">
+    <img class="bg-img" src="./Images/roundhouse.jpg" alt="" style="opacity:0.3;" />
+    <div class="bg-overlay" style="background:rgba(14,12,9,0.55);"></div>
+    <div class="container">
+      <div class="rhythm-grid">
+        <div>
+          <h2 class="section-header">Our Rhythm</h2>
+          <p style="color:var(--cream);margin-bottom:1.5rem;">You are going to consistently move towards what's most important. You're going to learn to meet—and then ride—the dragons that present themselves along the way. You're going to fall down—more times than you think you want to—and learn to pick yourself and one another back up.</p>
+          <p style="color:var(--cream);margin-bottom:1.5rem;">You are going to do scary things you've been waiting a decade to do and find that not only don't they kill you, they bring you enormous momentum. You're going to build a life where your time, money, and attention flows to what's actually most important. And in all this, together, we're going to create a new future.</p>
+          <p class="bigger"><strong>By the end of these 8 months, "maybe, one day I'll finally…" is going to become "Holy shit, no training wheels, LOOK AT ME GO"</strong></p>
+          <div class="inline-t-stack" style="margin-top:3rem;">
+            <div class="inline-t">
+              <div class="inline-t-photo"><img src="./Images/Will.jpeg" alt="Will Grim" /></div>
+              <div>
+                <p class="inline-t-quote">"The formatting of this journey was really awesome for me AND had a big impact. It allowed me to tune into something less cognitive - something beyond just me but also moving through me, like a current."</p>
+                <p class="inline-t-attr">— Will Grim</p>
+              </div>
+            </div>
+            <div class="inline-t">
+              <div class="inline-t-photo"><img src="./Images/Jack.jpeg" alt="Jack Cowden" /></div>
+              <div>
+                <p class="inline-t-quote">"The in person retreats were masterful in my opinion; pacing, content, play, invitation without pressure, downtime, integration, all delicious and nurturing, and never was I unsure of the strong and capable hands that held me on the land."</p>
+                <p class="inline-t-attr">— Jack Cowden</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="num-item">
+            <div class="num">01</div>
+            <div>
+              <h3>Leadership Sessions</h3>
+              <p class="num-meta">1st and 3rd Wednesday · Evenings Online</p>
+              <p>These 2.5 hour sessions weave Council, Curriculum, and Coaching. They will likely become some of your favorite moments of your month. Our first session is September 16th, and they are recorded.</p>
+            </div>
+          </div>
+          <div class="num-item">
+            <div class="num">02</div>
+            <div>
+              <h3>Two, 5-Day In-Person Summits</h3>
+              <p class="num-meta">October 22–26 · March 11–15 · Black Mountain, NC</p>
+              <p>We gather at an off-grid retreat sanctuary in the Appalachian mountains. Supported by star-lit skies, feasts of delicious, seasonal foods, and swims in spring-fed creeks, we make inevitable what was impossible on our own.</p>
+            </div>
+          </div>
+          <div class="num-item">
+            <div class="num">03</div>
+            <div>
+              <h3>Homework</h3>
+              <p class="num-meta">Released Thursdays after each Leadership Session</p>
+              <p>Homework supports you in taking the clarity from our work together into your everyday life through practices and rituals—some of which will stay with you the rest of your life. On average, 10 minutes a day is adequate for you to get a lot from these invitations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8. REAL DUDES TALKING ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <img class="bg-img" src="./Images/Real Dudes Talking 2.JPG" alt="" style="opacity:0.75;" />
+    <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
+    <div class="container" style="text-align:center;">
+      <h2 class="section-header">Real Dudes Talking</h2>
+      <div class="t-grid">
+        <div class="tcard">
+          <p class="tcard-quote">"I pole-vaulted across a chasm because of you guys by seeing that I could lead something that actually mattered to me. I'm astonished by where I am right now compared to 8 months ago. Even if you had given me a cheat sheet with how to do all this, there's no way I could have without this"</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/John.png" alt="John Jernigan" /></div>
+            <div>
+              <p class="tcard-name">John Jernigan</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"Heart of Men has been one of the clearest mirrors I've had. Through this work I've discovered that what I'm here to do — what genuinely lights me up — is working with men and young men. And I'm not just feeling it — I'm actually stepping into it."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Lature.png" alt="Lature Van Duren" /></div>
+            <div>
+              <p class="tcard-name">Lature Van Duren</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"I came to this community in the same year after I had completed a divorce from my 13-year-long marriage. I thought I was doing well after my divorce. I wasn't. Through my journey with Heart of Men, I experienced a version of masculinity that I had never made contact with before."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Colin.png" alt="Colin Olexa" /></div>
+            <div>
+              <p class="tcard-name">Colin Olexa</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. ARE YOU READY? (PRICING) ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <div class="container">
+      <h2 class="section-header" style="text-align:center;">Are You Ready?</h2>
+      <div class="tile-grid">
+        <div class="tile price-card" style="padding-top:4.25rem;">
+          <div class="badge-band">10 Spots Remain</div>
+          <h3>Living Leadership</h3>
+          <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
+          <div class="price-big">$2750 <span>deposit</span></div>
+          <p class="price-sub">+ $925/mo starting September 16th</p>
+          <ul>
+            <li>16 Leadership Sessions: Council, Curriculum, and Coaching</li>
+            <li>10 Days In person (2, 5-day Summits): Indoor lodging + the best food of your life included</li>
+            <li>4 Additional Coaching/Integration Sessions (Optional on 5th Wednesdays)</li>
+            <li>Weekly Guided Journeys, Practices, and Rituals you'll have and use indefinitely</li>
+            <li>Group Signal Thread (guys use this ~ daily)</li>
+            <li>Heart of Men Accountability App: Drink From The Well</li>
+            <li>4-months free in our Brother Ecosystem, Warrior's Way, upon completion of LL if enrolled before August 1 ($800 value)</li>
+          </ul>
+        </div>
+        <div class="tile price-card" style="padding-top:4.25rem;">
+          <div class="badge-band">Only Two Spots</div>
+          <h3>Living Leadership + Launch Support</h3>
+          <p>This is for brothers standing at a significant creative threshold who want additional, tailored support for their business launch, artistic endeavor, or pivotal life passage. I will only be working with two brothers in this capacity. By application.</p>
+          <div class="price-big">$2750 <span>deposit</span></div>
+          <p class="price-sub">+ $1625/mo starting October 16th</p>
+          <ul>
+            <li>Everything in Living Leadership</li>
+            <li>8, 2-hour 1:1 sessions with me</li>
+            <li>2 hours monthly of strategic + creative support asynchronously between sessions</li>
+            <li>Stay on our land a day before and a day after each retreat for personal preparation + integration (yes, I'll cook something special for you at least once in those extra days)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-center">
+        <p class="t-center-quote">"There have been two programs I've participated in over the past six years that cost four figures. <strong>Each program, at the time, was 25%+ of my monthly income.</strong> The only reason you're reading these words and have the choice to join something that will change the trajectory of your life in Heart of Men is <strong>because I made those two bets on myself.</strong> They felt crazy at the time, and it's only in hindsight I can see that something in me knew they would bear 10x the fruits of what I paid for them."</p>
+        <div class="t-center-photo"><img src="./Images/Thomas Header.jpg" alt="Thomas Doochin" /></div>
+        <div class="t-center-rule"></div>
+        <p class="t-center-name">Thomas Doochin</p>
+        <p class="t-center-title">Heart of Men Founder</p>
+      </div>
+
+      <div style="margin-top:4rem;text-align:center;">
+        <div id="fs-form-wrap-ready" style="max-width:480px;margin:0 auto;">
+          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+            <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+          </form>
+        </div>
+        <div id="fs-success-ready" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
+        </div>
+        <a class="quiet-link" href="https://heartofmen.community/true-north-leadership">I feel the draw to this work, but I'm sincerely not ready/able to make a big commitment like this.</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10. WHAT MAKES THIS CIRCLE DIFFERENT ========== -->
+  <section style="background:#f0ebe0;padding:6rem 2rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="aspect-ratio:16/7;overflow:hidden;margin-bottom:4rem;position:relative;">
+        <img src="https://images.squarespace-cdn.com/content/63613c8509fb217dd939181e/d29b3140-bdc1-478a-ba68-3b0472852213/Edit+v6.00_03_35_29.Still038.png?content-type=image%2Fpng" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,#f0ebe0 100%);"></div>
+      </div>
+
+      <div style="text-align:center;margin-bottom:3.5rem;">
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:600;color:#1e1a12;line-height:1.15;">What Makes this Circle Different</h2>
+      </div>
+
+      <div class="shifts-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 4rem;">
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Waiting Until You're "Healed"</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Giving and Living Your Gift Now</p>
+        </div>
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Self-Improvement</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Belonging and Devotion as the Ground From Which you Grow</p>
+        </div>
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Learning Old Models</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Witnessing and Embodying a Living Masculinity</p>
+        </div>
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Peak Experience</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Steady, Warming Fire that Lasts</p>
+        </div>
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;border-bottom:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Lonely and Exhaustive Climb Up</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Deepest Belly Laughs and Best Meals of the Year</p>
+        </div>
+
+        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;border-bottom:1px solid #d5cab0;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Guru / Shaman</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Circle Itself as the Source of Truth</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 11. THIS STUFF REALLY WORKS ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <img class="bg-img" src="./Images/Real Dudes Talking 3.jpg" alt="" style="opacity:0.75;" />
+    <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
+    <div class="container" style="text-align:center;">
+      <h2 class="section-header">This stuff really works</h2>
+      <div class="t-grid">
+        <div class="tcard">
+          <p class="tcard-quote">"Heart of Men is becoming a central fire for me in my life even outside of the programs because of the relationships I have gained during the programs. What feels special to me is the longevity I feel from being part of the groups. Other offerings I have been in feel like a one and done thing but this feels like I am becoming part of a family."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Cameron.jpg" alt="Cameron Allen" /></div>
+            <div>
+              <p class="tcard-name">Cameron Allen</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"I left this program less interested in performing masculinity and more interested in living truthfully. This work matters because most men have spent their lives learning how to succeed, protect, compete, and provide, but very few have learned how to truly be themselves. Heart of Men creates a space where men can stop pretending, tell the truth, and reconnect with who they actually are."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Lane.jpeg" alt="Lane Rankin" /></div>
+            <div>
+              <p class="tcard-name">Lane Rankin</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"The friendships I've developed with these brothers who took the journey with me I'll cherish for my lifetime. Through this council I've found a home in my body, safety in loving and being loved by a healthy masculine connection I've never witnessed, the release of these traumas and dark clouds I thought would follow me forever."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Dominic.png" alt="Dominic Tovar" /></div>
+            <div>
+              <p class="tcard-name">Dominic Tovar</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Heart of Men &middot; Living Leadership
+  </footer>
+
+  <script>
+    const formHero = document.querySelector('#fs-form-wrap-hero form');
+    const wrapHero = document.getElementById('fs-form-wrap-hero');
+    const successHero = document.getElementById('fs-success-hero');
+    if (formHero) {
+      formHero.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(formHero);
+        const res = await fetch(formHero.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if (res.ok) {
+          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          wrapHero.style.display = 'none';
+          successHero.style.display = 'block';
+        }
+      });
+    }
+
+    const formBridge = document.querySelector('#fs-form-wrap-bridge form');
+    const wrapBridge = document.getElementById('fs-form-wrap-bridge');
+    const successBridge = document.getElementById('fs-success-bridge');
+    if (formBridge) {
+      formBridge.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(formBridge);
+        const res = await fetch(formBridge.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if (res.ok) {
+          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          wrapBridge.style.display = 'none';
+          successBridge.style.display = 'block';
+        }
+      });
+    }
+
+    const formNot = document.querySelector('#fs-form-wrap-not form');
+    const wrapNot = document.getElementById('fs-form-wrap-not');
+    const successNot = document.getElementById('fs-success-not');
+    if (formNot) {
+      formNot.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(formNot);
+        const res = await fetch(formNot.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if (res.ok) {
+          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          wrapNot.style.display = 'none';
+          successNot.style.display = 'block';
+        }
+      });
+    }
+
+    const formReady = document.querySelector('#fs-form-wrap-ready form');
+    const wrapReady = document.getElementById('fs-form-wrap-ready');
+    const successReady = document.getElementById('fs-success-ready');
+    if (formReady) {
+      formReady.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(formReady);
+        const res = await fetch(formReady.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if (res.ok) {
+          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          wrapReady.style.display = 'none';
+          successReady.style.display = 'block';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
