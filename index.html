@@ -232,7 +232,7 @@
       font-size: clamp(1.15rem, 2.6vw, 1.5rem);
       line-height: 1.5;
       max-width: 700px;
-      margin: 1.75rem auto 0;
+      margin: 0 auto 2.5rem;
       text-align: center;
     }
 
@@ -434,6 +434,27 @@
 
     .quiet-link:hover { color: var(--gold); }
 
+    /* ---------- Site logo ---------- */
+    .site-logo {
+      position: absolute;
+      top: 1.75rem;
+      left: 2rem;
+      z-index: 5;
+      display: block;
+      line-height: 0;
+    }
+
+    .site-logo img {
+      width: 84px;
+      height: 84px;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .site-logo { top: 1rem; left: 1rem; }
+      .site-logo img { width: 58px; height: 58px; }
+    }
+
     /* ---------- Hero ---------- */
     .hero {
       min-height: 100vh;
@@ -454,7 +475,16 @@
     .hero-sub {
       font-size: clamp(1.15rem, 2.6vw, 1.5rem);
       color: var(--cream);
-      margin-bottom: 2.75rem;
+      margin-bottom: 0;
+    }
+
+    .hero-rule {
+      display: block;
+      width: 300px;
+      max-width: 75%;
+      height: 14px;
+      margin: 1.5rem auto 2rem;
+      color: var(--gold);
     }
 
     footer {
@@ -493,10 +523,13 @@
   <section class="hero">
     <img class="bg-img" src="./Images/Landshot.webp" alt="" style="opacity:0.55;" />
     <div class="bg-overlay" style="background:rgba(14,12,9,0.6);"></div>
+    <a class="site-logo" href="https://heartofmen.community" aria-label="Heart of Men — visit heartofmen.community"><img src="./Images/Transparent Logo.png" alt="Heart of Men" /></a>
     <div class="container" style="max-width:1100px;">
-      <p class="eyebrow">Heart of Men</p>
-      <h1><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span></h1>
+      <h1>Living Leadership</h1>
       <p class="hero-sub">Be the f'n best at who you really are</p>
+      <svg class="hero-rule" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg>
+
+      <p class="cta-note">An 8-month journey for men ready to weave their <span class="gold-text">masculine initiative</span> with their <span class="gold-text">soul's whisper</span> to lead a life <span class="gold-text">worthy of a legacy</span></p>
 
       <div id="fs-form-wrap-hero" style="max-width:480px;margin:0 auto;">
         <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
@@ -507,8 +540,6 @@
       <div id="fs-success-hero" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
         <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
       </div>
-
-      <p class="cta-note">An 8-month journey for men ready to weave their <span class="gold-text">masculine initiative</span> with their <span class="gold-text">soul's whisper</span> to lead a life <span class="gold-text">worthy of a legacy</span></p>
 
       <div class="hero-t">
         <p class="hero-t-quote">"I pole-vaulted across a chasm because of you all by seeing that I could lead something that actually mattered to me."</p>
