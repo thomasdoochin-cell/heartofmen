@@ -22,6 +22,29 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    .countdown-bar {
+      background: #0e0c09;
+      color: var(--gold);
+      text-align: center;
+      padding: 0.7rem 1.25rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(185, 155, 86, 0.35);
+    }
+
+    .countdown-bar.bottom {
+      border-bottom: none;
+      border-top: 1px solid rgba(185, 155, 86, 0.35);
+    }
+
+    .countdown-bar strong { font-weight: 700; }
+
+    @media (max-width: 600px) {
+      .countdown-bar { font-size: 0.8rem; padding: 0.6rem 1rem; }
+    }
+
     body {
       background: var(--black);
       color: var(--cream);
@@ -156,6 +179,13 @@
       margin-top: 3.5rem;
     }
 
+    .t-grid.cols2 {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .tcard {
       background: rgba(240, 235, 224, 0.75);
       padding: 2.5rem 2.25rem;
@@ -171,6 +201,8 @@
       line-height: 1.7;
       margin-bottom: 2rem;
     }
+
+    .tcard-quote strong { font-weight: 700; color: #1e1a12; }
 
     .tcard-footer {
       margin-top: auto;
@@ -519,6 +551,8 @@
 </head>
 <body>
 
+  <div class="countdown-bar" role="status">Enrollment opens in <strong><span class="countdown-days">—</span> days</strong>. Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></div>
+
   <!-- ========== 1. HERO ========== -->
   <section class="hero">
     <img class="bg-img" src="./Images/Landshot.webp" alt="" style="opacity:0.55;" />
@@ -542,8 +576,8 @@
       </div>
 
       <div class="hero-t">
-        <p class="hero-t-quote">"I pole-vaulted across a chasm because of you all by seeing that I could lead something that actually mattered to me."</p>
-        <p class="hero-t-attr">— John Jernigan</p>
+        <p class="hero-t-quote">"I pole-vaulted across a chasm because of this by seeing that I could lead something that actually mattered to me."</p>
+        <p class="hero-t-attr">— John Jernigan, <span style="color:var(--cream-muted);">Heart of Men Participant</span></p>
       </div>
     </div>
   </section>
@@ -555,10 +589,10 @@
         <img src="./Images/Intro.png" alt="A winding path through the mountains" />
       </div>
       <div class="split-text">
-        <h2 class="section-header">There doesn't have to be a gap between your <span style="color:var(--green);">powerful expression</span> and <span style="color:var(--gold);">the good, the true, and the beautiful.</span></h2>
-        <p>Do you know what is most important to you?</p>
-        <p>Is the way you spend your time, money, and attention a testament to this?</p>
-        <p>Are the actions you take on behalf of what's most important outwardly effective and deeply internally fulfilling?</p>
+        <h2 class="section-header">There doesn't have to be a chasm between your <span style="color:var(--green);">power</span> and <span style="color:var(--gold);">the good, the true, and the beautiful.</span></h2>
+        <p>Do you know what your life is really about?</p>
+        <p>Are you showing up for it consistently + courageously?</p>
+        <p>Are you effective and fulfilled in doing so?</p>
         <p class="big-line"><strong>If you're a no to any of these questions, <span style="color:var(--gold);">this is for you.</span></strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
@@ -644,9 +678,9 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">What Real Dudes Say After Heart of Men</h2>
-      <div class="t-grid">
+      <div class="t-grid cols2">
         <div class="tcard">
-          <p class="tcard-quote">"The qualities instilled in me through this journey are playing a major role in how I am a father and will forever shape the future of my children...it's been huge, so thank you, guys. I'll carry what I've learned here into the raising of these children, which is pretty awesome to think about."</p>
+          <p class="tcard-quote">"The qualities instilled in me through this journey are playing a major role in how I am a father and <strong>will forever shape the future of my children</strong>...it's been huge, so thank you, guys. I'll carry what I've learned here into the raising of these children, which is pretty awesome to think about."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Matt2.png" alt="Matt MacVitte" /></div>
             <div>
@@ -656,7 +690,7 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"I went from ruminating, solving and moving through the guidance of my mind to developing a relationship with my heart that cracked open a new world."</p>
+          <p class="tcard-quote">"I went from ruminating, solving and moving through the guidance of my mind to developing a <strong>relationship with my heart that cracked open a new world</strong>."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Nate.jpg" alt="Nate Rubio" /></div>
             <div>
@@ -666,11 +700,21 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"This space exposes the truth amidst a complex world that keeps us shrouded in confusion and misdirection."</p>
+          <p class="tcard-quote">"This space <strong>exposes the truth</strong> amidst a complex world that keeps us shrouded in confusion and misdirection."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Jake.jpg" alt="Jake Rosenberg" /></div>
             <div>
               <p class="tcard-name">Jake Rosenberg</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"I came to this council a desperate man. My marriage was in trouble, after 25 years of striving for repair. Through the course of this work, I gained a new perspective on living that has brought renewal not only to my marriage and family relationships but also transformed all aspects of how I navigate life. This is the most transformative experience in my life."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Ken.jpeg" alt="Ken Beamon" /></div>
+            <div>
+              <p class="tcard-name">Ken Beamon</p>
               <p class="tcard-role">Heart of Men Participant</p>
             </div>
           </div>
@@ -691,8 +735,8 @@
           <p><strong class="gold">But what I can promise: you will know what's most important and have the clarity, capacity, and courage to take consistent action on its behalf.</strong></p>
         </div>
         <div class="tile">
-          <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
-          <p><strong class="gold">This journey feels much more like that hike you've always wanted to go in with your best dude friends to that mountaintop meadow. Where at the top you're feasted with honey wine and fire-braised Elk that you know you've earned.</strong></p>
+          <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent-lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
+          <p><strong class="gold">This journey feels much more like that hike you've always wanted to go in with your best dude friends to that mountaintop meadow overlooking the most gorgeous river valley. The journey where at the top you're feasted with honey wine and fire-braised Elk that you know you've earned.</strong></p>
         </div>
         </div>
       </div>
@@ -702,7 +746,7 @@
           <div class="inline-t-photo"><img src="./Images/Jakuen2.png" alt="Jakuen De La Paz" /></div>
           <div>
             <p class="inline-t-quote" style="font-size:1.35em;">"I want to acknowledge your fear and your resistance to opening up in this work and this transformation. Because Heart of Men will change your life, and you will wake up one day the kind of man you did not think was possible: connected, nourished, and free."</p>
-            <p class="inline-t-attr">— Jakuen De La Paz</p>
+            <p class="inline-t-attr">— Jakuen De La Paz, <span>Heart of Men Participant</span></p>
           </div>
         </div>
       </div>
@@ -729,8 +773,8 @@
       <div class="rhythm-grid">
         <div>
           <h2 class="section-header">Our Rhythm</h2>
-          <p style="color:var(--cream);margin-bottom:1.5rem;">You are going to consistently move towards what's most important. You're going to learn to meet—and then ride—the dragons that present themselves along the way. You're going to fall down—more times than you think you want to—and learn to pick yourself and one another back up.</p>
-          <p style="color:var(--cream);margin-bottom:1.5rem;">You are going to do scary things you've been waiting a decade to do and find that not only don't they kill you, they bring you enormous momentum. You're going to build a life where your time, money, and attention flows to what's actually most important. And in all this, together, we're going to create a new future.</p>
+          <p style="color:var(--cream);margin-bottom:1.5rem;">You are going to know who you really are. You are going to consistently move towards what's most important. You're going to learn to meet—and then ride—the dragons that present themselves along the way. You are going to do scary things you've been waiting a decade to do and find that not only don't they kill you, they bring you enormous momentum.</p>
+          <p style="color:var(--cream);margin-bottom:1.5rem;">You're going to build a life where your time, money, and attention flows to what's actually most important. And in all this, together, we're going to create a new future. This is the dojo for your life's most important work.</p>
           <p class="bigger"><strong>By the end of these 8 months, "maybe, one day I'll finally…" is going to become "Holy shit, no training wheels, LOOK AT ME GO"</strong></p>
           <div class="inline-t-stack" style="margin-top:3rem;">
             <div class="inline-t">
@@ -755,7 +799,7 @@
             <div>
               <h3>Leadership Sessions</h3>
               <p class="num-meta">1st and 3rd Wednesday · Evenings Online</p>
-              <p>These 2.5 hour sessions weave Council, Curriculum, and Coaching. They will likely become some of your favorite moments of your month. Our first session is September 16th, and they are recorded.</p>
+              <p>These 2.5 hour sessions weave Council, Curriculum, and Coaching. They will likely become some of your favorite moments of the month. Our first session is September 16th, and they are recorded.</p>
             </div>
           </div>
           <div class="num-item">
@@ -763,7 +807,7 @@
             <div>
               <h3>Two, 5-Day In-Person Summits</h3>
               <p class="num-meta">October 22–26 · March 11–15 · Black Mountain, NC</p>
-              <p>We gather at an off-grid retreat sanctuary in the Appalachian mountains. Supported by star-lit skies, feasts of delicious, seasonal foods, and swims in spring-fed creeks, we make inevitable what was impossible on our own.</p>
+              <p>We gather at an off-grid retreat sanctuary in the Appalachian mountains. Supported by star-lit skies, feasts of delicious, seasonal foods, and swims in spring-fed creeks, we make inevitable what was impossible on our own. You will remember and reference what you experience in these days for the next decade.</p>
             </div>
           </div>
           <div class="num-item">
@@ -771,7 +815,7 @@
             <div>
               <h3>Homework</h3>
               <p class="num-meta">Released Thursdays after each Leadership Session</p>
-              <p>Homework supports you in taking the clarity from our work together into your everyday life through practices and rituals—some of which will stay with you the rest of your life. On average, 10 minutes a day is adequate for you to get a lot from these invitations.</p>
+              <p>Homework supports you in taking the clarity from our work together into your everyday life through practices and rituals—some of which will stay with you the rest of your life. On average, 10 minutes a day is adequate for you to squeeze the juice from these invitations.</p>
             </div>
           </div>
         </div>
@@ -785,9 +829,9 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">Real Dudes Talking</h2>
-      <div class="t-grid">
+      <div class="t-grid cols2">
         <div class="tcard">
-          <p class="tcard-quote">"I pole-vaulted across a chasm because of you guys by seeing that I could lead something that actually mattered to me. I'm astonished by where I am right now compared to 8 months ago. Even if you had given me a cheat sheet with how to do all this, there's no way I could have without this"</p>
+          <p class="tcard-quote">"I pole-vaulted across a chasm because of you guys by seeing that I could lead something that actually mattered to me. <strong>I'm astonished by where I am right now compared to 8 months ago.</strong> Even if you had given me a cheat sheet with how to do all this, <strong>there's no way I could have without this</strong>"</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/John.png" alt="John Jernigan" /></div>
             <div>
@@ -797,7 +841,7 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"Heart of Men has been one of the clearest mirrors I've had. Through this work I've discovered that what I'm here to do — what genuinely lights me up — is working with men and young men. And I'm not just feeling it — I'm actually stepping into it."</p>
+          <p class="tcard-quote">"Heart of Men has been one of the clearest mirrors I've had. Through this work <strong>I've discovered what I'm here to do</strong> — what genuinely lights me up — is working with men and young men. And I'm not just feeling it — <strong>I'm actually stepping into it</strong>."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Lature.png" alt="Lature Van Duren" /></div>
             <div>
@@ -807,11 +851,21 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"I came to this community in the same year after I had completed a divorce from my 13-year-long marriage. I thought I was doing well after my divorce. I wasn't. Through my journey with Heart of Men, I experienced a version of masculinity that I had never made contact with before."</p>
+          <p class="tcard-quote">"I came to this community in the same year after I had completed a divorce from my 13-year-long marriage. I thought I was doing well after my divorce. I wasn't. Through my journey with Heart of Men, I experienced <strong>a version of masculinity that I had never made contact with before</strong>."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Colin.png" alt="Colin Olexa" /></div>
             <div>
               <p class="tcard-name">Colin Olexa</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <p class="tcard-quote">"This is unlike anything I've ever done. Thomas has made a game out of men doing their best every day and being seen in it. I couldn't express enough how meaningful this course was."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/ColinQ.png" alt="Colin Quigg" /></div>
+            <div>
+              <p class="tcard-name">Colin Quigg</p>
               <p class="tcard-role">Heart of Men Participant</p>
             </div>
           </div>
@@ -829,8 +883,8 @@
           <div class="badge-band">10 Spots Remain</div>
           <h3>Living Leadership</h3>
           <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
-          <div class="price-big">$2750 <span>deposit</span></div>
-          <p class="price-sub">+ $925/mo starting September 16th</p>
+          <div class="price-big">$2250 <span>deposit</span></div>
+          <p class="price-sub">+ $925/mo starting September 16th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
           <ul>
             <li>16 Leadership Sessions: Council, Curriculum, and Coaching</li>
             <li>10 Days In person (2, 5-day Summits): Indoor lodging + the best food of your life included</li>
@@ -845,13 +899,14 @@
           <div class="badge-band">Only Two Spots</div>
           <h3>Living Leadership + Launch Support</h3>
           <p>This is for brothers standing at a significant creative threshold who want additional, tailored support for their business launch, artistic endeavor, or pivotal life passage. I will only be working with two brothers in this capacity. By application.</p>
-          <div class="price-big">$2750 <span>deposit</span></div>
-          <p class="price-sub">+ $1625/mo starting October 16th</p>
+          <div class="price-big">$2250 <span>deposit</span></div>
+          <p class="price-sub">+ $1625/mo starting October 16th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
           <ul>
             <li>Everything in Living Leadership</li>
             <li>8, 2-hour 1:1 sessions with me</li>
             <li>2 hours monthly of strategic + creative support asynchronously between sessions</li>
             <li>Stay on our land a day before and a day after each retreat for personal preparation + integration (yes, I'll cook something special for you at least once in those extra days)</li>
+            <li>Introduction to my network for massive support in your initiative</li>
           </ul>
         </div>
       </div>
@@ -945,9 +1000,9 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">This stuff really works</h2>
-      <div class="t-grid">
+      <div class="t-grid cols2">
         <div class="tcard">
-          <p class="tcard-quote">"Heart of Men is becoming a central fire for me in my life even outside of the programs because of the relationships I have gained during the programs. What feels special to me is the longevity I feel from being part of the groups. Other offerings I have been in feel like a one and done thing but this feels like I am becoming part of a family."</p>
+          <p class="tcard-quote">"Heart of Men is <strong>becoming a central fire for me in my life</strong> even outside of the programs because of the relationships I have gained during the programs. What feels special to me is the longevity I feel from being part of the groups. Other offerings I have been in feel like a one and done thing but this feels like <strong>I am becoming part of a family</strong>."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Cameron.jpg" alt="Cameron Allen" /></div>
             <div>
@@ -957,7 +1012,7 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"I left this program less interested in performing masculinity and more interested in living truthfully. This work matters because most men have spent their lives learning how to succeed, protect, compete, and provide, but very few have learned how to truly be themselves. Heart of Men creates a space where men can stop pretending, tell the truth, and reconnect with who they actually are."</p>
+          <p class="tcard-quote">"I left this program less interested in performing masculinity and more interested in living truthfully. This work matters because most men have spent their lives learning how to succeed, protect, compete, and provide, but very few have learned how to truly be themselves. Heart of Men creates a space where men can <strong>stop pretending, tell the truth, and reconnect with who they actually are</strong>."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Lane.jpeg" alt="Lane Rankin" /></div>
             <div>
@@ -967,7 +1022,7 @@
           </div>
         </div>
         <div class="tcard">
-          <p class="tcard-quote">"The friendships I've developed with these brothers who took the journey with me I'll cherish for my lifetime. Through this council I've found a home in my body, safety in loving and being loved by a healthy masculine connection I've never witnessed, the release of these traumas and dark clouds I thought would follow me forever."</p>
+          <p class="tcard-quote">"The friendships I've developed with these brothers who took the journey with me <strong>I'll cherish for a lifetime</strong>. Through this council I've found a home in my body, safety in loving and <strong>being loved by a healthy masculine connection I've never witnessed</strong>, the release of these traumas and dark clouds I thought would follow me forever."</p>
           <div class="tcard-footer">
             <div class="tcard-photo"><img src="./Images/Dominic.png" alt="Dominic Tovar" /></div>
             <div>
@@ -976,15 +1031,47 @@
             </div>
           </div>
         </div>
+        <div class="tcard">
+          <p class="tcard-quote">"I have grown in a deep, life-changing way. This group of like-minded brothers in the council who shared this experience with me, now know the true "me" as well as anyone on the planet."</p>
+          <div class="tcard-footer">
+            <div class="tcard-photo"><img src="./Images/Ken.jpeg" alt="Ken Beamon" /></div>
+            <div>
+              <p class="tcard-name">Ken Beamon</p>
+              <p class="tcard-role">Heart of Men Participant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:4rem;">
+        <div id="fs-form-wrap-works" style="max-width:480px;margin:0 auto;">
+          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+            <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+          </form>
+        </div>
+        <div id="fs-success-works" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — check your new tab to continue.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="countdown-bar bottom" role="status">Enrollment opens in <strong><span class="countdown-days">—</span> days</strong>. Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></div>
 
   <footer>
     Heart of Men &middot; Living Leadership
   </footer>
 
   <script>
+    (function() {
+      const now = new Date();
+      let target = new Date(now.getFullYear(), 7, 1);
+      if (target < now) target = new Date(now.getFullYear() + 1, 7, 1);
+      const days = Math.max(0, Math.ceil((target - now) / 86400000));
+      document.querySelectorAll('.countdown-days').forEach(el => el.textContent = days);
+    })();
+
     const formHero = document.querySelector('#fs-form-wrap-hero form');
     const wrapHero = document.getElementById('fs-form-wrap-hero');
     const successHero = document.getElementById('fs-success-hero');
@@ -1045,6 +1132,22 @@
           window.open('https://form.typeform.com/to/avU9evXj', '_blank');
           wrapReady.style.display = 'none';
           successReady.style.display = 'block';
+        }
+      });
+    }
+
+    const formWorks = document.querySelector('#fs-form-wrap-works form');
+    const wrapWorks = document.getElementById('fs-form-wrap-works');
+    const successWorks = document.getElementById('fs-success-works');
+    if (formWorks) {
+      formWorks.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(formWorks);
+        const res = await fetch(formWorks.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if (res.ok) {
+          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          wrapWorks.style.display = 'none';
+          successWorks.style.display = 'block';
         }
       });
     }
