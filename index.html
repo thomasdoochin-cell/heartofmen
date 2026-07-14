@@ -28,9 +28,6 @@
       text-align: center;
       padding: 0.7rem 1.25rem;
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 0.9rem;
-      line-height: 1.45;
-      letter-spacing: 0.02em;
       border-bottom: 1px solid rgba(185, 155, 86, 0.35);
     }
 
@@ -39,10 +36,59 @@
       border-top: 1px solid rgba(185, 155, 86, 0.35);
     }
 
-    .countdown-bar strong { font-weight: 700; }
+    .countdown-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem 1.5rem;
+    }
+
+    .cd-lead {
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .countdown-timer {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 1.15rem;
+    }
+
+    .cd-unit {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .cd-num {
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--cream);
+    }
+
+    .cd-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(185, 155, 86, 0.8);
+      margin-top: 4px;
+    }
+
+    .countdown-sub {
+      flex-basis: 100%;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .countdown-sub strong { font-weight: 700; }
 
     @media (max-width: 600px) {
-      .countdown-bar { font-size: 0.8rem; padding: 0.6rem 1rem; }
+      .cd-lead, .countdown-sub { font-size: 0.8rem; }
+      .cd-num { font-size: 1.15rem; }
+      .countdown-timer { gap: 0.9rem; }
     }
 
     body {
@@ -185,6 +231,9 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    .t-testi { position: relative; }
+    .t-testi-next { display: none; }
 
     .tcard {
       background: rgba(240, 235, 224, 0.75);
@@ -466,6 +515,60 @@
 
     .quiet-link:hover { color: var(--gold); }
 
+    /* ---------- Photo carousel ---------- */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      --cd-basis: 25%;
+      line-height: 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 var(--cd-basis);
+      max-width: var(--cd-basis);
+    }
+
+    .carousel-slide img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.55);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 3.25rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0 0.6rem;
+      z-index: 2;
+      transition: color 0.2s ease;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .carousel-btn:hover { color: #fff; }
+    .carousel-prev { left: 0.4rem; }
+    .carousel-next { right: 0.4rem; }
+
+    @media (max-width: 900px) {
+      .carousel { --cd-basis: 100%; }
+    }
+
     /* ---------- Site logo ---------- */
     .site-logo {
       position: absolute;
@@ -547,11 +650,56 @@
     @media (max-width: 680px) {
       .shifts-grid { grid-template-columns: 1fr !important; }
     }
+
+    @media (max-width: 700px) {
+      .t-testi { overflow: hidden; }
+      .t-grid.cols2 {
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+        grid-auto-flow: column;
+        grid-auto-columns: 100%;
+        column-gap: 0;
+        max-width: none;
+        transition: transform 0.4s ease;
+      }
+      .t-testi-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(14, 12, 9, 0.72);
+        color: var(--gold);
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.9rem;
+        line-height: 1;
+        padding-bottom: 3px;
+        cursor: pointer;
+        z-index: 4;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="countdown-bar" role="status">Enrollment opens in <strong><span class="countdown-days">—</span> days</strong>. Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></div>
+  <div class="countdown-bar" role="status">
+    <div class="countdown-inner">
+      <span class="cd-lead">Enrollment opens in</span>
+      <span class="countdown-timer">
+        <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
+        <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
+        <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
+        <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
+      </span>
+      <span class="countdown-sub">Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></span>
+    </div>
+  </div>
 
   <!-- ========== 1. HERO ========== -->
   <section class="hero">
@@ -577,7 +725,7 @@
 
       <div class="hero-t">
         <p class="hero-t-quote">"I pole-vaulted across a chasm because of this by seeing that I could lead something that actually mattered to me."</p>
-        <p class="hero-t-attr">— John Jernigan, <span style="color:var(--cream-muted);">Heart of Men Participant</span></p>
+        <p class="hero-t-attr">— John Jernigan, <span style="color:var(--gold);">Heart of Men Participant</span></p>
       </div>
     </div>
   </section>
@@ -589,7 +737,8 @@
         <img src="./Images/Intro.png" alt="A winding path through the mountains" />
       </div>
       <div class="split-text">
-        <h2 class="section-header">There doesn't have to be a chasm between your <span style="color:var(--green);">power</span> and <span style="color:var(--gold);">the good, the true, and the beautiful.</span></h2>
+        <h2 class="section-header">There doesn't have to be contradiction between your <span style="color:var(--gold);">powerful expression</span> and <span style="color:var(--gold);">the good, the true, and the beautiful.</span></h2>
+        <p>You don't have to choose between success and living what's most sacred to you.</p>
         <p>Do you know what your life is really about?</p>
         <p>Are you showing up for it consistently + courageously?</p>
         <p>Are you effective and fulfilled in doing so?</p>
@@ -613,6 +762,24 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== CAROUSEL A ========== -->
+  <div class="carousel" id="carousel-a">
+    <div class="carousel-track">
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/1.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/2.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/3.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/4.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/5.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/6.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/7.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/8.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/9.JPG" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/10.jpg" alt="" /></div>
+    </div>
+    <button class="carousel-btn carousel-prev" aria-label="Previous photo">&lsaquo;</button>
+    <button class="carousel-btn carousel-next" aria-label="Next photo">&rsaquo;</button>
+  </div>
 
   <!-- ========== 3. THOMAS ========== -->
   <section class="light-sec">
@@ -646,14 +813,14 @@
             <div class="inline-t-photo"><img src="./Images/Colin.png" alt="Colin Olexa" /></div>
             <div>
               <p class="inline-t-quote">"I couldn't do the things I'm doing now that I've really wanted to for a long time because I didn't believe in who I was. With Heart of Men, I'm just starting to, and now I'm doing this stuff I actually love."</p>
-              <p class="inline-t-attr">— Colin Olexa</p>
+              <p class="inline-t-attr">— Colin Olexa, <span>Heart of Men Participant</span></p>
             </div>
           </div>
           <div class="inline-t">
             <div class="inline-t-photo"><img src="./Images/Justin.jpeg" alt="Justin Cole" /></div>
             <div>
               <p class="inline-t-quote">"In essence, I know who I am in a way that I never have before. I can feel it. My wife and children can feel it. My employees can feel it."</p>
-              <p class="inline-t-attr">— Justin Cole</p>
+              <p class="inline-t-attr">— Justin Cole, <span>Heart of Men Participant</span></p>
             </div>
           </div>
         </div>
@@ -678,6 +845,7 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">What Real Dudes Say After Heart of Men</h2>
+      <div class="t-testi">
       <div class="t-grid cols2">
         <div class="tcard">
           <p class="tcard-quote">"The qualities instilled in me through this journey are playing a major role in how I am a father and <strong>will forever shape the future of my children</strong>...it's been huge, so thank you, guys. I'll carry what I've learned here into the raising of these children, which is pretty awesome to think about."</p>
@@ -720,6 +888,8 @@
           </div>
         </div>
       </div>
+      <button class="t-testi-next" aria-label="Show more testimonials">&rsaquo;</button>
+      </div>
     </div>
   </section>
 
@@ -736,7 +906,7 @@
         </div>
         <div class="tile">
           <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent-lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
-          <p><strong class="gold">This journey feels much more like that hike you've always wanted to go in with your best dude friends to that mountaintop meadow overlooking the most gorgeous river valley. The journey where at the top you're feasted with honey wine and fire-braised Elk that you know you've earned.</strong></p>
+          <p><strong class="gold">This journey feels much more like that hike you've always wanted to go in with your best dude friends to that mountaintop meadow overlooking the most gorgeous river valley. Where you reach the summit and are feasted on wild meats and fine wine you know you've earned by a warm fire under starlight.</strong></p>
         </div>
         </div>
       </div>
@@ -829,6 +999,7 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">Real Dudes Talking</h2>
+      <div class="t-testi">
       <div class="t-grid cols2">
         <div class="tcard">
           <p class="tcard-quote">"I pole-vaulted across a chasm because of you guys by seeing that I could lead something that actually mattered to me. <strong>I'm astonished by where I am right now compared to 8 months ago.</strong> Even if you had given me a cheat sheet with how to do all this, <strong>there's no way I could have without this</strong>"</p>
@@ -870,6 +1041,8 @@
             </div>
           </div>
         </div>
+      </div>
+      <button class="t-testi-next" aria-label="Show more testimonials">&rsaquo;</button>
       </div>
     </div>
   </section>
@@ -933,6 +1106,24 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== CAROUSEL B ========== -->
+  <div class="carousel" id="carousel-b">
+    <div class="carousel-track">
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/11.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/12.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/13.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/14.JPG" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/15.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/16.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/17.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/18.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/19.jpg" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/20.jpeg" alt="" /></div>
+    </div>
+    <button class="carousel-btn carousel-prev" aria-label="Previous photo">&lsaquo;</button>
+    <button class="carousel-btn carousel-next" aria-label="Next photo">&rsaquo;</button>
+  </div>
 
   <!-- ========== 10. WHAT MAKES THIS CIRCLE DIFFERENT ========== -->
   <section style="background:#f0ebe0;padding:6rem 2rem;">
@@ -1000,6 +1191,7 @@
     <div class="bg-overlay" style="background:rgba(43,33,24,0.5);"></div>
     <div class="container" style="text-align:center;">
       <h2 class="section-header">This stuff really works</h2>
+      <div class="t-testi">
       <div class="t-grid cols2">
         <div class="tcard">
           <p class="tcard-quote">"Heart of Men is <strong>becoming a central fire for me in my life</strong> even outside of the programs because of the relationships I have gained during the programs. What feels special to me is the longevity I feel from being part of the groups. Other offerings I have been in feel like a one and done thing but this feels like <strong>I am becoming part of a family</strong>."</p>
@@ -1042,6 +1234,8 @@
           </div>
         </div>
       </div>
+      <button class="t-testi-next" aria-label="Show more testimonials">&rsaquo;</button>
+      </div>
 
       <div style="margin-top:4rem;">
         <div id="fs-form-wrap-works" style="max-width:480px;margin:0 auto;">
@@ -1057,7 +1251,18 @@
     </div>
   </section>
 
-  <div class="countdown-bar bottom" role="status">Enrollment opens in <strong><span class="countdown-days">—</span> days</strong>. Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></div>
+  <div class="countdown-bar bottom" role="status">
+    <div class="countdown-inner">
+      <span class="cd-lead">Enrollment opens in</span>
+      <span class="countdown-timer">
+        <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
+        <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
+        <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
+        <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
+      </span>
+      <span class="countdown-sub">Join the waitlist for <strong>$1700 off + 6 free weeks of coaching with Thomas</strong></span>
+    </div>
+  </div>
 
   <footer>
     Heart of Men &middot; Living Leadership
@@ -1068,9 +1273,73 @@
       const now = new Date();
       let target = new Date(now.getFullYear(), 7, 1);
       if (target < now) target = new Date(now.getFullYear() + 1, 7, 1);
-      const days = Math.max(0, Math.ceil((target - now) / 86400000));
-      document.querySelectorAll('.countdown-days').forEach(el => el.textContent = days);
+      const pad = n => String(n).padStart(2, '0');
+      function tick() {
+        let diff = Math.max(0, target - new Date());
+        const s = Math.floor(diff / 1000);
+        const days = Math.floor(s / 86400);
+        const hours = Math.floor((s % 86400) / 3600);
+        const mins = Math.floor((s % 3600) / 60);
+        const secs = s % 60;
+        document.querySelectorAll('.cd-days').forEach(el => el.textContent = pad(days));
+        document.querySelectorAll('.cd-hours').forEach(el => el.textContent = pad(hours));
+        document.querySelectorAll('.cd-mins').forEach(el => el.textContent = pad(mins));
+        document.querySelectorAll('.cd-secs').forEach(el => el.textContent = pad(secs));
+      }
+      tick();
+      setInterval(tick, 1000);
     })();
+
+    function initCarousel(rootId) {
+      const root = document.getElementById(rootId);
+      if (!root) return;
+      const track = root.querySelector('.carousel-track');
+      const slides = track.children;
+      const total = slides.length;
+      let index = 0;
+      let timer = null;
+      function visibleCount() {
+        const sw = slides[0].getBoundingClientRect().width;
+        return sw > 0 ? Math.max(1, Math.round(root.clientWidth / sw)) : 1;
+      }
+      function render() {
+        track.style.transform = 'translateX(calc(' + (-index) + ' * var(--cd-basis)))';
+      }
+      function advance(dir) {
+        const max = Math.max(0, total - visibleCount());
+        if (dir > 0) index = index >= max ? 0 : index + 1;
+        else index = index <= 0 ? max : index - 1;
+        render();
+      }
+      function startAuto() { stopAuto(); timer = setInterval(function() { advance(1); }, 1500); }
+      function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+      root.querySelector('.carousel-next').addEventListener('click', function() { advance(1); startAuto(); });
+      root.querySelector('.carousel-prev').addEventListener('click', function() { advance(-1); startAuto(); });
+      root.addEventListener('mouseenter', stopAuto);
+      root.addEventListener('mouseleave', startAuto);
+      startAuto();
+    }
+    initCarousel('carousel-a');
+    initCarousel('carousel-b');
+
+    function initTestimonialPager(testi) {
+      const grid = testi.querySelector('.t-grid');
+      const btn = testi.querySelector('.t-testi-next');
+      if (!grid || !btn) return;
+      const cardCount = grid.querySelectorAll('.tcard').length;
+      const pages = Math.ceil(cardCount / 2);
+      let page = 0;
+      const mq = window.matchMedia('(max-width: 700px)');
+      function render() {
+        if (mq.matches) grid.style.transform = 'translateX(' + (-page * 100) + '%)';
+        else grid.style.transform = '';
+      }
+      function sync() { if (!mq.matches) { page = 0; } render(); }
+      btn.addEventListener('click', function() { page = (page + 1) % pages; render(); });
+      if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+      sync();
+    }
+    document.querySelectorAll('.t-testi').forEach(initTestimonialPager);
 
     const formHero = document.querySelector('#fs-form-wrap-hero form');
     const wrapHero = document.getElementById('fs-form-wrap-hero');
