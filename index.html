@@ -163,6 +163,17 @@
 
     .split-img img { width: 100%; height: auto; }
 
+    .split-img-thomas img {
+      aspect-ratio: 0.95;
+      height: auto;
+      object-fit: cover;
+      object-position: left center;
+    }
+
+    @media (min-width: 901px) {
+      .split-thomas { grid-template-columns: 1fr 1.3fr; }
+    }
+
     .split-text p { margin-bottom: 1.25rem; color: var(--cream); }
     .split-text p:last-child { margin-bottom: 0; }
     .split-text .muted { color: var(--cream-muted); }
@@ -785,18 +796,18 @@
 
   <!-- ========== 3. THOMAS ========== -->
   <section class="light-sec">
-    <div class="split">
+    <div class="split split-thomas">
       <div class="split-text">
         <h2 class="section-header">Hello There, <span class="hd-wrap">I'm Thomas<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:#944830;"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span></h2>
         <p class="muted">In my early 20s, I founded and ran a successful startup. I ended up selling the company after 8 years because I felt I was ultimately abandoning something precious in who I really was in my leadership.</p>
         <p class="muted">I fled to the other end of the spectrum: 22 acres with a solar-powered, spring-fed abode in the Appalachian Mountains. I wrote the best poetry in my life in these years, but I ultimately felt stagnant, fragmented, and self-imploding as I had abandoned my ambition.</p>
-        <p class="muted">My life the past several years has been an experiment to take <strong style="color:#944830;">courageous, inspired action, on behalf of what's actually most important</strong>.</p>
+        <p class="muted">My life the past several years has been an experiment to take <strong style="color:#944830;">courageous, inspired action, on behalf of what's actually most important</strong>. It has created the life I most deeply long for.</p>
         <p>It's through this lens that I look out on the world and see:</p>
         <p>1) Powerful men with impressive skillsets and initiatives who are <span style="font-style:italic;">not living what's actually most important to them</span> OR</p>
         <p>2) Brothers awake to the deeper currents of Life <span style="font-style:italic;">unable to take bold, consistent action in service.</span></p>
       </div>
-      <div class="split-img">
-        <img src="./Images/Thomas.png" alt="Thomas" />
+      <div class="split-img split-img-thomas">
+        <img src="./Images/Thomas 2.jpeg" alt="Thomas" />
       </div>
     </div>
   </section>
