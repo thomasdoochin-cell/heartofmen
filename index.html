@@ -583,6 +583,41 @@
       .carousel { --cd-basis: 100%; }
     }
 
+    /* ---------- The guys section ---------- */
+    .guys-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0 3.5rem;
+    }
+
+    .guys-photo { aspect-ratio: 1 / 1; overflow: hidden; }
+
+    .guys-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.2) saturate(1.1) contrast(1.02) brightness(1.02);
+    }
+
+    .guys-text { max-width: 820px; margin: 0 auto; }
+
+    .guys-list {
+      font-size: 1.3rem;
+      line-height: 1.75;
+      color: var(--cream);
+      margin-bottom: 1.75rem;
+    }
+
+    .guys-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 1.75rem; }
+
+    .guys-share { font-size: 1.1rem; line-height: 1.75; color: var(--cream); }
+    .guys-share strong { color: var(--gold); }
+
+    @media (max-width: 760px) {
+      .guys-photos { grid-template-columns: 1fr; gap: 1rem; margin: 2.5rem 0 3rem; }
+    }
+
     /* ---------- Site logo ---------- */
     .site-logo {
       position: absolute;
@@ -722,7 +757,7 @@
     <a class="site-logo" href="https://heartofmen.community" aria-label="Heart of Men — visit heartofmen.community"><img src="./Images/Transparent Logo.png" alt="Heart of Men" /></a>
     <div class="container" style="max-width:1100px;">
       <h1>Living Leadership</h1>
-      <p class="hero-sub">Know the reason you're on this Earth. Then, live and lead from it to create a life you absolutely love.</p>
+      <p class="hero-sub">Know the reason you're on this Earth. Then, live and lead from it to create a life that changes your world.</p>
       <svg class="hero-rule" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg>
 
       <p class="cta-note">An 8-month journey for men standing at a life-changing threshold.</p>
@@ -1128,7 +1163,7 @@
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/11.jpg" alt="" /></div>
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/12.jpg" alt="" /></div>
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/13.jpg" alt="" /></div>
-      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/14.JPG" alt="" /></div>
+      <div class="carousel-slide"><img src="./Images/Scrolling Tiles/14.jpg" alt="" /></div>
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/15.jpg" alt="" /></div>
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/16.jpg" alt="" /></div>
       <div class="carousel-slide"><img src="./Images/Scrolling Tiles/17.jpg" alt="" /></div>
@@ -1139,6 +1174,24 @@
     <button class="carousel-btn carousel-prev" aria-label="Previous photo">&lsaquo;</button>
     <button class="carousel-btn carousel-next" aria-label="Next photo">&rsaquo;</button>
   </div>
+
+  <!-- ========== THE GUYS IN THIS WORK ========== -->
+  <section class="section-pad" style="background:var(--black);">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow">The Guys In This Work</p>
+      <h2 class="section-header">What kind of guys are in our circles?</h2>
+      <div class="guys-photos">
+        <div class="guys-photo"><img src="./Images/Group1.jpeg" alt="" /></div>
+        <div class="guys-photo"><img src="./Images/Group2.jpg" alt="" /></div>
+        <div class="guys-photo"><img src="./Images/Group 3.JPG" alt="" /></div>
+      </div>
+      <div class="guys-text">
+        <p class="guys-list">Carpenters. Software executives. Artists. Formerly incarcerated brothers now dedicated to serving justice-involved youth. Wealth managers. Musicians. Blue collar business owners. Entrepreneurs. Mechanics. Men with PhDs and men without high-school degrees. Men of all sexual orientations. New fathers. Grandfathers.</p>
+        <div class="guys-rule"></div>
+        <p class="guys-share"><strong>What we all share:</strong> we're chasing the real stuff of this life, and we want to leave this world better than we found it.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== 10. WHAT MAKES THIS CIRCLE DIFFERENT ========== -->
   <section style="background:#f0ebe0;padding:6rem 2rem;">
