@@ -142,11 +142,35 @@
       z-index: 1;
     }
 
+    .bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
     .bg-overlay {
       position: absolute;
       inset: 0;
       z-index: 2;
     }
+
+    /* ---------- Full Circle Fund ---------- */
+    .fcf {
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .fcf .container { max-width: 840px; }
+    .fcf p { color: var(--cream); font-size: 1.3rem; line-height: 1.75; }
+    .fcf .guys-rule { margin-bottom: 2rem; }
 
     /* ---------- Split (image one side, text other; image shown at full size) ---------- */
     .split {
@@ -739,20 +763,20 @@
 
   <div class="countdown-bar" role="status">
     <div class="countdown-inner">
-      <span class="cd-lead">Enrollment opens in:</span>
+      <span class="cd-lead">Enrollment closes in:</span>
       <span class="countdown-timer">
         <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
         <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
         <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
         <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
       </span>
-      <span class="countdown-sub">Join the waitlist for a <strong>$1200 gift + 6 weeks of coaching with Thomas</strong></span>
     </div>
   </div>
 
   <!-- ========== 1. HERO ========== -->
   <section class="hero">
     <img class="bg-img" src="./Images/Landshot.webp" alt="" style="opacity:0.55;" />
+    <video class="bg-video" id="hero-video" muted loop playsinline preload="auto" poster="./Images/Landshot.webp" data-src="./Images/Roundhouse Outside Video.mp4" style="opacity:0.55;"></video>
     <div class="bg-overlay" style="background:rgba(14,12,9,0.6);"></div>
     <a class="site-logo" href="https://heartofmen.community" aria-label="Heart of Men — visit heartofmen.community"><img src="./Images/Transparent Logo.png" alt="Heart of Men" /></a>
     <div class="container" style="max-width:1100px;">
@@ -765,7 +789,7 @@
       <div id="fs-form-wrap-hero" style="max-width:480px;margin:0 auto;">
         <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
         </form>
       </div>
       <div id="fs-success-hero" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
@@ -855,7 +879,7 @@
       </div>
       <div class="split-text">
         <h2 class="section-header"><strong><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span> is the bridge of these two worlds.</strong></h2>
-        <p class="big-line">It's how I created a life where I'm deeply connected to the land, spend abundant time with my family, and run a flourishing business from my dharma that I believe contributes to the renaissance of our culture.</p>
+        <p class="big-line">It's how I created a life where I get to live in nature, spend abundant time with my family, and run a flourishing business that's an expression of my deepest purpose and contributes to the renaissance of our culture.</p>
         <p class="big-line">Over the next 8 months, <strong style="color:var(--gold);">you are going to get really good at what matters most to you.</strong> In doing so, you're going to <strong style="color:var(--gold);">create the future you've been waiting for.</strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
@@ -879,7 +903,7 @@
       <div id="fs-form-wrap-bridge" style="max-width:480px;margin:0 auto;">
         <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
         </form>
       </div>
       <div id="fs-success-bridge" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
@@ -974,7 +998,7 @@
         <div id="fs-form-wrap-not" style="max-width:480px;margin:0 auto;">
           <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
           </form>
         </div>
         <div id="fs-success-not" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
@@ -1019,7 +1043,7 @@
             <div>
               <h3>Leadership Sessions</h3>
               <p class="num-meta">1st and 3rd Wednesday · Evenings Online</p>
-              <p>These 2.5-hour sessions weave Council, Curriculum, and Coaching. They will likely become some of your favorite moments of the month. Our first session is September 16th, and they are recorded.</p>
+              <p>These 2.5-hour sessions weave Council, Curriculum, and Coaching. They will likely become some of your favorite moments of the month. Our first session is September 30th, and they are recorded.</p>
             </div>
           </div>
           <div class="num-item">
@@ -1103,19 +1127,19 @@
       <h2 class="section-header" style="text-align:center;">Are You Ready?</h2>
       <div class="tile-grid">
         <div class="tile price-card" style="padding-top:4.25rem;">
-          <div class="badge-band">10 Spots Remain</div>
+          <div class="badge-band">6 Spots Remain</div>
           <h3>Living Leadership</h3>
           <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
           <div class="price-big">$2250 <span>deposit</span></div>
-          <p class="price-sub">+ $925/mo starting September 16th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
+          <p class="price-sub">+ $925/mo starting September 30th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
           <ul>
             <li>16 Leadership Sessions: Council, Curriculum, and Coaching</li>
-            <li>10 Days In-Person (2, 5-day Summits): Indoor lodging + the best food of your life included</li>
+            <li>10 Days In-Person (2, 5-day Summits): Indoor lodging + the best food of your year included</li>
             <li>4 Additional Coaching/Integration Sessions (Optional on 5th Wednesdays)</li>
             <li>Weekly Guided Journeys, Practices, and Rituals you'll have and use indefinitely</li>
             <li>Group Signal Thread (guys use this ~ daily)</li>
             <li>Heart of Men Accountability App: Drink From The Well</li>
-            <li>4 months free in our Brother Ecosystem, Warrior's Way, upon completion of LL if enrolled before August 1 ($800 value)</li>
+            <li>4 months free in our Brother Ecosystem, Warrior's Way, upon completion of LL if enrolled before September 1 ($800 value)</li>
           </ul>
         </div>
         <div class="tile price-card" style="padding-top:4.25rem;">
@@ -1123,12 +1147,12 @@
           <h3>Living Leadership + Launch Support</h3>
           <p>This is for brothers standing at a significant creative threshold who want additional, tailored support for their business launch, artistic endeavor, or pivotal life passage. I will only be working with two brothers in this capacity. By application.</p>
           <div class="price-big">$2250 <span>deposit</span></div>
-          <p class="price-sub">+ $1625/mo starting October 16th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
+          <p class="price-sub">+ $1825/mo starting September 30th<br><em style="font-weight:400;font-size:0.85rem;color:var(--cream-muted);">for 8 months</em></p>
           <ul>
             <li>Everything in Living Leadership</li>
             <li>8, 2-hour 1:1 sessions with me</li>
-            <li>2 hours monthly of strategic + creative support asynchronously between sessions</li>
-            <li>Stay on our land a day before and a day after each retreat for personal preparation + integration (yes, I'll cook something special for you at least once in those extra days)</li>
+            <li>2 hours monthly of strategic + creative support asynchronously between our 1:1 sessions</li>
+            <li>Stay on our land a day before and a day after each in-person summit for personal preparation + integration (yes, I'll cook something special for you at least once in those extra days)</li>
             <li>Introduction to my network for massive support in your initiative</li>
           </ul>
         </div>
@@ -1146,7 +1170,7 @@
         <div id="fs-form-wrap-ready" style="max-width:480px;margin:0 auto;">
           <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
           </form>
         </div>
         <div id="fs-success-ready" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
@@ -1193,63 +1217,15 @@
     </div>
   </section>
 
-  <!-- ========== 10. WHAT MAKES THIS CIRCLE DIFFERENT ========== -->
-  <section style="background:#f0ebe0;padding:6rem 2rem;">
-    <div style="max-width:1100px;margin:0 auto;">
-      <div style="aspect-ratio:16/7;overflow:hidden;margin-bottom:4rem;position:relative;">
-        <img src="https://images.squarespace-cdn.com/content/63613c8509fb217dd939181e/d29b3140-bdc1-478a-ba68-3b0472852213/Edit+v6.00_03_35_29.Still038.png?content-type=image%2Fpng" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,#f0ebe0 100%);"></div>
-      </div>
-
-      <div style="text-align:center;margin-bottom:3.5rem;">
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:600;color:#1e1a12;line-height:1.15;">What Makes this Circle Different</h2>
-      </div>
-
-      <div class="shifts-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 4rem;">
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Waiting Until You're "Healed"</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Giving and Living Your Gift Now</p>
-        </div>
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Self-Improvement</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Belonging and Devotion as the Ground From Which you Grow</p>
-        </div>
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Learning Old Models</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Witnessing and Embodying a Living Masculinity</p>
-        </div>
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Peak Experience</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Steady, Warming Fire that Lasts</p>
-        </div>
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;border-bottom:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Lonely and Exhaustive Climb Up</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Deepest Belly Laughs and Best Meals of the Year</p>
-        </div>
-
-        <div style="padding:1.25rem 0;border-top:1px solid #d5cab0;border-bottom:1px solid #d5cab0;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8272;margin-bottom:0.4rem;">From</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;color:#8a8272;margin-bottom:0.5rem;">Guru / Shaman</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#b99b56;margin-bottom:0.4rem;">To</p>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#b99b56;">Circle Itself as the Source of Truth</p>
-        </div>
-
-      </div>
+  <!-- ========== 10. FULL CIRCLE FUND ========== -->
+  <section class="fcf">
+    <img class="bg-img" src="./Images/FCF Photo.jpg" alt="" style="opacity:0.5;" />
+    <video class="bg-video" id="fcf-video" muted loop playsinline preload="auto" poster="./Images/FCF Photo.jpg" data-src="./Images/Lature Video.mp4" style="opacity:0.5;"></video>
+    <div class="bg-overlay" style="background:rgba(14,12,9,0.68);"></div>
+    <div class="container">
+      <h2 class="section-header">Full Circle Fund</h2>
+      <div class="guys-rule"></div>
+      <p>Two spots in Living Leadership are reserved for men coming from life circumstances and lineages that are historically underrepresented in and underserved by the dominant paradigm of leadership. Full Circle Fellows receive financial support covering 90% of program investment + a travel stipend for both in-person summits. These two brothers offer the circle an immense gift in the perspectives, experiences, and life-ways they bring into the work.</p>
     </div>
   </section>
 
@@ -1309,7 +1285,7 @@
         <div id="fs-form-wrap-works" style="max-width:480px;margin:0 auto;">
           <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Join Waitlist</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
           </form>
         </div>
         <div id="fs-success-works" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
@@ -1321,14 +1297,13 @@
 
   <div class="countdown-bar bottom" role="status">
     <div class="countdown-inner">
-      <span class="cd-lead">Enrollment opens in:</span>
+      <span class="cd-lead">Enrollment closes in:</span>
       <span class="countdown-timer">
         <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
         <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
         <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
         <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
       </span>
-      <span class="countdown-sub">Join the waitlist for a <strong>$1200 gift + 6 weeks of coaching with Thomas</strong></span>
     </div>
   </div>
 
@@ -1339,8 +1314,8 @@
   <script>
     (function() {
       const now = new Date();
-      let target = new Date(now.getFullYear(), 7, 17);
-      if (target < now) target = new Date(now.getFullYear() + 1, 7, 17);
+      let target = new Date(now.getFullYear(), 8, 5);
+      if (target < now) target = new Date(now.getFullYear() + 1, 8, 5);
       const pad = n => String(n).padStart(2, '0');
       function tick() {
         let diff = Math.max(0, target - new Date());
@@ -1357,6 +1332,29 @@
       tick();
       setInterval(tick, 1000);
     })();
+
+    function initBgVideo(id) {
+      const v = document.getElementById(id);
+      if (!v) return;
+      const photo = v.parentElement.querySelector('.bg-img');
+      const c = navigator.connection;
+      const lowBandwidth = c && (c.saveData || ['slow-2g', '2g'].includes(c.effectiveType));
+      if (lowBandwidth || !v.dataset.src) { v.style.display = 'none'; return; }
+      const showPhoto = () => { v.style.display = 'none'; if (photo) photo.style.display = ''; };
+      const hidePhoto = () => { if (photo) photo.style.display = 'none'; };
+      const source = document.createElement('source');
+      source.src = v.dataset.src;
+      source.type = 'video/mp4';
+      source.addEventListener('error', showPhoto);
+      v.addEventListener('error', showPhoto, true);
+      v.addEventListener('loadeddata', hidePhoto);
+      v.appendChild(source);
+      v.load();
+      const playPromise = v.play();
+      if (playPromise && playPromise.catch) playPromise.catch(() => {});
+    }
+    initBgVideo('hero-video');
+    initBgVideo('fcf-video');
 
     function initCarousel(rootId) {
       const root = document.getElementById(rootId);
@@ -1418,7 +1416,7 @@
         const data = new FormData(formHero);
         const res = await fetch(formHero.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
           wrapHero.style.display = 'none';
           successHero.style.display = 'block';
         }
@@ -1434,7 +1432,7 @@
         const data = new FormData(formBridge);
         const res = await fetch(formBridge.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
           wrapBridge.style.display = 'none';
           successBridge.style.display = 'block';
         }
@@ -1450,7 +1448,7 @@
         const data = new FormData(formNot);
         const res = await fetch(formNot.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
           wrapNot.style.display = 'none';
           successNot.style.display = 'block';
         }
@@ -1466,7 +1464,7 @@
         const data = new FormData(formReady);
         const res = await fetch(formReady.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
           wrapReady.style.display = 'none';
           successReady.style.display = 'block';
         }
@@ -1482,7 +1480,7 @@
         const data = new FormData(formWorks);
         const res = await fetch(formWorks.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/avU9evXj', '_blank');
+          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
           wrapWorks.style.display = 'none';
           successWorks.style.display = 'block';
         }
