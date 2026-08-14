@@ -717,12 +717,114 @@
     footer {
       background: var(--black);
       border-top: 1px solid rgba(185, 155, 86, 0.25);
-      padding: 2.5rem 1.5rem;
+      padding: 4rem 1.5rem 2.5rem;
       text-align: center;
+    }
+
+    .footer-inner { max-width: 620px; margin: 0 auto; }
+
+    .footer-head {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-sub {
+      font-size: 1rem;
+      line-height: 1.6;
       color: var(--cream-muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      max-width: 500px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .footer-ig {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(185, 155, 86, 0.5);
+      border-radius: 50%;
+      color: var(--gold);
+      margin: 2.5rem 0 2rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .footer-ig:hover { background: var(--gold); color: var(--black); }
+    .footer-ig svg { width: 20px; height: 20px; }
+
+    .footer-legal {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--cream-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ---------- Sunday Saunter pop-up ---------- */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(14, 12, 9, 0.82);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .popup-overlay.open { opacity: 1; visibility: visible; }
+
+    .popup-card {
+      position: relative;
+      background: #16110c;
+      border: 1px solid rgba(185, 155, 86, 0.55);
+      max-width: 470px;
+      width: 100%;
+      padding: 3.25rem 2.25rem 2.5rem;
+      text-align: center;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 0.6rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--cream-muted);
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .popup-close:hover { color: var(--gold); }
+
+    .popup-head {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 2.4rem);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .popup-body {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--cream-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .popup-fine {
+      font-size: 0.78rem;
+      color: var(--cream-muted);
+      margin-top: 1rem;
     }
 
     /* ---------- Responsive ---------- */
@@ -830,9 +932,9 @@
       </div>
       <div class="split-text">
         <h2 class="section-header">You know you're here for something <span style="color:var(--gold);">important</span>, but you're not yet <span style="color:var(--gold);">living it fully.</span></h2>
-        <p>You have game, but you hold back, waiting on <strong>something that really matters</strong> to give it your all.</p>
+        <p>You have game, but the full extent of your gift is waiting for <strong>something that really matters.</strong></p>
         <p>You're looking for that place where what you <strong>most deeply desire</strong> and what <strong>the world needs from you</strong> intersect.</p>
-        <p>You're a fulcrum point in your world, and you need your pursuit of soul to contribute to real-life success.</p>
+        <p>There's a certain momentum to your life, which is a testament to your success. But you also know you <strong>need to re-calibrate before you get a decade down the road.</strong></p>
         <p class="big-line"><strong>If you resonate with at least two of these recognitions, <span style="color:var(--gold);">Living Leadership is for you.</span></strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
@@ -1327,8 +1429,43 @@
   </div>
 
   <footer>
-    Heart of Men &middot; Living Leadership
+    <div class="footer-inner">
+      <h3 class="footer-head">Sunday Saunter</h3>
+      <p class="footer-sub">Join the 500+ men getting inspiration + practical tools to be better leaders every Sunday afternoon.</p>
+      <div id="fs-form-wrap-saunter" style="max-width:480px;margin:0 auto;">
+        <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I'm In</button>
+        </form>
+      </div>
+      <div id="fs-success-saunter" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — see you Sunday afternoon.</p>
+      </div>
+      <a class="footer-ig" href="https://www.instagram.com/heartofmencommunity/" target="_blank" rel="noopener" aria-label="Heart of Men on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <p class="footer-legal">This copy was not touched by AI, and all the photos you see are real moments in Heart of Men. Copyright 2026.</p>
+    </div>
   </footer>
+
+  <!-- ========== SUNDAY SAUNTER POP-UP ========== -->
+  <div class="popup-overlay" id="saunter-popup" role="dialog" aria-modal="true" aria-label="Sunday Saunter newsletter">
+    <div class="popup-card">
+      <button class="popup-close" aria-label="Close">&times;</button>
+      <h2 class="popup-head">Get the good stuff.</h2>
+      <p class="popup-body">Every Sunday, we send an email that weaves personal story and practical tips to help inspire and orient you in being the man you want to be in the week ahead. It's become a beloved tradition for hundreds of men. We want to share it with you, for free.</p>
+      <div id="fs-form-wrap-popup" style="max-width:100%;margin:0 auto;">
+        <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
+          <button type="submit" style="padding:1rem 1.5rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I'm In</button>
+        </form>
+      </div>
+      <div id="fs-success-popup" style="display:none;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — see you Sunday.</p>
+      </div>
+      <p class="popup-fine">Your email will not be shared outside of Heart of Men.</p>
+    </div>
+  </div>
 
   <script>
     (function() {
@@ -1406,6 +1543,40 @@
     }
     initCarousel('carousel-a');
     initCarousel('carousel-b');
+
+    function initNewsletterForm(wrapId, successId) {
+      const wrap = document.getElementById(wrapId);
+      const success = document.getElementById(successId);
+      if (!wrap) return;
+      const form = wrap.querySelector('form');
+      if (!form) return;
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          if (res.ok) { wrap.style.display = 'none'; success.style.display = 'block'; }
+        } catch (err) {}
+      });
+    }
+    initNewsletterForm('fs-form-wrap-saunter', 'fs-success-saunter');
+    initNewsletterForm('fs-form-wrap-popup', 'fs-success-popup');
+
+    (function() {
+      const KEY = 'hom_saunter_popup_v1';
+      const overlay = document.getElementById('saunter-popup');
+      if (!overlay) return;
+      let seen = null;
+      try { seen = localStorage.getItem(KEY); } catch (e) {}
+      if (seen) return;
+      const close = () => overlay.classList.remove('open');
+      overlay.querySelector('.popup-close').addEventListener('click', close);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+      setTimeout(function() {
+        overlay.classList.add('open');
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      }, 7000);
+    })();
 
     function initTestimonialPager(testi) {
       const grid = testi.querySelector('.t-grid');
