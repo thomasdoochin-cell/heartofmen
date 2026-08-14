@@ -48,6 +48,10 @@ Direct, warm, and grounded — a man talking straight to another man. Short punc
 - **Cormorant Garamond** — names / accents.
 - Fallback stack: `Georgia, serif`. Both loaded from Google Fonts.
 
+## Watch out
+
+Asset paths are **case-sensitive on Vercel** (but not on my Mac). `Images/Photo.JPG` vs `.jpg` can work locally and 404 live — match filename case exactly.
+
 ## Do not
 
 Never store personal or private information in this file.
