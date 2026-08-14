@@ -1489,7 +1489,7 @@
       setInterval(tick, 1000);
     })();
 
-    function initBgVideo(id) {
+    function initBgVideo(id, defer) {
       const v = document.getElementById(id);
       if (!v) return;
       const photo = v.parentElement.querySelector('.bg-img');
@@ -1498,19 +1498,38 @@
       if (lowBandwidth || !v.dataset.src) { v.style.display = 'none'; return; }
       const showPhoto = () => { v.style.display = 'none'; if (photo) photo.style.display = ''; };
       const hidePhoto = () => { if (photo) photo.style.display = 'none'; };
-      const source = document.createElement('source');
-      source.src = v.dataset.src;
-      source.type = 'video/mp4';
-      source.addEventListener('error', showPhoto);
-      v.addEventListener('error', showPhoto, true);
-      v.addEventListener('loadeddata', hidePhoto);
-      v.appendChild(source);
-      v.load();
-      const playPromise = v.play();
-      if (playPromise && playPromise.catch) playPromise.catch(() => {});
+      function load() {
+        const source = document.createElement('source');
+        source.src = v.dataset.src;
+        source.type = 'video/mp4';
+        source.addEventListener('error', showPhoto);
+        v.addEventListener('error', showPhoto, true);
+        v.addEventListener('loadeddata', hidePhoto);
+        v.appendChild(source);
+        v.load();
+        const playPromise = v.play();
+        if (playPromise && playPromise.catch) playPromise.catch(() => {});
+      }
+      if (defer) {
+        let done = false;
+        const maybeLoad = function() {
+          if (done) return;
+          const rect = v.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 600 && rect.bottom > -600) {
+            done = true;
+            window.removeEventListener('scroll', onScroll);
+            load();
+          }
+        };
+        const onScroll = function() { maybeLoad(); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        maybeLoad();
+      } else {
+        load();
+      }
     }
-    initBgVideo('hero-video');
-    initBgVideo('fcf-video');
+    initBgVideo('hero-video', false);
+    initBgVideo('fcf-video', true);
 
     function initCarousel(rootId) {
       const root = document.getElementById(rootId);
