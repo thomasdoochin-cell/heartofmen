@@ -101,6 +101,21 @@
   document.body.appendChild(toggle);
   document.body.appendChild(overlay);
 
+  // ---- position: drop the toggle below a top countdown bar (homepage) ----
+  // so it never overlaps the bar and the bar's content can stay centered.
+  // Pages without such a bar keep the CSS default (top: 2rem).
+  function positionToggle() {
+    var bar = document.querySelector('.countdown-bar:not(.bottom)');
+    if (bar) {
+      toggle.style.top = Math.round(bar.getBoundingClientRect().height + 14) + 'px';
+    } else {
+      toggle.style.top = '';
+    }
+  }
+  positionToggle();
+  window.addEventListener('load', positionToggle);
+  window.addEventListener('resize', positionToggle);
+
   // ---- behaviour ----
   var isOpen = false;
   var lastFocus = null;
