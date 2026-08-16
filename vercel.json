@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
