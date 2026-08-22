@@ -8,7 +8,7 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const PRICE_ID = 'price_1U7N8bRoQXKqP1qiiTFX6fA2'; // TEMP: $1 test price — swap back to price_1TyyGiRoQXKqP1qiSDdNcyyw (deposit $2,250) after testing
+const PRICE_ID = 'price_1TyyGiRoQXKqP1qiSDdNcyyw'; // Living Leadership deposit ($2,250)
 const DOMAIN = 'https://heartofmen.org';
 
 module.exports = async (req, res) => {
