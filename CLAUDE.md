@@ -4,13 +4,16 @@ This file is the permanent memory for the Heart of Men website. **Read it before
 
 ## The site
 
-- **Live at www.heartofmen.org** (apex `heartofmen.org` 308-redirects to `www`). Deployed on **Vercel** from the GitHub repo `thomasdoochin-cell/heartofmen`. **Every push to `main` auto-deploys to production — pushing IS publishing.** There is no separate deploy step.
-- A single static landing page for **Heart of Men — "Living Leadership,"** an 8-month men's leadership journey.
-- **No build step, no framework, no dependencies.** All CSS and JS are inline in the HTML.
-  - `index.html` — the landing page. Sections are marked with `<!-- ===== N. NAME ===== -->` banner comments.
-  - `404.html` — custom branded error page (self-contained; uses root-absolute `/Images/...` paths so it renders from any URL).
-  - `vercel.json` — routing (`cleanUrls` + the venue-tracking rewrite; see below).
-  - `Images/` — photos, videos, favicons, OG image. `Images/Scrolling Tiles/` feeds the two carousels.
+- **Live at heartofmen.org** — the **apex is canonical**; `www.heartofmen.org` 308-redirects to the apex. (This has flipped directions before; confirm in Vercel → Domains. As of last check: apex primary, www → apex.) Deployed on **Vercel** from the GitHub repo `thomasdoochin-cell/heartofmen`. **Every push to `main` auto-deploys to production — pushing IS publishing.** There is no separate deploy step.
+- A **two-page** static site for **Heart of Men — "Living Leadership,"** an 8-month men's leadership journey.
+- **No build step, no framework, no dependencies.** All CSS/JS are inline in each HTML file.
+  - `index.html` — the landing page. Sections marked with `<!-- ===== N. NAME ===== -->` banner comments.
+  - `full-circle-fund.html` — the Full Circle Fund scholarship page, served at the clean URL `/full-circle-fund` (via a rewrite; see routing).
+  - `nav.js` — shared nav injected on both pages (links `/` and `/full-circle-fund`).
+  - `404.html` — custom branded error page (self-contained; root-absolute `/Images/...` paths so it renders from any URL).
+  - `robots.txt`, `sitemap.xml` — SEO.
+  - `vercel.json` — routing (venue rewrite; see below — **do NOT re-enable `cleanUrls`**).
+  - `Images/` — photos, videos, favicons, OG image. `Images/Scrolling Tiles/` feeds the two carousels. `Images/FCF Page/` holds the Full Circle Fund page's media.
 
 ## Working style (how the owner likes to collaborate)
 
@@ -63,11 +66,19 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
 
 - **Countdown bars** (top + bottom, black w/ gold): live Days/Hours/Minutes/Seconds computed in JS toward a hard-coded target date — update the `new Date(year, monthIndex, day)` (month is 0-indexed!) when the deadline changes. Lead text + sub-text are plain HTML.
 - **Sunday Saunter pop-up:** fires **20 seconds** after load, **first visit only** (localStorage key `hom_saunter_popup_v1`). To re-test: Incognito, or `localStorage.removeItem('hom_saunter_popup_v1')`.
-- **Venue tracking for flyers:** `vercel.json` rewrites any clean word-path (`/bakers`) to `/index.html`, so `www.heartofmen.org/bakers` serves the landing page and shows up as its own path (`/bakers`) in **Vercel Web Analytics → Pages** — no per-venue setup. Rules for the team: lowercase, no spaces (use hyphens), avoid `images`/`favicon`/`404`. The rewrite excludes `Images/`, `_vercel/`, and any path with a `.` so assets and the custom 404 still work. `cleanUrls: true` is also on.
+- **Venue tracking for flyers:** `vercel.json` rewrites any clean word-path (`/bakers`) to `/index.html`, so `heartofmen.org/bakers` serves the landing page and shows up as its own path (`/bakers`) in **Vercel Web Analytics → Pages** — no per-venue setup. Rules for the team: lowercase, no spaces (use hyphens), avoid `images`/`favicon`/`404`. The rewrite excludes `Images/`, `_vercel/`, and any path with a `.` so assets and the custom 404 still work.
+- **⚠️ NEVER set `cleanUrls: true` in `vercel.json`.** It intercepts every extensionless path at the filesystem stage and 404s any without a matching `.html` **before** the venue rewrite runs — which silently kills all venue/flyer tracking. This bit us once (commit that added the Full Circle Fund page). Correct `vercel.json` = no `cleanUrls`, with an **explicit rewrite for each real extra page listed BEFORE the catch-all**, e.g.:
+  ```json
+  { "rewrites": [
+      { "source": "/full-circle-fund", "destination": "/full-circle-fund.html" },
+      { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
+  ] }
+  ```
+  Rewrites are first-match-wins, so specific pages must precede the catch-all. When adding a new real page, add its explicit rewrite the same way.
 
 ## Social preview (Open Graph / Twitter)
 
-- Card image: `Images/og-living-leadership.jpg` (1200×630). Tags live in `<head>`: `og:*`, `twitter:card=summary_large_image`, canonical. **All absolute URLs must use `https://www.heartofmen.org`** (the apex redirects, which breaks scrapers). These URLs have silently reverted to apex before — double-check them when editing head.
+- Card image: `Images/og-living-leadership.jpg` (1200×630). Tags live in `<head>`: `og:*`, `twitter:card=summary_large_image`, canonical. **All absolute URLs must use the canonical host — currently the apex `https://heartofmen.org`** (www redirects to it, and a redirect hop can trip up scrapers). If Vercel's primary domain ever flips, update these to match. These URLs have flipped between apex and www before — double-check them against Vercel → Domains when editing head.
 - After changing the card, **re-scrape**: opengraph.xyz and Facebook's Sharing Debugger. iMessage caches per-device and is stubborn — test from a fresh phone.
 
 ## Brand voice
@@ -91,4 +102,4 @@ Direct, warm, and grounded — a man talking straight to another man. Short punc
 
 - Never store personal or private information in this file.
 - Never `git add -A` blindly (large unreferenced media can get swept in).
-- Never point social/canonical URLs at the apex `heartofmen.org` — always `www`.
+- Point social/canonical URLs at the **canonical host** — currently the apex `heartofmen.org` (www redirects to it). Match whatever Vercel → Domains shows as primary.
