@@ -796,14 +796,26 @@
       right: 1rem;
       background: none;
       border: none;
-      color: var(--cream-muted);
+      color: var(--cream);
       font-size: 1.7rem;
       line-height: 1;
       cursor: pointer;
       padding: 0.25rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      z-index: 2;
     }
 
     .popup-close:hover { color: var(--gold); }
+
+    .popup-photo {
+      display: block;
+      width: calc(100% + 4.5rem);
+      margin: -3.25rem -2.25rem 1.75rem;
+      max-width: none;
+      aspect-ratio: 900 / 405;
+      object-fit: cover;
+      object-position: top center;
+    }
 
     .popup-head {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -1452,8 +1464,8 @@
   <div class="popup-overlay" id="saunter-popup" role="dialog" aria-modal="true" aria-label="Sunday Saunter newsletter">
     <div class="popup-card">
       <button class="popup-close" aria-label="Close">&times;</button>
-      <h2 class="popup-head">Get the good stuff.</h2>
-      <p class="popup-body">Every Sunday, we send an email that weaves personal story and practical tips to help inspire and orient you in being the man you want to be in the week ahead. It's become a beloved tradition for hundreds of men. We want to share it with you, for free.</p>
+      <img class="popup-photo" src="Images/Free-Masterclass-Sept-10.png" alt="Free Masterclass — September 10th" loading="lazy" decoding="async">
+      <p class="popup-body">A powerful, practical framework to imbue everything in your life with your deepest purpose as you find that very purpose. You'll leave with inspiration, understanding, and a 5-minute-daily practice to live the life that's uniquely yours. Recording made available for those who cannot attend live. September 10th, 2:00pm EST.</p>
       <div id="fs-form-wrap-popup" style="max-width:100%;margin:0 auto;">
         <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
@@ -1461,7 +1473,7 @@
         </form>
       </div>
       <div id="fs-success-popup" style="display:none;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — see you Sunday.</p>
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — we'll send you the details.</p>
       </div>
       <p class="popup-fine">Your email will not be shared outside of Heart of Men.</p>
     </div>
