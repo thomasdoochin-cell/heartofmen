@@ -5,10 +5,13 @@ This file is the permanent memory for the Heart of Men website. **Read it before
 ## The site
 
 - **Live at heartofmen.org** — the **apex is canonical**; `www.heartofmen.org` 308-redirects to the apex. (This has flipped directions before; confirm in Vercel → Domains. As of last check: apex primary, www → apex.) Deployed on **Vercel** from the GitHub repo `thomasdoochin-cell/heartofmen`. **Every push to `main` auto-deploys to production — pushing IS publishing.** There is no separate deploy step.
-- A **two-page** static site for **Heart of Men — "Living Leadership,"** an 8-month men's leadership journey.
-- **No build step, no framework, no dependencies.** All CSS/JS are inline in each HTML file.
+- A mostly **static** site for **Heart of Men — "Living Leadership,"** an 8-month men's leadership journey.
+- **No framework; all CSS/JS are inline in each HTML file.** The **one exception** is the embedded-checkout backend: a single Vercel serverless function under `/api/` plus a `package.json` (the only dependency is `stripe`). Vercel zero-config installs it and serves the function; the static pages are unaffected. See "Checkout (/welcome)" below.
   - `index.html` — the landing page. Sections marked with `<!-- ===== N. NAME ===== -->` banner comments.
   - `full-circle-fund.html` — the Full Circle Fund scholarship page, served at the clean URL `/full-circle-fund` (via a rewrite; see routing).
+  - `welcome.html` — **hidden** enrollment page at `/welcome` (not in `nav.js`, `noindex`, not in sitemap). Two-column: `Six Grid.jpg` photo + welcome copy on the left, **embedded Stripe Checkout** on the right. Its own OG/Twitter card (title "Welcome In", image `Images/og-welcome.jpg`).
+  - `confirm.html` — **hidden** post-payment thank-you page at `/confirm` (404-styled, `noindex`). Stripe's `return_url` lands here after a completed deposit.
+  - `api/create-checkout-session.js` — serverless function (Node) that creates the embedded Checkout Session. `package.json` declares the `stripe` dep.
   - `nav.js` — shared nav injected on both pages (links `/` and `/full-circle-fund`).
   - `404.html` — custom branded error page (self-contained; root-absolute `/Images/...` paths so it renders from any URL).
   - `robots.txt`, `sitemap.xml` — SEO.
@@ -75,6 +78,15 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
   ] }
   ```
   Rewrites are first-match-wins, so specific pages must precede the catch-all. When adding a new real page, add its explicit rewrite the same way.
+
+## Checkout (/welcome) — embedded Stripe
+
+- **On-page embedded Checkout**, not the hosted page or the Buy Button (we tried the Buy Button first; owner wanted card entry to stay on-site). Flow: `welcome.html` loads Stripe.js (`https://js.stripe.com/v3/`), POSTs to `/api/create-checkout-session`, gets a `clientSecret`, and mounts the form into `#checkout` via `stripe.initEmbeddedCheckout({ clientSecret })`. We fetch the secret **ourselves first** (not via Stripe's `fetchClientSecret` callback) so a failure cleanly reveals the `#checkout-fallback` link (points at the hosted Payment Link `buy.stripe.com/5kQbJ33V64AXgrR5jV73G02`) instead of Stripe silently retrying.
+- **Publishable key** (`pk_live_…`) is in `welcome.html` (public, fine). **Secret key is NEVER in code** — it's the Vercel env var **`STRIPE_SECRET_KEY`** (Project → Settings → Environment Variables), read by the function as `process.env.STRIPE_SECRET_KEY`.
+- **`PRICE_ID`** (the deposit's `price_…`, currently a **one-time $2,250** payment → `mode: 'payment'`) is a constant at the top of the function. If the price is ever recurring, switch `mode` to `'subscription'`.
+- **Return/redirect:** the function sets `return_url` to `https://heartofmen.org/confirm?session_id={CHECKOUT_SESSION_ID}` — this is how /confirm is reached, entirely in code (no dashboard redirect step needed for embedded mode). `/confirm` ignores the param and is a static thank-you.
+- **Appearance:** embedded Checkout is Stripe-rendered (light) inside an iframe; customize via Stripe Dashboard → Settings → Branding (accent color, logo). It can't be fully dark-themed from our CSS.
+- **Testing:** the function can't run in the local ruby/python preview (no Node runtime) — `/api` 404s and the page shows the fallback. Real verification happens on the Vercel deploy. Use Stripe **test mode** keys/price to trial without real charges.
 
 ## Social preview (Open Graph / Twitter)
 
