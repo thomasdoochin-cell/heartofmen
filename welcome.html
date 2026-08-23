@@ -102,17 +102,42 @@
       margin-bottom: 1.25rem;
     }
 
-    .deposit-note {
+    .founder-quote {
       margin-top: 1.75rem;
-      padding: 1.1rem 1.35rem;
+      padding: 1.25rem 1.35rem;
       border-left: 2px solid var(--gold);
       background: rgba(185, 155, 86, 0.06);
+    }
+
+    .founder-quote blockquote {
+      margin: 0;
       font-size: 0.98rem;
       line-height: 1.65;
       color: var(--cream);
     }
 
-    .deposit-note strong { color: var(--gold); font-weight: 600; }
+    .founder-quote figcaption {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .fq-photo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      flex: none;
+    }
+
+    .fq-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
 
     /* ---------- Right ---------- */
     .w-right {
@@ -187,11 +212,15 @@
       <img class="w-photo" src="/Images/Six Grid.jpg" alt="Men of Heart of Men" />
       <div class="w-left-body">
         <p class="eyebrow">Welcome in</p>
-        <h1>The future will be led by men who take action like Kobe and know the whisper of their soul like Rilke.</h1>
+        <h1>Whatever you most deeply want for your life at this threshold will reveal itself and then become inevitable in this space.</h1>
         <p>Welcome in to this cultivation of greatness. Welcome in to this warm den of brotherhood. Welcome in to the rest of your life. I&rsquo;m sure glad you&rsquo;re here.</p>
-        <div class="deposit-note">
-          Whatever you most deeply want for your life will reveal itself and then become inevitable in this space.
-        </div>
+        <figure class="founder-quote">
+          <blockquote>I believe the future will be led by men who are like Rilke in listening to the whisper of their soul and like Kobe in showing up to the gym everyday, win or lose, to get after what matters most.</blockquote>
+          <figcaption>
+            <img class="fq-photo" src="/Images/Thomas 2.jpeg" alt="Thomas Doochin" loading="lazy" decoding="async" />
+            <span class="fq-name">Thomas Doochin</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
 
