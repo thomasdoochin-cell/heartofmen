@@ -67,23 +67,30 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
 
 ## Countdown, pop-up, venue tracking
 
-- **Countdown bars** (top + bottom, black w/ gold): live Days/Hours/Minutes/Seconds computed in JS toward a hard-coded target date — update the `new Date(year, monthIndex, day)` (month is 0-indexed!) when the deadline changes. Lead text + sub-text are plain HTML.
+- **Countdown bars** (top + bottom, black w/ gold): live Days/Hours/Minutes/Seconds computed in JS toward a target date. The IIFE at the bottom of `index.html` is now **two-phase** via `currentPhase()`, re-evaluated every tick so the copy **and** date flip automatically when a deadline passes (works on an already-open page and on any fresh load after):
+  - **Phase 1 (price increase):** lead `Program Price Increases in:`, target `new Date('2026-08-24T03:00:00-04:00')` — Mon Aug 24 2026, 3:00 AM **Eastern**. Note this is an **explicit-offset ISO string** (fixed instant for all viewers), unlike Phase 2. August is **EDT (−04:00)**; if a target lands in EST months use −05:00. Owner says "EST" but means Eastern-clock time.
+  - **Phase 2 (enrollment close, the long-standing default):** lead `Enrollment closes in:`, target `new Date(year, 8, 5)` = **Sept 5**, local time (month is 0-indexed!), rolls to next year once passed.
+  - The `.cd-lead` spans in the HTML are set to the *currently active* phase's text to avoid a flash before JS runs; JS overwrites them on load regardless. When the price-increase promo is over, the whole Phase-1 block can be deleted and it cleanly falls back to the Sept 5 enrollment countdown.
+- **Time zone in copy:** the owner writes times as "EST"; we display **"ET"** on the site (e.g. pop-up "2:00pm ET", `/confirm` "6:00–8:30 ET") since it's really EDT in summer. Prefer "ET" for any customer-facing time.
 - **Sunday Saunter pop-up:** fires **20 seconds** after load, **first visit only** (localStorage key `hom_saunter_popup_v1`). To re-test: Incognito, or `localStorage.removeItem('hom_saunter_popup_v1')`.
 - **Venue tracking for flyers:** `vercel.json` rewrites any clean word-path (`/bakers`) to `/index.html`, so `heartofmen.org/bakers` serves the landing page and shows up as its own path (`/bakers`) in **Vercel Web Analytics → Pages** — no per-venue setup. Rules for the team: lowercase, no spaces (use hyphens), avoid `images`/`favicon`/`404`. The rewrite excludes `Images/`, `_vercel/`, and any path with a `.` so assets and the custom 404 still work.
 - **⚠️ NEVER set `cleanUrls: true` in `vercel.json`.** It intercepts every extensionless path at the filesystem stage and 404s any without a matching `.html` **before** the venue rewrite runs — which silently kills all venue/flyer tracking. This bit us once (commit that added the Full Circle Fund page). Correct `vercel.json` = no `cleanUrls`, with an **explicit rewrite for each real extra page listed BEFORE the catch-all**, e.g.:
   ```json
   { "rewrites": [
       { "source": "/full-circle-fund", "destination": "/full-circle-fund.html" },
+      { "source": "/welcome", "destination": "/welcome.html" },
+      { "source": "/confirm", "destination": "/confirm.html" },
       { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ] }
   ```
-  Rewrites are first-match-wins, so specific pages must precede the catch-all. When adding a new real page, add its explicit rewrite the same way.
+  (This is the current `vercel.json`.) Rewrites are first-match-wins, so specific pages must precede the catch-all. When adding a new real page, add its explicit rewrite the same way. `/api/*` functions are served by Vercel before rewrites, so no rewrite is needed for them.
 
 ## Checkout (/welcome) — embedded Stripe
 
 - **On-page embedded Checkout**, not the hosted page or the Buy Button (we tried the Buy Button first; owner wanted card entry to stay on-site). Flow: `welcome.html` loads Stripe.js (`https://js.stripe.com/v3/`), POSTs to `/api/create-checkout-session`, gets a `clientSecret`, and mounts the form into `#checkout` via `stripe.initEmbeddedCheckout({ clientSecret })`. We fetch the secret **ourselves first** (not via Stripe's `fetchClientSecret` callback) so a failure cleanly reveals the `#checkout-fallback` link (points at the hosted Payment Link `buy.stripe.com/5kQbJ33V64AXgrR5jV73G02`) instead of Stripe silently retrying.
 - **Publishable key** (`pk_live_…`) is in `welcome.html` (public, fine). **Secret key is NEVER in code** — it's the Vercel env var **`STRIPE_SECRET_KEY`** (Project → Settings → Environment Variables), read by the function as `process.env.STRIPE_SECRET_KEY`.
-- **`PRICE_ID`** (the deposit's `price_…`, currently a **one-time $2,250** payment → `mode: 'payment'`) is a constant at the top of the function. If the price is ever recurring, switch `mode` to `'subscription'`.
+- **`PRICE_ID`** (constant at the top of the function) is the deposit's `price_…`, a **one-time $2,250** payment → `mode: 'payment'`. Current live value: `price_1TyyGiRoQXKqP1qiSDdNcyyw`. If the price is ever recurring, switch `mode` to `'subscription'`. **To test cheaply**, temporarily swap in a $1 price (we used `price_1U7N8bRoQXKqP1qiiTFX6fA2`), deploy, run a card, then swap the real price back — leave a `// TEMP` comment so the revert isn't forgotten. Price ID must match the key mode (live price with live keys).
+- **Promotion codes** are enabled on the session (`allow_promotion_codes: true`), so the embedded form shows an "Add promotion code" field. Gotcha: a promo code created while the Dashboard **Test mode** toggle is ON won't work on the live (`sk_live`) checkout — create promo codes in **live** mode. Amount-off coupons are currency-locked (must be USD); percent-off avoids that.
 - **Return/redirect:** the function sets `return_url` to `https://heartofmen.org/confirm?session_id={CHECKOUT_SESSION_ID}` — this is how /confirm is reached, entirely in code (no dashboard redirect step needed for embedded mode). `/confirm` ignores the param and is a static thank-you.
 - **Appearance:** embedded Checkout is Stripe-rendered (light) inside an iframe; customize via Stripe Dashboard → Settings → Branding (accent color, logo). It can't be fully dark-themed from our CSS.
 - **Testing:** the function can't run in the local ruby/python preview (no Node runtime) — `/api` 404s and the page shows the fallback. Real verification happens on the Vercel deploy. Use Stripe **test mode** keys/price to trial without real charges.
@@ -92,6 +99,7 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
 
 - Card image: `Images/og-living-leadership.jpg` (1200×630). Tags live in `<head>`: `og:*`, `twitter:card=summary_large_image`, canonical. **All absolute URLs must use the canonical host — currently the apex `https://heartofmen.org`** (www redirects to it, and a redirect hop can trip up scrapers). If Vercel's primary domain ever flips, update these to match. These URLs have flipped between apex and www before — double-check them against Vercel → Domains when editing head.
 - After changing the card, **re-scrape**: opengraph.xyz and Facebook's Sharing Debugger. iMessage caches per-device and is stubborn — test from a fresh phone.
+- `/welcome` has its **own** card: title "Welcome In", image `Images/og-welcome.jpg` (1200×630, cropped from `Six Grid.png`), `og:url` `https://heartofmen.org/welcome`. Same canonical-host rule applies.
 
 ## Brand voice
 
