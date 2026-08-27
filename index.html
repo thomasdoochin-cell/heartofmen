@@ -269,9 +269,11 @@
     .inline-t-stack { display: flex; flex-direction: column; gap: 2rem; }
 
     /* Hero testimonial: centered, no photo */
-    .hero-t { max-width: 640px; margin: 4rem auto 0; text-align: center; }
-    .hero-t-quote { font-style: italic; color: var(--cream); font-size: 1.05rem; margin-bottom: 0.5rem; }
-    .hero-t-attr { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.06em; }
+    .hero-t { max-width: 680px; margin: 4rem auto 0; text-align: center; }
+    .hero-t-mark { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 4.5rem; line-height: 0.4; color: var(--gold); margin-bottom: 1.25rem; }
+    .hero-t-quote { font-style: italic; color: var(--cream); font-size: 1.3rem; line-height: 1.6; margin-bottom: 0.85rem; }
+    .hero-t-attr { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.06em; }
+    @media (max-width: 640px) { .hero-t-mark { font-size: 3.5rem; } .hero-t-quote { font-size: 1.12rem; } }
 
     /* ---------- Testimonial cards (light tiles) ---------- */
     .t-grid {
@@ -914,7 +916,7 @@
     <a class="site-logo" href="https://heartofmen.community" aria-label="Heart of Men — visit heartofmen.community"><img src="./Images/Transparent Logo.png" alt="Heart of Men" /></a>
     <div class="container" style="max-width:1100px;">
       <h1>Living Leadership</h1>
-      <p class="hero-sub">Know the reason you're on this Earth. Then, live and lead from it to create a life that changes your world.</p>
+      <p class="hero-sub">Your world will change when you start living and leading from that purpose you came here for.</p>
       <svg class="hero-rule" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg>
 
       <p class="cta-note">An 8-month journey for men standing at a life-changing threshold.</p>
@@ -930,7 +932,8 @@
       </div>
 
       <div class="hero-t">
-        <p class="hero-t-quote">"I pole-vaulted across a chasm because of this by seeing that I could lead something that actually mattered to me."</p>
+        <span class="hero-t-mark" aria-hidden="true">&ldquo;</span>
+        <p class="hero-t-quote">I pole-vaulted across a chasm because of this by seeing that I could lead something that actually mattered to me.</p>
         <p class="hero-t-attr" style="color:#fff;">— John Jernigan, <span style="color:#fff;">Heart of Men Participant</span></p>
       </div>
     </div>
@@ -945,7 +948,7 @@
       <div class="split-text">
         <h2 class="section-header">You're here to <span style="color:var(--gold);">bridge worlds</span> most people separate, and <span style="color:var(--gold);">there is no model</span> for the life you feel called to.</h2>
         <p>You have game, but <strong>the full extent of your gift</strong> is waiting for the confluence of these previously isolated currents.</p>
-        <p>You're looking for that place where what you <strong>most deeply desire</strong> and what <strong>the world needs from you</strong> intersect.</p>
+        <p>You're a fulcrum point in your world, and your pursuit of the <strong>real stuff</strong> has to enhance and uplift all you're responsible for.</p>
         <p>You know you're here for something important, and you're ready to <strong>live it fully before another five years pass.</strong></p>
         <p class="big-line"><strong>If you resonate with at least two of these recognitions, <span style="color:var(--gold);">Living Leadership is for you.</span></strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
@@ -1012,9 +1015,9 @@
       </div>
       <div class="split-text">
         <h2 class="section-header"><strong><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span> is the bridge for the bridge builders.</strong></h2>
-        <p class="big-line">It's how I created a life where I get to raise my family in the woods at an original pace while growing a business that connects me with the dopest guys on the planet and serves as a skillful expression of my deepest purpose.</p>
+        <p class="big-line">It is the structure that allowed me to create a life where I raise my family in the woods at an original pace <strong>and</strong> run a flourishing business that's an expression of my deepest purpose and contributes to the renaissance of our culture.</p>
         <p class="big-line">Over the next 8 months, <strong style="color:var(--gold);">you are going to get really good at leading from the both and thus living what's actually most important to you.</strong></p>
-        <p class="big-line">In doing so, you're going to <strong style="color:var(--gold);">create the future you've been waiting for.</strong></p>
+        <p class="big-line">We call this your <strong style="color:var(--gold);">genius</strong>. And its full-send expression is <strong>the only thing</strong> that can <strong style="color:var(--gold);">create the future you've been waiting for.</strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
             <div class="inline-t-photo"><img loading="lazy" decoding="async" src="./Images/Colin.png" alt="Colin Olexa" /></div>
@@ -1109,7 +1112,7 @@
         <div class="further-tiles">
         <div class="tile">
           <p>This brotherhood will not integrate all of your shadows. Nor will you leave these 8 months an enlightened man indefinitely beyond collapse, numbness, or distraction. You will still have bad days and hard moments.</p>
-          <p><strong class="gold">What I will promise: you will integrate your worlds to be able to lead powerfully on behalf of what's most important. You'll have the clarity, capacity, and courage to take consistent action on its behalf with a team of champions at your back.</strong></p>
+          <p><strong class="gold">What I will promise: you will integrate your worlds to be able to lead powerfully on behalf of what's most important. You'll know you're giving fully what is yours to give, and you will watch life blossom around this expression.</strong></p>
         </div>
         <div class="tile">
           <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent-lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
