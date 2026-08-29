@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/genius", "destination": "https://luma.com/vi68x32g", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/full-circle-fund", "destination": "/full-circle-fund.html" },
     { "source": "/welcome", "destination": "/welcome.html" },
