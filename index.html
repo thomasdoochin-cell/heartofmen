@@ -772,9 +772,10 @@
       z-index: 100;
       background: rgba(14, 12, 9, 0.82);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       padding: 1.5rem;
+      overflow-y: auto;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -784,6 +785,7 @@
 
     .popup-card {
       position: relative;
+      margin: auto;
       background: #16110c;
       border: 1px solid rgba(185, 155, 86, 0.55);
       max-width: 470px;
@@ -814,9 +816,9 @@
       width: calc(100% + 4.5rem);
       margin: -3.25rem -2.25rem 1.75rem;
       max-width: none;
-      aspect-ratio: 900 / 405;
+      aspect-ratio: 1200 / 600;
       object-fit: cover;
-      object-position: top center;
+      object-position: center;
     }
 
     .popup-head {
@@ -1468,8 +1470,8 @@
   <div class="popup-overlay" id="saunter-popup" role="dialog" aria-modal="true" aria-label="Sunday Saunter newsletter">
     <div class="popup-card">
       <button class="popup-close" aria-label="Close">&times;</button>
-      <img class="popup-photo" src="Images/Free-Masterclass-Sept-10.png" alt="Free Masterclass — September 10th" loading="lazy" decoding="async">
-      <p class="popup-body">A powerful, practical framework to <strong>imbue everything in your life with your deepest purpose as you find that very purpose.</strong> You'll leave with inspiration, understanding, and a 5-minute-daily practice to live the life that's uniquely yours.<br><br>Recording made available for those who cannot attend live. September 10th, 2:00pm ET.</p>
+      <img class="popup-photo" src="Images/Uncover-Your-Genius-Sept-17.jpg" alt="Free Masterclass — Uncover your Genius, September 17th 2:00 ET" loading="lazy" decoding="async">
+      <p class="popup-body"><strong>You have a genius</strong>; I've yet to meet a man who doesn't (some call this your purpose, your gift, or your innate nature). It doesn't mean you're meant to be John Lennon, Michelangelo, or Ross Gay (although this may actually be your genius). <strong>It does mean you have something quite distinct and potent to offer this world.</strong><br><br>In these 90 minutes together, I am going to show you there is indeed a way to clarify the signal through all the noise. And then I am going to offer you actionable practices to be in the cultivation of your genius amidst all of the demands and distractions inherent to being a modern man.</p>
       <div id="fs-form-wrap-popup" style="max-width:100%;margin:0 auto;">
         <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
