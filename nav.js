@@ -38,6 +38,12 @@
     '.hom-nav-overlay a:hover,.hom-nav-overlay a:focus-visible{color:#e8dfc8;border-bottom-color:#e8dfc8;outline:none;}' +
     '.hom-nav-overlay a[aria-current="page"]{font-weight:700;border-bottom-color:#b99b56;}' +
     '.hom-nav-overlay a[aria-current="page"]:hover,.hom-nav-overlay a[aria-current="page"]:focus-visible{border-bottom-color:#e8dfc8;}' +
+    '.hom-nav-overlay li.hom-nav-cta-item{margin-bottom:0.5rem;}' +
+    '.hom-nav-overlay a.hom-nav-cta{background:#b99b56;color:#0e0c09;font-weight:600;' +
+      'padding:0.85rem 2rem;font-size:clamp(1.1rem,3.6vw,1.55rem);border:1px solid #b99b56;border-radius:2px;' +
+      'box-shadow:0 0 22px rgba(185,155,86,0.25);transition:background 0.25s ease,box-shadow 0.25s ease;}' +
+    '.hom-nav-overlay a.hom-nav-cta:hover,.hom-nav-overlay a.hom-nav-cta:focus-visible{' +
+      'background:#c9ad68;color:#0e0c09;border-color:#c9ad68;border-bottom-color:#c9ad68;box-shadow:0 0 30px rgba(185,155,86,0.45);}' +
     '.hom-nav-overlay svg{width:1em;height:1em;fill:currentColor;flex-shrink:0;}' +
     '@media (prefers-reduced-motion:reduce){.hom-nav-toggle .hom-nav-bars span,.hom-nav-overlay{transition:none;}}';
 
@@ -76,6 +82,19 @@
   overlay.setAttribute('aria-hidden', 'true');
 
   var ul = document.createElement('ul');
+
+  // Free, Live Masterclass — CTA button pinned to the top of the menu (external, new tab)
+  var mcLi = document.createElement('li');
+  mcLi.className = 'hom-nav-cta-item';
+  var mcA = document.createElement('a');
+  mcA.className = 'hom-nav-cta';
+  mcA.href = 'https://luma.com/vi68x32g';
+  mcA.target = '_blank';
+  mcA.rel = 'noopener';
+  mcA.textContent = 'Free, Live Masterclass';
+  mcLi.appendChild(mcA);
+  ul.appendChild(mcLi);
+
   links.forEach(function (item) {
     var li = document.createElement('li');
     var a = document.createElement('a');
@@ -85,16 +104,6 @@
     li.appendChild(a);
     ul.appendChild(li);
   });
-  // Free, Live Masterclass (external, new tab) — above Instagram
-  var mcLi = document.createElement('li');
-  var mcA = document.createElement('a');
-  mcA.href = 'https://luma.com/vi68x32g';
-  mcA.target = '_blank';
-  mcA.rel = 'noopener';
-  mcA.textContent = 'Free, Live Masterclass';
-  mcLi.appendChild(mcA);
-  ul.appendChild(mcLi);
-
   // Instagram (icon + label, new tab)
   var igLi = document.createElement('li');
   var igA = document.createElement('a');
