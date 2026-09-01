@@ -106,6 +106,19 @@
     '<span>Instagram</span>';
   igLi.appendChild(igA);
   ul.appendChild(igLi);
+
+  // Substack (icon + label, new tab)
+  var subLi = document.createElement('li');
+  var subA = document.createElement('a');
+  subA.href = 'https://heartofmen.substack.com/';
+  subA.target = '_blank';
+  subA.rel = 'noopener';
+  subA.innerHTML =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>' +
+    '<span>Substack</span>';
+  subLi.appendChild(subA);
+  ul.appendChild(subLi);
+
   overlay.appendChild(ul);
 
   document.body.appendChild(toggle);
