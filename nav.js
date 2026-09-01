@@ -85,6 +85,16 @@
     li.appendChild(a);
     ul.appendChild(li);
   });
+  // Free, Live Masterclass (external, new tab) — above Instagram
+  var mcLi = document.createElement('li');
+  var mcA = document.createElement('a');
+  mcA.href = 'https://luma.com/vi68x32g';
+  mcA.target = '_blank';
+  mcA.rel = 'noopener';
+  mcA.textContent = 'Free, Live Masterclass';
+  mcLi.appendChild(mcA);
+  ul.appendChild(mcLi);
+
   // Instagram (icon + label, new tab)
   var igLi = document.createElement('li');
   var igA = document.createElement('a');

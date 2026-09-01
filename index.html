@@ -741,6 +741,13 @@
       margin: 0 auto 1.75rem;
     }
 
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0 2rem;
+    }
+
     .footer-ig {
       display: inline-flex;
       align-items: center;
@@ -750,7 +757,6 @@
       border: 1px solid rgba(185, 155, 86, 0.5);
       border-radius: 50%;
       color: var(--gold);
-      margin: 2.5rem 0 2rem;
       transition: background 0.2s ease, color 0.2s ease;
     }
 
@@ -900,7 +906,7 @@
 
   <div class="countdown-bar" role="status">
     <div class="countdown-inner">
-      <span class="cd-lead">Program Price Increases in:</span>
+      <span class="cd-lead">Enrollment closes in:</span>
       <span class="countdown-timer">
         <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
         <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
@@ -1266,7 +1272,7 @@
       <h2 class="section-header" style="text-align:center;">Are You Ready?</h2>
       <div class="tile-grid">
         <div class="tile price-card" style="padding-top:4.25rem;">
-          <div class="badge-band">6 Spots Remain</div>
+          <div class="badge-band">4 Spots Remain</div>
           <h3>Living Leadership</h3>
           <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
           <div class="price-big">$2750 <span>deposit</span></div>
@@ -1436,7 +1442,7 @@
 
   <div class="countdown-bar bottom" role="status">
     <div class="countdown-inner">
-      <span class="cd-lead">Program Price Increases in:</span>
+      <span class="cd-lead">Enrollment closes in:</span>
       <span class="countdown-timer">
         <span class="cd-unit"><span class="cd-num cd-days">00</span><span class="cd-label">Days</span></span>
         <span class="cd-unit"><span class="cd-num cd-hours">00</span><span class="cd-label">Hours</span></span>
@@ -1459,9 +1465,14 @@
       <div id="fs-success-saunter" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
         <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — see you Sunday afternoon.</p>
       </div>
-      <a class="footer-ig" href="https://www.instagram.com/heartofmencommunity/" target="_blank" rel="noopener" aria-label="Heart of Men on Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
+      <div class="footer-social">
+        <a class="footer-ig" href="https://www.instagram.com/heartofmencommunity/" target="_blank" rel="noopener" aria-label="Heart of Men on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="footer-ig" href="https://heartofmen.substack.com/" target="_blank" rel="noopener" aria-label="Heart of Men on Substack">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
+        </a>
+      </div>
       <p class="footer-legal">All words on the site were crafted without the assistance of LLMs. All the photos you see are real moments from Heart of Men. Everything we make can be art. Copyright 2026.</p>
     </div>
   </footer>
@@ -1489,30 +1500,13 @@
     (function() {
       const pad = n => String(n).padStart(2, '0');
 
-      // Phase 1: price increase — Monday Aug 24, 2026, 3:00 AM Eastern (EDT, UTC-4).
-      // When this passes, the countdown auto-reverts to Phase 2 (enrollment close).
-      const priceIncrease = new Date('2026-08-24T03:00:00-04:00');
-
-      function currentPhase() {
-        const now = new Date();
-        if (now < priceIncrease) {
-          return { lead: 'Program Price Increases in:', target: priceIncrease };
-        }
-        // Phase 2: enrollment closes — Sept 5 (local), rolls to next year once passed.
-        let target = new Date(now.getFullYear(), 8, 5);
-        if (target < now) target = new Date(now.getFullYear() + 1, 8, 5);
-        return { lead: 'Enrollment closes in:', target: target };
-      }
-
-      let phase = currentPhase();
-      const setLead = () => document.querySelectorAll('.cd-lead').forEach(el => el.textContent = phase.lead);
-      setLead();
+      // Enrollment closes — Sept 11 (local, month is 0-indexed), rolls to next year once passed.
+      const now = new Date();
+      let target = new Date(now.getFullYear(), 8, 11);
+      if (target < now) target = new Date(now.getFullYear() + 1, 8, 11);
 
       function tick() {
-        // Re-check the phase each tick so the copy + date flip the moment the deadline passes.
-        const next = currentPhase();
-        if (next.lead !== phase.lead) { phase = next; setLead(); }
-        const s = Math.floor(Math.max(0, phase.target - new Date()) / 1000);
+        const s = Math.floor(Math.max(0, target - new Date()) / 1000);
         document.querySelectorAll('.cd-days').forEach(el => el.textContent = pad(Math.floor(s / 86400)));
         document.querySelectorAll('.cd-hours').forEach(el => el.textContent = pad(Math.floor((s % 86400) / 3600)));
         document.querySelectorAll('.cd-mins').forEach(el => el.textContent = pad(Math.floor((s % 3600) / 60)));
