@@ -44,6 +44,8 @@
       'box-shadow:0 0 22px rgba(185,155,86,0.25);transition:background 0.25s ease,box-shadow 0.25s ease;}' +
     '.hom-nav-overlay a.hom-nav-cta:hover,.hom-nav-overlay a.hom-nav-cta:focus-visible{' +
       'background:#c9ad68;color:#0e0c09;border-color:#c9ad68;border-bottom-color:#c9ad68;box-shadow:0 0 30px rgba(185,155,86,0.45);}' +
+    '.hom-nav-overlay a.hom-nav-social{color:#e8dfc8;}' +
+    '.hom-nav-overlay a.hom-nav-social:hover,.hom-nav-overlay a.hom-nav-social:focus-visible{color:#ffffff;border-bottom-color:#ffffff;}' +
     '.hom-nav-overlay svg{width:1em;height:1em;fill:currentColor;flex-shrink:0;}' +
     '@media (prefers-reduced-motion:reduce){.hom-nav-toggle .hom-nav-bars span,.hom-nav-overlay{transition:none;}}';
 
@@ -107,6 +109,7 @@
   // Instagram (icon + label, new tab)
   var igLi = document.createElement('li');
   var igA = document.createElement('a');
+  igA.className = 'hom-nav-social';
   igA.href = INSTAGRAM;
   igA.target = '_blank';
   igA.rel = 'noopener';
@@ -119,6 +122,7 @@
   // Substack (icon + label, new tab)
   var subLi = document.createElement('li');
   var subA = document.createElement('a');
+  subA.className = 'hom-nav-social';
   subA.href = 'https://heartofmen.substack.com/';
   subA.target = '_blank';
   subA.rel = 'noopener';
