@@ -417,12 +417,22 @@
     /* ---------- "Any further" photo with stacked tiles ---------- */
     .further-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: 1.15fr 1fr;
       align-items: center;
       margin-top: 3rem;
     }
 
     .further-img { position: relative; align-self: stretch; min-height: 560px; }
+
+    /* Fade the photo's right edge so it reads under the overlapping tiles */
+    .further-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to right, rgba(14, 12, 9, 0) 42%, rgba(14, 12, 9, 0.72) 100%);
+    }
 
     .further-img img {
       position: absolute;
@@ -438,11 +448,11 @@
       gap: 2rem;
       position: relative;
       z-index: 2;
-      margin-left: -5rem;
+      margin-left: -9rem;
       padding: 2.5rem 0;
     }
 
-    .further-tiles .tile { background: rgba(14, 12, 9, 0.82); }
+    .further-tiles .tile { background: rgba(14, 12, 9, 0.72); }
 
     /* ---------- Structure numbered items ---------- */
     .rhythm-grid {
@@ -869,6 +879,7 @@
       .tile { padding: 2.25rem 1.5rem; }
       .further-grid { grid-template-columns: 1fr; }
       .further-img { min-height: 320px; }
+      .further-img::after { background: linear-gradient(to bottom, rgba(14, 12, 9, 0) 55%, rgba(14, 12, 9, 0.72) 100%); }
       .further-tiles { margin-left: 0; padding: 0; margin-top: -3rem; }
       .hero { padding: 5rem 1.5rem; }
       .hero-lead { font-size: 1.32rem; }
@@ -941,7 +952,7 @@
       <p class="hero-lead">You're here to <span style="color:var(--gold);">bridge worlds</span> most people separate, and <span style="color:var(--gold);">there is no real model</span> for the life you feel called to.</p>
       <svg class="hero-rule" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg>
 
-      <p class="hero-sub">You have game, but <strong>the full extent of your gift</strong> is waiting for many streams to become one.</p>
+      <p class="hero-sub">You have game, but <strong>the full extent of your gift</strong> is waiting for your many worlds to become one.</p>
 
       <p class="cta-note">An 8-month journey for men ready to live and give their genius.</p>
 
@@ -971,9 +982,9 @@
       </div>
       <div class="split-text">
         <h2 class="section-header">You're a fulcrum point in your world, and your pursuit of the <span style="color:var(--gold);">real stuff</span> has to enhance and uplift all you're responsible for.</h2>
-        <p>Do you know unmistakably <strong style="color:var(--gold);">what is most important to you?</strong></p>
-        <p>Is the way you spend your time, money, and attention a <strong style="color:var(--gold);">testament to this?</strong></p>
-        <p>Are the actions you take on behalf of what's most important <strong style="color:var(--gold);">outwardly effective</strong> and <strong style="color:var(--gold);">internally fulfilling?</strong></p>
+        <p>Do you know unmistakably <strong>what is most important to you?</strong></p>
+        <p>Is the way you spend your time, money, and attention a <strong>testament to this?</strong></p>
+        <p>Are the actions you take on behalf of what's most important <strong>outwardly effective</strong> and <strong>internally fulfilling?</strong></p>
         <p class="big-line"><strong>If you're a no to any of these questions, <span style="color:var(--gold);">this is for you.</span></strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
@@ -1300,7 +1311,6 @@
             <li>Weekly Guided Journeys, Practices, and Rituals you'll have and use indefinitely</li>
             <li>Group Signal Thread (guys use this ~ daily)</li>
             <li>Heart of Men Accountability App: Drink From The Well</li>
-            <li>6 months free in our Brother Ecosystem, Warrior's Way, upon completion of Living Leadership if enrolled by September 1st ($800 value)</li>
           </ul>
         </div>
         <div class="tile price-card" style="padding-top:4.25rem;">
