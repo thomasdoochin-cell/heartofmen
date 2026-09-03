@@ -32,6 +32,9 @@ The in-tool preview and the owner's own preview behave differently. Key facts:
 - **The sandboxed preview server can't read the `Documents` folder directly** (macOS permission). We serve a **synced copy** from a scratchpad temp dir. So after editing, you must **copy `index.html` (and any new/changed images) into the served copy** before the preview reflects changes.
 - **The scratchpad copy loses its images on server restart / between sessions.** If images 404 in the preview, re-sync the whole `Images/` folder (including `*.JPG` uppercase and `Scrolling Tiles/`). This is a preview-only artifact — the real repo is fine.
 - **The headless preview tab does NOT run `IntersectionObserver` or `requestAnimationFrame` callbacks** (the tab isn't "painted"). Don't rely on them for verification. Autoplay video is also often paused there (`readyState:4` + `dims` correct = valid; "paused" is just the headless quirk). Use **scroll listeners + `getBoundingClientRect`** for lazy/deferred logic so it's testable.
+- **The Sunday Saunter pop-up will wreck your screenshots.** It fires 20s after load and its full-screen overlay makes every subsequent screenshot look **solid black** — easily mistaken for a broken page or a bad edit. Before any preview session: `localStorage.setItem('hom_saunter_popup_v1','1')` (then reload). If a preview screenshot is unexpectedly black, check `document.getElementById('saunter-popup').classList` before debugging anything else.
+- **The headless tab does not repaint after a programmatic `window.scrollTo`** — you get a stale or blank frame even though the DOM moved (verified via `getBoundingClientRect`, which is always correct). To force a repaint, issue a **real mouse scroll** (scroll up N, then down N) and screenshot after. There is **no reveal-on-scroll/IntersectionObserver animation anywhere in `index.html`**, so a blank section in preview is *always* the pop-up, cache, or this repaint quirk — never a fade-in that failed to trigger.
+- **`python3 -m http.server --directory <path>` fails** (`PermissionError` from `os.getcwd()`) when launched with the cwd inside `Documents`. Wrap it: `sh -c "cd <servedir> && exec python3 -m http.server <port>"`.
 - **Browser cache is aggressive**, especially for HTML. When "changes aren't showing," it's almost always cache: hard-refresh with DevTools open → "Empty Cache and Hard Reload," use **Incognito**, or add a `?v=N` query. To verify what's *actually* deployed, fetch the raw HTML server-side (`/usr/bin/curl -k -sS ...`) and grep it — bypasses all browser cache.
 - **The owner previews locally** by running, from the project folder in their own Terminal: `python3 -m http.server 8000` → `http://localhost:8000`. That serves the real files (videos included), unsandboxed.
 
@@ -49,6 +52,7 @@ The in-tool preview and the owner's own preview behave differently. Key facts:
 - **`sips` CANNOT rewrite `.webp` or `.mp4`** (errors out). Leave WebP/video to other tools.
 - **Video — HandBrake** (free GUI). Preset: MP4 + Web Optimized, 720p (1280×720 is plenty for a darkened background), H.264, 30fps CFR, Constant Quality **RF ~28**, Encoder Preset "Slower", **remove the audio track** (videos are muted). Save with the identical filename to replace in place. This took the two background videos from 8.7MB total → 1.7MB.
 - **Never resize `og-image`/social cards** below 1200×630, and don't touch logos/favicons.
+- **Swapping the "Before we go further" photo (`.further-img`, currently `Ken Held.jpg`):** that slot is a tall column (~0.5 aspect) with `object-fit: cover`, and `.further-tiles` overlaps its right ~26% with `margin-left: -9rem`. A 16:9 photo therefore shows only **~33% of its width**, and only the left ~74% of that is unobstructed. Portrait/square photos fit naturally; for a landscape one you must set **`object-position`** on the `<img>` to land the subject in the unobstructed band (`84% 50%` for Ken Held keeps the face clear of the tiles). A `.further-img::after` gradient fades the right edge (bottom edge on mobile) so the photo runs under the text instead of fighting it.
 
 ## Videos (hero + Full Circle Fund backgrounds)
 
@@ -110,6 +114,7 @@ Direct, warm, and grounded — a man talking straight to another man. Short punc
 - `--gold` `#b99b56` · `--gold-soft` `rgba(185, 155, 86, 0.85)`
 - `--cream` `#e8dfc8` · `--cream-muted` `#c9bfa8`
 - Accent reds used in "I'm Thomas" / "Our Rhythm": `#944830` (Thomas) and `#7d4630` (Our Rhythm, earthier). `#b16f4a` for lighter accents.
+- **`#7d4630` is only ~2.5:1 on the Our Rhythm background** (dark green + photo + overlay). It was readable as single lowercase words, but not for longer labels — the **Three Acts** (`Act I. Converge.` / `Act II. Desire.` / `Act III. Build.`) use **`#b16f4a`** (~5.3:1) instead. Don't "restore" them to `#7d4630`.
 
 ## Fonts (from the code — note: headings are Cormorant, NOT Playfair)
 
