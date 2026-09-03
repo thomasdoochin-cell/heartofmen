@@ -701,10 +701,19 @@
       margin-bottom: 1rem;
     }
 
+    .hero-lead {
+      font-size: clamp(1.45rem, 3.2vw, 2.05rem);
+      line-height: 1.35;
+      color: var(--cream);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     .hero-sub {
       font-size: clamp(1.15rem, 2.6vw, 1.5rem);
       color: var(--cream);
-      margin-bottom: 0;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
     }
 
     .hero-rule {
@@ -861,6 +870,11 @@
       .further-grid { grid-template-columns: 1fr; }
       .further-img { min-height: 320px; }
       .further-tiles { margin-left: 0; padding: 0; margin-top: -3rem; }
+      .hero { padding: 5rem 1.5rem; }
+      .hero-lead { font-size: 1.32rem; }
+      .hero-rule { margin: 1.25rem auto 1.5rem; }
+      .hero-sub { font-size: 1.08rem; margin-bottom: 1.25rem; }
+      .cta-note { font-size: 1.05rem; margin-bottom: 1.75rem; }
     }
 
     @media (max-width: 680px) {
@@ -924,10 +938,12 @@
     <a class="site-logo" href="https://heartofmen.community" aria-label="Heart of Men — visit heartofmen.community"><img src="./Images/Transparent Logo.png" alt="Heart of Men" /></a>
     <div class="container" style="max-width:1100px;">
       <h1>Living Leadership</h1>
-      <p class="hero-sub">Your world will change when you start living and leading from that purpose you came here for.</p>
+      <p class="hero-lead">You're here to <span style="color:var(--gold);">bridge worlds</span> most people separate, and <span style="color:var(--gold);">there is no real model</span> for the life you feel called to.</p>
       <svg class="hero-rule" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg>
 
-      <p class="cta-note">An 8-month journey for men ready to live their genius and imbue this vibrancy into all facets of their life.</p>
+      <p class="hero-sub">You have game, but <strong>the full extent of your gift</strong> is waiting for many streams to become one.</p>
+
+      <p class="cta-note">An 8-month journey for men ready to live and give their genius.</p>
 
       <div id="fs-form-wrap-hero" style="max-width:480px;margin:0 auto;">
         <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
@@ -954,11 +970,11 @@
         <img loading="lazy" decoding="async" src="./Images/introsketch1.jpg" alt="A winding path through the mountains" />
       </div>
       <div class="split-text">
-        <h2 class="section-header">You're here to <span style="color:var(--gold);">bridge worlds</span> most people separate, and <span style="color:var(--gold);">there is no model</span> for the life you feel called to.</h2>
-        <p>You have game, but <strong>the full extent of your gift</strong> is waiting for the confluence of these previously isolated currents.</p>
-        <p>You're a fulcrum point in your world, and your pursuit of the <strong>real stuff</strong> has to enhance and uplift all you're responsible for.</p>
-        <p>You know you're here for something important, and you're ready to <strong>live it fully before another five years pass.</strong></p>
-        <p class="big-line"><strong>If you resonate with at least two of these recognitions, <span style="color:var(--gold);">Living Leadership is for you.</span></strong></p>
+        <h2 class="section-header">You're a fulcrum point in your world, and your pursuit of the <span style="color:var(--gold);">real stuff</span> has to enhance and uplift all you're responsible for.</h2>
+        <p>Do you know unmistakably <strong style="color:var(--gold);">what is most important to you?</strong></p>
+        <p>Is the way you spend your time, money, and attention a <strong style="color:var(--gold);">testament to this?</strong></p>
+        <p>Are the actions you take on behalf of what's most important <strong style="color:var(--gold);">outwardly effective</strong> and <strong style="color:var(--gold);">internally fulfilling?</strong></p>
+        <p class="big-line"><strong>If you're a no to any of these questions, <span style="color:var(--gold);">this is for you.</span></strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
             <div class="inline-t-photo"><img loading="lazy" decoding="async" src="./Images/Lature.png" alt="Lature Van Duren" /></div>
@@ -1007,7 +1023,7 @@
         <p class="muted">I fled to the other end of the spectrum: 22 acres with a solar-powered, spring-fed abode in the Appalachian Mountains. I wrote the best poetry in my life in these years, but I ultimately felt stagnant, fragmented, and self-imploding as I had abandoned my ambition.</p>
         <p class="muted">I felt stuck because I saw no models for how to weave both worlds. Then, I realized I would have to lead myself into the reality I longed for.</p>
         <p class="muted">My past several years has been a continued experiment in bridging the both. To work devotedly on behalf of what's actually most important. To grow an online business while living on land and raising our own animals.</p>
-        <p>It's through this lens that I look out on a world and see <strong style="color:#944830;">those men meant to build bridges stuck on one side of the water</strong>.</p>
+        <p>It's through this lens that I look out and see <strong style="color:#944830;">men meant to bridge worlds, stuck sprinting between them</strong>, ultimately unable to give fully what's theirs to give.</p>
       </div>
       <div class="split-img split-img-thomas">
         <img loading="lazy" decoding="async" src="./Images/Thomas 2.jpeg" alt="Thomas" />
@@ -1022,9 +1038,9 @@
         <img loading="lazy" decoding="async" src="./Images/introsketch2.jpg" alt="A bridge in the mountains" />
       </div>
       <div class="split-text">
-        <h2 class="section-header"><strong><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span> is the bridge for the bridge builders.</strong></h2>
+        <h2 class="section-header"><strong><span class="hd-wrap">Living Leadership<svg class="hd-line" viewBox="0 0 260 14" preserveAspectRatio="none" aria-hidden="true" style="color:var(--gold);"><path d="M2 3 C 90 5, 175 6, 258 9.5 L 258 10.5 C 175 8, 90 8, 2 8.5 Z" fill="currentColor"/></svg></span> is the confluence where your many currents become one.</strong></h2>
         <p class="big-line">It is the structure that allowed me to create a life where I raise my family in the woods at an original pace <strong>and</strong> run a flourishing business that's an expression of my deepest purpose and contributes to the renaissance of our culture.</p>
-        <p class="big-line">Over the next 8 months, <strong style="color:var(--gold);">you are going to get really good at leading from the both and thus living what's actually most important to you.</strong></p>
+        <p class="big-line">Over the next 8 months, <strong style="color:var(--gold);">you're going to get really good at leading from the confluence and thus living what's actually most important.</strong></p>
         <p class="big-line">We call this your <strong style="color:var(--gold);">genius</strong>. And its full-send expression is <strong>the only thing</strong> that can <strong style="color:var(--gold);">create the future you've been waiting for.</strong></p>
         <div class="inline-t-stack" style="margin-top:3rem;">
           <div class="inline-t">
@@ -1116,11 +1132,11 @@
     <div class="container">
       <h2 class="section-header" style="text-align:center;">Before we go further, I need you to know:</h2>
       <div class="further-grid">
-        <div class="further-img"><img loading="lazy" decoding="async" src="./Images/Sketch3.jpg" alt="" /></div>
+        <div class="further-img"><img loading="lazy" decoding="async" src="./Images/Ken Held.jpg" alt="Men holding one another at a Heart of Men summit" style="object-position:84% 50%;" /></div>
         <div class="further-tiles">
         <div class="tile">
           <p>This brotherhood will not integrate all of your shadows. Nor will you leave these 8 months an enlightened man indefinitely beyond collapse, numbness, or distraction. You will still have bad days and hard moments.</p>
-          <p><strong class="gold">What I will promise: you will integrate your worlds to be able to lead powerfully on behalf of what's most important. You'll know you're giving fully what is yours to give, and you will watch life blossom around this expression.</strong></p>
+          <p><strong class="gold">What I will promise: you will integrate your worlds to be able to lead powerfully on behalf of what's most important. You will become so consistent in leading from what's most important that it will become your new baseline&mdash;not just another peak realization.</strong></p>
         </div>
         <div class="tile">
           <p>This is not the "men's work" you'll find in other places (I don't even call Heart of Men "men's work.") This is not "paint your face and get primal." Nor is it Robert Bly's mythopoetics. We don't sit in a fluorescent-lit room in folding chairs and talk about our feelings. And it's not a space where men get together to be spiritually serious.</p>
@@ -1161,9 +1177,9 @@
       <div class="rhythm-grid">
         <div>
           <h2 class="section-header">Our Rhythm</h2>
-          <p class="bigger" style="color:var(--cream);margin-bottom:1.5rem;">You are going to step into the full current of your life and learn to lead yourself into a world that will surprise even your wildest dreams by its aliveness, direction, and service.</p>
-          <p style="color:var(--cream);margin-bottom:1.5rem;font-size:0.95rem;">Our journey revolves around three components: <strong>capacity</strong>, <strong>initiation</strong>, and <strong>collaboration</strong>. <strong style="color:var(--gold);">Leadership capacities</strong> are the skills, practices, attunement, and perspectives you will cultivate to lead on behalf of what's most important. <strong style="color:var(--gold);">Initiations</strong> are the passages the soul calls forth from the personality to become the man trustworthy of the vision at hand. And <strong style="color:var(--gold);">collaboration</strong> within the brotherhood is what makes the previously uncharted path now inevitable.</p>
-          <p style="color:var(--cream);margin-bottom:1.5rem;font-size:0.95rem;">We will move through four thresholds together over these eight months: <strong style="color:#7d4630;text-decoration:underline;text-underline-offset:4px;">darkness</strong>, <strong style="color:#7d4630;text-decoration:underline;text-underline-offset:4px;">desire</strong>, <strong style="color:#7d4630;text-decoration:underline;text-underline-offset:4px;">vision</strong>, and <strong style="color:#7d4630;text-decoration:underline;text-underline-offset:4px;">service</strong>. During each of these thresholds, our journey will be structured about masterfully-crafted capacities, initiations, and collaborations.</p>
+          <p class="bigger" style="color:var(--cream);margin-bottom:1.5rem;">We are going to train our nervous system, train our thought patterns, and train the ways we relate, to consistently and courageously act <strong style="color:var(--gold);">on behalf of our genius</strong>.</p>
+          <p style="color:var(--cream);margin-bottom:1.5rem;font-size:0.95rem;"><strong style="color:var(--gold);">Capacity + Initiation + Collaboration</strong> is the engine for how we'll do so. <strong style="color:var(--gold);">Capacity</strong> will grow the skill for where you have to go. <strong style="color:var(--gold);">Initiation</strong> allows you to become the man worthy of the vision. And <strong style="color:var(--gold);">Collaboration</strong>, through the unrelenting support of this brotherhood, will help you find, refine, and walk this previously uncharted path.</p>
+          <p style="color:var(--cream);margin-bottom:1.5rem;font-size:0.95rem;">We will move through Three Acts together over our eight months: <strong style="color:#b16f4a;text-decoration:underline;text-underline-offset:4px;">Act I. Converge.</strong> <strong style="color:#b16f4a;text-decoration:underline;text-underline-offset:4px;">Act II. Desire.</strong> and <strong style="color:#b16f4a;text-decoration:underline;text-underline-offset:4px;">Act III. Build.</strong> When we show up every day in this way, <strong>what's possible in our lives becomes inevitable.</strong> This is what takes Heart of Men beyond just a &ldquo;really fun&rdquo; or &ldquo;very insightful&rdquo; program.</p>
           <p class="bigger"><strong>By the end of these 8 months, "I don't know if I'll ever be able to…" is going to become "Holy shit, no training wheels, LOOK AT ME GO."</strong></p>
           <div class="inline-t-stack" style="margin-top:3rem;">
             <div class="inline-t">
@@ -1436,6 +1452,19 @@
         <div id="fs-success-works" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
           <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 12. ONE LAST THING ========== -->
+  <section style="background:var(--brown);">
+    <div class="split">
+      <div class="split-text">
+        <p class="big-line">Let me close by being real: If you keep waiting until the &ldquo;right time&rdquo; to choose your greatness, <strong>your life in ten years will look just like it does today.</strong></p>
+        <p class="big-line"><strong style="color:var(--gold);">The future is waiting for your full-send expression of you.</strong></p>
+      </div>
+      <div class="split-img">
+        <img loading="lazy" decoding="async" src="./Images/Thomas Bottom.jpeg" alt="Thomas" />
       </div>
     </div>
   </section>
