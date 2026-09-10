@@ -1539,10 +1539,10 @@
     (function() {
       const pad = n => String(n).padStart(2, '0');
 
-      // Enrollment closes — Sept 11 (local, month is 0-indexed), rolls to next year once passed.
+      // Enrollment closes — Sept 17 (local, month is 0-indexed), rolls to next year once passed.
       const now = new Date();
-      let target = new Date(now.getFullYear(), 8, 11);
-      if (target < now) target = new Date(now.getFullYear() + 1, 8, 11);
+      let target = new Date(now.getFullYear(), 8, 17);
+      if (target < now) target = new Date(now.getFullYear() + 1, 8, 17);
 
       function tick() {
         const s = Math.floor(Math.max(0, target - new Date()) / 1000);
