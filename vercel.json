@@ -6,6 +6,7 @@
     { "source": "/full-circle-fund", "destination": "/full-circle-fund.html" },
     { "source": "/welcome", "destination": "/welcome.html" },
     { "source": "/confirm", "destination": "/confirm.html" },
+    { "source": "/pause", "destination": "/pause.html" },
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
 }
