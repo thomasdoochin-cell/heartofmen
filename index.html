@@ -1539,21 +1539,27 @@
     (function() {
       const pad = n => String(n).padStart(2, '0');
 
-      // Enrollment closes — Sept 17 (local, month is 0-indexed), rolls to next year once passed.
-      const now = new Date();
-      // Midnight at the END of Sunday Sept 20 = 12:00am Mon Sept 21, local time
-      let target = new Date(now.getFullYear(), 8, 21);
-      if (target < now) target = new Date(now.getFullYear() + 1, 8, 21);
+      // Enrollment closes at midnight at the END of Sunday Sept 20 = 12:00am Mon Sept 21, local time
+      // (month is 0-indexed). Once it passes, both countdown bars are removed from the page.
+      const target = new Date(2026, 8, 21);
+      let timer;
 
       function tick() {
-        const s = Math.floor(Math.max(0, target - new Date()) / 1000);
+        if (target - new Date() <= 0) {
+          document.querySelectorAll('.countdown-bar').forEach(el => el.remove());
+          clearInterval(timer);
+          // nav.js re-positions the menu toggle on resize; without the top bar it returns to its default spot
+          window.dispatchEvent(new Event('resize'));
+          return;
+        }
+        const s = Math.floor((target - new Date()) / 1000);
         document.querySelectorAll('.cd-days').forEach(el => el.textContent = pad(Math.floor(s / 86400)));
         document.querySelectorAll('.cd-hours').forEach(el => el.textContent = pad(Math.floor((s % 86400) / 3600)));
         document.querySelectorAll('.cd-mins').forEach(el => el.textContent = pad(Math.floor((s % 3600) / 60)));
         document.querySelectorAll('.cd-secs').forEach(el => el.textContent = pad(s % 60));
       }
+      timer = setInterval(tick, 1000);
       tick();
-      setInterval(tick, 1000);
     })();
 
     function initBgVideo(id, defer) {
