@@ -836,6 +836,14 @@
 
     .popup-close:hover { color: var(--gold); }
 
+    .popup-body a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .popup-body a:hover { color: var(--cream); }
+
     .popup-photo {
       display: block;
       width: calc(100% + 4.5rem);
@@ -1520,8 +1528,8 @@
   <div class="popup-overlay" id="saunter-popup" role="dialog" aria-modal="true" aria-label="Sunday Saunter newsletter">
     <div class="popup-card">
       <button class="popup-close" aria-label="Close">&times;</button>
-      <img class="popup-photo" src="Images/Uncover-Your-Genius-Sept-17.jpg" alt="Free Masterclass — Uncover your Genius, September 17th 2:00 ET" loading="lazy" decoding="async">
-      <p class="popup-body"><strong>You have a genius</strong>; I've yet to meet a man who doesn't. It doesn't mean you're meant to be John Lennon, Michelangelo, or Ross Gay. <strong>It does mean you have something quite distinct and potent to offer this world.</strong> In these 90 minutes I am going to show you there is indeed a way to clarify the signal through all the noise.<br><br>September 17th. 2:00pm ET. Recording made available to all who RSVP.</p>
+      <img class="popup-photo" src="Images/Live-your-Genius-Sept-17.jpg" alt="Men's Leadership Masterclass — Live your Genius: Finding Direction in a Distracted Time. September 17th, 2:00 ET. Free for RSVPs." loading="lazy" decoding="async">
+      <p class="popup-body"><strong>You have a genius</strong>; I've yet to meet a man who doesn't. It doesn't mean you're meant to be John Lennon, Michelangelo, or Ross Gay. <strong>It does mean you have something quite distinct and potent to offer this world.</strong> <a href="https://luma.com/vi68x32g" target="_blank" rel="noopener">In these 90 minutes</a> I am going to show you there is indeed a way to clarify the signal through all the noise.<br><br>September 17th. 2:00pm ET. Recording made available to all who RSVP.</p>
       <div id="fs-form-wrap-popup" style="max-width:100%;margin:0 auto;">
         <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
@@ -1667,7 +1675,7 @@
       setTimeout(function() {
         overlay.classList.add('open');
         try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      }, 20000);
+      }, 13000);
     })();
 
     function initTestimonialPager(testi) {
