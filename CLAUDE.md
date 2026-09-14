@@ -12,6 +12,7 @@ This file is the permanent memory for the Heart of Men website. **Read it before
   - `welcome.html` — **hidden** enrollment page at `/welcome` (not in `nav.js`, `noindex`, not in sitemap). Two-column: `Six Grid.jpg` photo + welcome copy on the left, **embedded Stripe Checkout** on the right. Its own OG/Twitter card (title "Welcome In", image `Images/og-welcome.jpg`).
   - `confirm.html` — **hidden** post-payment thank-you page at `/confirm` (404-styled, `noindex`). Stripe's `return_url` lands here after a completed deposit.
   - `pause.html` — **hidden** page at `/pause` (`noindex`, not in nav/sitemap). One email field that posts to **Formspree `f/mnpqkajg`** (fetch, inline thank-you). People use it to pause enrollment-week emails; the owner checks submissions and updates Circle.so by hand.
+  - `insiderlook.html` — **hidden** page at `/insiderlook` (`noindex`, not in nav/sitemap). Same build as `/pause`; one email field posting to **Formspree `f/meaqyzpd`**. Sign-ups for the 2–4 behind-the-scenes emails during enrollment week.
   - `api/create-checkout-session.js` — serverless function (Node) that creates the embedded Checkout Session. `package.json` declares the `stripe` dep.
   - `nav.js` — shared nav injected on both pages (links `/` and `/full-circle-fund`).
   - `404.html` — custom branded error page (self-contained; root-absolute `/Images/...` paths so it renders from any URL).
@@ -85,6 +86,7 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
       { "source": "/welcome", "destination": "/welcome.html" },
       { "source": "/confirm", "destination": "/confirm.html" },
       { "source": "/pause", "destination": "/pause.html" },
+      { "source": "/insiderlook", "destination": "/insiderlook.html" },
       { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ] }
   ```
