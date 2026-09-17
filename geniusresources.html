@@ -282,6 +282,23 @@
 
     .res-note { font-size: 0.98rem; line-height: 1.7; color: var(--cream-muted); margin: 0; }
 
+    .btn-email {
+      display: inline-block;
+      margin: 0.5rem 0 0.5rem;
+      padding: 0.85rem 2.1rem;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-email:hover { background: #c9ad68; }
+
     /* callout */
     .callout {
       background: var(--panel);
@@ -427,7 +444,9 @@
         <img src="/Images/hom-tee.jpg" alt="Heart of Men t-shirt" loading="lazy" decoding="async" />
       </figure>
 
-      <p>These new designs just came in. We had a giveaway for the folks live on the call. <strong>For the first five guys</strong> who watch the recording and send me an email (<a href="mailto:thomas@heartofmen.org">thomas@heartofmen.org</a>) with their biggest takeaway, <strong>you get a shirt for free</strong> (just cover shipping).</p>
+      <p>These new designs just came in. We had a giveaway for the folks live on the call. <strong>For the first five guys</strong> who watch the recording and send me an email with their biggest takeaway, <strong>you get a shirt for free</strong> (just cover shipping).</p>
+
+      <p><button class="btn-email" id="email-me" type="button" data-a="thomas" data-b="heartofmen" data-c="org">Email me</button></p>
 
       <!-- ===== FIVE. OTHER RESOURCES ===== -->
       <h2><span class="num">Five</span>Other Resources to Keep Learning</h2>
@@ -503,6 +522,21 @@
         }
         try { localStorage.setItem(KEY, '1'); } catch (e) {}
         unlock();
+      });
+    })();
+  </script>
+  <script>
+    /* ---- email button ----------------------------------------------------
+       The address is never written into the page — it is assembled from
+       three fragments at click time, so scrapers find nothing to harvest.
+       -------------------------------------------------------------------- */
+    (function () {
+      var b = document.getElementById('email-me');
+      if (!b) return;
+      b.addEventListener('click', function () {
+        var to = b.getAttribute('data-a') + String.fromCharCode(64) +
+                 b.getAttribute('data-b') + '.' + b.getAttribute('data-c');
+        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('My biggest takeaway');
       });
     })();
   </script>
