@@ -176,24 +176,30 @@
     }
 
     .welcome {
-      display: flex;
-      align-items: center;
-      gap: 1.6rem;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      grid-template-areas:
+        "photo lede"
+        "photo name";
+      column-gap: 1.6rem;
       margin: 1.75rem 0;
     }
 
     .welcome-photo {
+      grid-area: photo;
+      align-self: center;
       width: 130px;
       height: 130px;
-      flex: none;
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
     }
 
-    .welcome .lede { margin: 0; }
+    .welcome .lede { grid-area: lede; align-self: end; margin: 0; }
 
     .welcome-name {
+      grid-area: name;
+      align-self: start;
       margin: 0.7rem 0 0;
       font-size: 0.78rem;
       letter-spacing: 0.18em;
@@ -342,8 +348,16 @@
       .hom-form { flex-direction: column; }
       .hom-form input { border-right: 1px solid #2a2418; border-bottom: none; }
       .hom-form input:focus { border-color: var(--gold); }
-      .welcome { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+      .welcome {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "lede"
+          "photo"
+          "name";
+        row-gap: 1rem;
+      }
       .welcome-photo { width: 104px; height: 104px; }
+      .welcome-name { margin: 0; }
       .doc-footer a { display: block; margin: 0 0 0.9rem; }
     }
   </style>
@@ -380,10 +394,8 @@
         <h1>Live your Genius: Resource List</h1>
         <div class="welcome">
           <img class="welcome-photo" src="/Images/Thomas 2.jpeg" alt="Thomas Doochin" loading="lazy" decoding="async" />
-          <div class="welcome-body">
-            <p class="lede">Thank you for aligning your most precious resource&mdash;your attention&mdash;with the purpose you came here for.</p>
-            <p class="welcome-name">Thomas Doochin</p>
-          </div>
+          <p class="lede">Thank you for aligning your most precious resource&mdash;your attention&mdash;with the purpose you came here for.</p>
+          <p class="welcome-name">Thomas Doochin</p>
         </div>
         <p>Here is a link to everything I referenced in the call as a way to put into practice what we talked about:</p>
       </header>
