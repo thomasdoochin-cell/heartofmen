@@ -8,6 +8,7 @@
     { "source": "/confirm", "destination": "/confirm.html" },
     { "source": "/pause", "destination": "/pause.html" },
     { "source": "/insiderlook", "destination": "/insiderlook.html" },
+    { "source": "/geniusresources", "destination": "/geniusresources.html" },
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
 }

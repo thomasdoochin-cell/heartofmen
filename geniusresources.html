@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Your Genius: Resource List | Heart of Men</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="Live Your Genius: Resource List" />
+  <meta property="og:description" content="Everything referenced in the masterclass — the recording, the prompts, and where to go next." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heartofmen.org/geniusresources" />
+  <meta property="og:image" content="https://heartofmen.org/Images/Live-your-Genius-Sept-17.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="/Images/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/Images/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0e0c09;
+      --gold: #b99b56;
+      --gold-soft: rgba(185, 155, 86, 0.85);
+      --cream: #e8dfc8;
+      --cream-muted: #c9bfa8;
+      --panel: #14110d;
+      --rule: rgba(185, 155, 86, 0.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--black);
+      color: var(--cream-muted);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       1. GATE — email capture shown until unlocked
+       ============================================================ */
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background: var(--black);
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .gate-inner { max-width: 560px; width: 100%; }
+
+    .gate-cover {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 2.5rem;
+      border: 1px solid #221d15;
+    }
+
+    .gate h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 4.5vw, 2.2rem);
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 0.85rem;
+    }
+
+    .gate p.gate-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--cream-muted);
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    .gate-form { display: flex; max-width: 460px; margin: 0 auto; }
+
+    .gate-error { margin: 1rem 0 0; font-size: 0.9rem; color: #b16f4a; }
+
+    body.is-locked { overflow: hidden; }
+    body.is-unlocked .gate { display: none; }
+    body:not(.is-unlocked) #doc { display: none; }
+
+    /* shared form styling */
+    .hom-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 1rem 1.25rem;
+      background: #1a1510;
+      border: 1px solid #2a2418;
+      border-right: none;
+      color: #f5f0e8;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .hom-form input:focus { border-color: var(--gold); }
+
+    .hom-form button {
+      padding: 1rem 1.5rem;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .hom-form button:hover { background: #c9ad68; }
+    .hom-form button:disabled { opacity: 0.6; cursor: default; }
+
+    /* ============================================================
+       2. DOC — the resource list
+       ============================================================ */
+    .cover-wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.5rem 0; }
+
+    .cover-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #221d15;
+    }
+
+    .doc {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .doc-head { margin-bottom: 3rem; }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-bottom: 1.1rem;
+    }
+
+    .doc h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.2rem, 5.5vw, 3.1rem);
+      line-height: 1.12;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .lede {
+      font-size: clamp(1.08rem, 2.2vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--cream);
+    }
+
+    .doc h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      line-height: 1.25;
+      color: var(--cream);
+      margin: 3.5rem 0 0.6rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .doc h2 .num {
+      display: block;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .doc h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin: 2.25rem 0 0.4rem;
+    }
+
+    .doc p { margin: 1.15rem 0; }
+
+    .doc a {
+      color: var(--cream);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 0.22em;
+      transition: color 0.2s ease;
+    }
+
+    .doc a:hover { color: var(--gold); }
+
+    .doc strong { color: var(--cream); font-weight: 600; }
+
+    .doc ul { margin: 1.15rem 0 1.15rem 1.35rem; }
+    .doc li { margin-bottom: 0.6rem; padding-left: 0.3rem; }
+    .doc li::marker { color: var(--gold); }
+
+    /* resource card */
+    .res {
+      display: block;
+      background: var(--panel);
+      border: 1px solid #221d15;
+      border-left: 2px solid var(--gold);
+      padding: 1.35rem 1.6rem;
+      margin: 1.1rem 0;
+    }
+
+    .doc a.res { text-decoration: none; }
+    a.res:hover { background: #1a1610; border-color: var(--gold); }
+
+    .res-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.3;
+      margin: 0 0 0.2rem;
+    }
+
+    a.res:hover .res-title { color: var(--gold); }
+
+    .res-by {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin: 0 0 0.6rem;
+    }
+
+    .res-note { font-size: 0.98rem; line-height: 1.7; color: var(--cream-muted); margin: 0; }
+
+    /* callout */
+    .callout {
+      background: var(--panel);
+      border-left: 2px solid var(--gold);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .callout p { margin: 0.7rem 0; color: var(--cream); }
+    .callout p:first-child { margin-top: 0; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* figure */
+    .doc figure { margin: 2rem 0; }
+    .doc figure img { width: 100%; height: auto; display: block; border: 1px solid #221d15; }
+
+    .doc-footer {
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .doc-footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin: 0 0.85rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .doc-footer a:hover { color: var(--cream); }
+
+    @media (max-width: 560px) {
+      body { font-size: 1rem; }
+      .cover-wrap { padding: 1.5rem 1.25rem 0; }
+      .doc { padding: 2.25rem 1.25rem 4rem; }
+      .res { padding: 1.15rem 1.25rem; }
+      .callout { padding: 1.25rem 1.35rem; }
+      .hom-form { flex-direction: column; }
+      .hom-form input { border-right: 1px solid #2a2418; border-bottom: none; }
+      .hom-form input:focus { border-color: var(--gold); }
+      .doc-footer a { display: block; margin: 0 0 0.9rem; }
+    }
+  </style>
+</head>
+<body class="is-locked">
+
+  <!-- ===== 1. GATE ===== -->
+  <div class="gate" id="gate">
+    <div class="gate-inner">
+      <img class="gate-cover" src="/Images/Live-your-Genius-Sept-17.jpg" alt="Live your Genius — Men's Leadership Masterclass" />
+      <h1>Are you supposed to be here? We think so.</h1>
+      <p class="gate-sub">Call recording, reflection prompts, and a whole bunch of good resources live inside.</p>
+      <form class="gate-form hom-form" id="gate-form" action="https://formspree.io/f/mppwzndl" method="POST">
+        <input type="hidden" name="_subject" value="Live your Genius — resource list access" />
+        <input type="email" name="email" required placeholder="Your email address" aria-label="Your email address" />
+        <button type="submit">Let me in</button>
+      </form>
+      <p class="gate-error" id="gate-error" hidden>Something went wrong &mdash; try that once more.</p>
+    </div>
+  </div>
+
+  <!-- ===== 2. DOC ===== -->
+  <main id="doc">
+
+    <div class="cover-wrap">
+      <img src="/Images/Live-your-Genius-Sept-17.jpg" alt="Live your Genius — Men's Leadership Masterclass" />
+    </div>
+
+    <div class="doc">
+
+      <header class="doc-head">
+        <p class="eyebrow">Heart of Men</p>
+        <h1>Live your Genius: Resource List</h1>
+        <p class="lede">Thank you for aligning your most precious resource&mdash;your attention&mdash;with the purpose you came here for.</p>
+        <p>Here is a link to everything I referenced in the call as a way to put into practice what we talked about:</p>
+      </header>
+
+      <a class="res" href="https://www.youtube.com/watch?v=wSqdRPkbGEI" target="_blank" rel="noopener">
+        <p class="res-title">The Recording</p>
+        <p class="res-by">Watch on YouTube</p>
+        <p class="res-note">Available until Sunday at midnight, and then we take it offline.</p>
+      </a>
+
+      <!-- ===== ONE. PROMPTS ===== -->
+      <h2><span class="num">One</span>Finding Your Genius Prompts</h2>
+
+      <div class="callout">
+        <p>I&rsquo;d encourage you to do these as individual reflection sessions. When we sit down to journal, we begin to stir something up in our subconscious. This needs some time to work in us to reveal what we need. We&rsquo;re not trying to &ldquo;define our genius&rdquo; in these prompts. We are looking to come into deeper relationship. It takes time; let it work on you.</p>
+      </div>
+
+      <h3>Prompt 1: Bridging worlds</h3>
+      <p>What two worlds are you upholding that you&rsquo;ve always believed to be separate? (maybe you&rsquo;ve always felt split between them). What would happen if they came together at one confluence? Who would you be? What story would have to break down if these worlds bridged?</p>
+
+      <h3>Prompt 2: As a kid</h3>
+      <p>What did you love as a child? If you could choose any scene to go inhabit and play within, what would it be? What did you want to be when you grew up? Ask your parents or older siblings when they remembered you to be the most shining and joyful. Notice the words they use.</p>
+
+      <h3>Prompt 3: Most vibrant moments</h3>
+      <p>In the last few decades of your life, tell me about the moments where you felt the most you. Invigorated, joyful, fulfilled. Those moments that have nothing to do with what someone else thought or what you meant to them. What are the common threads across these moments?</p>
+
+      <h3>Prompt 4: Your strongest stories</h3>
+      <p>What are the strongest stories/judgements you have about the way life just is? (something that feels limiting). How may you have justified the abandoning of your own genius? What is the opposite story of the one you most frequently tell? Who would you be in that opposite story?</p>
+
+      <!-- ===== TWO. 7-DAY CHALLENGE ===== -->
+      <h2><span class="num">Two</span>7-Day Genius Challenge</h2>
+
+      <p>You are welcome to share this page with the two friends you&rsquo;re inviting into collaboration and accountability. They&rsquo;ll enter their email and be given instant access to the recording and this document.</p>
+
+      <!-- ===== THREE. LIVING LEADERSHIP ===== -->
+      <h2><span class="num">Three</span>There are two spots left in Living Leadership.</h2>
+
+      <p><a href="/">Living Leadership</a> is for the men who are bridging worlds most people keep separate. Living Leadership is for the men who know they have to find, live, and lead from a deeper purpose. Living Leadership is for the men who are ready to know and give their genius, on behalf of what matters most in their worlds.</p>
+
+      <p>Once a year, Heart of Men curates a group of 16 brothers from all walks of life who are ready to cross the threshold from &ldquo;maybe one day&rdquo; to &ldquo;the time has to be now.&rdquo;</p>
+
+      <p>Teachers, therapists, highly-successful-entrepreneurs, blue-collar business owners, men just out of prison, and artists come together as an all-star team that you wouldn&rsquo;t find anywhere else in the world.</p>
+
+      <a class="res" href="https://www.youtube.com/watch?v=0jcWv8S8q70" target="_blank" rel="noopener">
+        <p class="res-title">What Guys (and their partners) Say About Heart of Men</p>
+        <p class="res-by">Watch on YouTube</p>
+      </a>
+
+      <a class="res" href="https://www.youtube.com/watch?v=KuW-AXLn2SQ" target="_blank" rel="noopener">
+        <p class="res-title">Why we run for 8 months and not something &ldquo;quicker&rdquo;</p>
+        <p class="res-by">Watch on YouTube</p>
+      </a>
+
+      <!-- ===== FOUR. FREE TEES ===== -->
+      <h2><span class="num">Four</span>Free Tees</h2>
+
+      <figure>
+        <img src="/Images/hom-tee.jpg" alt="Heart of Men t-shirt" loading="lazy" decoding="async" />
+      </figure>
+
+      <p>These new designs just came in. We had a giveaway for the folks live on the call. <strong>For the first five guys</strong> who watch the recording and send me an email (<a href="mailto:thomas@heartofmen.org">thomas@heartofmen.org</a>) with their biggest takeaway, <strong>you get a shirt for free</strong> (just cover shipping).</p>
+
+      <!-- ===== FIVE. OTHER RESOURCES ===== -->
+      <h2><span class="num">Five</span>Other Resources to Keep Learning</h2>
+
+      <a class="res" href="https://www.kathedraling.com/Reclaim-Your-Phone-4cc67129b3ed44beabacdf4f68df617c" target="_blank" rel="noopener">
+        <p class="res-title">Reclaim Your Phone</p>
+        <p class="res-by">Erick Godsey &middot; Resource list</p>
+        <p class="res-note">If you want to go deeper on tools to get into right relationship with your phone, check this out from my friend.</p>
+      </a>
+
+      <a class="res" href="https://bookshop.org/p/books/the-war-of-art-break-through-the-blocks-and-win-your-inner-creative-battles-shawn-coyne/b3cb5fdd946b0bcd?ean=9781936891023" target="_blank" rel="noopener">
+        <p class="res-title">&ldquo;War of Art&rdquo;</p>
+        <p class="res-by">Steven Pressfield &middot; Nonfiction book</p>
+      </a>
+
+      <a class="res" href="https://open.spotify.com/playlist/73U1xqe2nf2ZeqDla9Eyao?si=da193b3ac57d4fe5" target="_blank" rel="noopener">
+        <p class="res-title">Best Overview on the Digital World</p>
+        <p class="res-by">Erick Godsey &middot; Spotify playlist</p>
+        <p class="res-note">On the digital world and the science of our attentional systems, from my friend Erick Godsey again (you can skip episode 1).</p>
+      </a>
+
+      <a class="res" href="https://open.spotify.com/episode/3BEBd8G9ztGAStJgtgbgOp?si=9b854d77fb924cc2" target="_blank" rel="noopener">
+        <p class="res-title">One of my favorite interviews</p>
+        <p class="res-by">Angus Fletcher, PhD &middot; Podcast</p>
+        <p class="res-note">On living our genius and what makes humans creative.</p>
+      </a>
+
+      <a class="res" href="https://open.spotify.com/episode/1olAVb6VJe5us6yZvgy3FG?si=cdb70e1515ae4cee" target="_blank" rel="noopener">
+        <p class="res-title">Andrew Huberman</p>
+        <p class="res-by">Podcast</p>
+        <p class="res-note">On the science of dopamine.</p>
+      </a>
+
+      <footer class="doc-footer">
+        <a href="/">Living Leadership</a>
+        <a href="https://heartofmen.substack.com/" target="_blank" rel="noopener">Sunday Saunter</a>
+        <a href="https://www.instagram.com/heartofmencommunity/" target="_blank" rel="noopener">Instagram</a>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    /* ---- email gate ----------------------------------------------------
+       A valid email posts to Formspree, then the doc is revealed and the
+       unlock is remembered so returning visitors walk straight in.
+       If the post fails we still let them in — the resources were promised;
+       losing one address beats locking a man out.
+       ------------------------------------------------------------------ */
+    (function () {
+      var KEY = 'hom_genius_unlocked_v1';
+      var body = document.body;
+      var form = document.getElementById('gate-form');
+      var button = form.querySelector('button');
+      var error = document.getElementById('gate-error');
+
+      function unlock() {
+        body.classList.add('is-unlocked');
+        body.classList.remove('is-locked');
+        window.scrollTo(0, 0);
+      }
+
+      try { if (localStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        button.disabled = true;
+        error.hidden = true;
+        try {
+          await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        } catch (err) {
+          /* network failure — come in anyway */
+        }
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        unlock();
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
