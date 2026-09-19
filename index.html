@@ -47,7 +47,7 @@
       background: #0e0c09;
       color: var(--gold);
       text-align: center;
-      padding: 0.7rem 1.25rem;
+      padding: 1rem 1.25rem;
       font-family: 'Playfair Display', Georgia, serif;
       border-bottom: 1px solid rgba(185, 155, 86, 0.35);
     }
@@ -66,7 +66,7 @@
     }
 
     .cd-lead {
-      font-size: 0.9rem;
+      font-size: 1.05rem;
       letter-spacing: 0.02em;
     }
 
@@ -84,14 +84,14 @@
     }
 
     .cd-num {
-      font-size: 1.35rem;
+      font-size: 1.95rem;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
       color: var(--cream);
     }
 
     .cd-label {
-      font-size: 0.58rem;
+      font-size: 0.62rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: rgba(185, 155, 86, 0.8);
@@ -100,15 +100,19 @@
 
     .countdown-sub {
       flex-basis: 100%;
-      font-size: 0.9rem;
-      letter-spacing: 0.02em;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-top: 0.15rem;
     }
 
-    .countdown-sub strong { font-weight: 700; }
+    .countdown-sub strong { font-weight: 700; color: var(--gold); }
 
     @media (max-width: 600px) {
-      .cd-lead, .countdown-sub { font-size: 0.8rem; }
-      .cd-num { font-size: 1.15rem; }
+      .cd-lead { font-size: 0.92rem; }
+      .countdown-sub { font-size: 0.88rem; }
+      .cd-num { font-size: 1.55rem; }
       .countdown-timer { gap: 0.9rem; }
     }
 
@@ -889,7 +893,7 @@
       .further-img { min-height: 320px; }
       .further-img::after { background: linear-gradient(to bottom, rgba(14, 12, 9, 0) 55%, rgba(14, 12, 9, 0.72) 100%); }
       .further-tiles { margin-left: 0; padding: 0; margin-top: -3rem; }
-      .hero { padding: 5rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem; }
       .hero-lead { font-size: 1.32rem; }
       .hero-rule { margin: 1.25rem auto 1.5rem; }
       .hero-sub { font-size: 1.08rem; margin-bottom: 1.25rem; }
@@ -946,6 +950,7 @@
         <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
         <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
       </span>
+      <span class="countdown-sub"><strong>Only 2 Seats Left.</strong></span>
     </div>
   </div>
 
@@ -1307,7 +1312,7 @@
       <h2 class="section-header" style="text-align:center;">Are You Ready?</h2>
       <div class="tile-grid">
         <div class="tile price-card" style="padding-top:4.25rem;">
-          <div class="badge-band">4 Spots Remain</div>
+          <div class="badge-band">2 Spots Remain</div>
           <h3>Living Leadership</h3>
           <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
           <div class="price-big">$2250 <span>deposit</span></div>
@@ -1496,6 +1501,7 @@
         <span class="cd-unit"><span class="cd-num cd-mins">00</span><span class="cd-label">Minutes</span></span>
         <span class="cd-unit"><span class="cd-num cd-secs">00</span><span class="cd-label">Seconds</span></span>
       </span>
+      <span class="countdown-sub"><strong>Only 2 Seats Left.</strong></span>
     </div>
   </div>
 
@@ -1663,9 +1669,11 @@
     initNewsletterForm('fs-form-wrap-popup', 'fs-success-popup');
 
     (function() {
+      // Sunday Saunter pop-up — OFF for now. Set to true to bring it back.
+      const POPUP_ENABLED = false;
       const KEY = 'hom_saunter_popup_v1';
       const overlay = document.getElementById('saunter-popup');
-      if (!overlay) return;
+      if (!POPUP_ENABLED || !overlay) return;
       let seen = null;
       try { seen = localStorage.getItem(KEY); } catch (e) {}
       if (seen) return;
