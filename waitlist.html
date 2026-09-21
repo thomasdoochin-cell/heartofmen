@@ -202,7 +202,27 @@
 
     .success p { color: #c9bfa8; font-size: 1.05rem; line-height: 1.7; }
 
-    .success a { color: #b99b56; text-decoration: underline; text-underline-offset: 3px; }
+    .success-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+    }
+
+    .success-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(185, 155, 86, 0.45);
+      border-radius: 50%;
+      color: #b99b56;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .success-social a:hover { color: #e8dfc8; border-color: #e8dfc8; }
+    .success-social svg { width: 20px; height: 20px; }
 
     @media (max-width: 560px) {
       .row { grid-template-columns: 1fr; gap: 0; }
@@ -220,7 +240,7 @@
     <img class="logo" src="/Images/Transparent Logo.png" alt="Heart of Men" />
     <p class="eyebrow">Heart of Men</p>
     <h1>Join the Waitlist</h1>
-    <p class="sub">Doors are closed for 2026. Tell us a little about you and we&rsquo;ll reach out first when the next cohort opens.</p>
+    <p class="sub">The fire is warming for our next season of programs. We&rsquo;ll reach out to you first when the next cohort opens.</p>
 
     <div id="waitlist-form-wrap">
       <form id="waitlist-form" action="https://formspree.io/f/myezwzjo" method="POST">
@@ -273,7 +293,15 @@
 
     <div class="success" id="waitlist-success" hidden>
       <h2>You&rsquo;re on the list.</h2>
-      <p>Thank you for sharing. We&rsquo;ll be in touch first when the next cohort opens.<br /><br />In the meantime, our <a href="/">Sunday Saunter</a> lands every Sunday afternoon.</p>
+      <p>In the meantime, we&rsquo;ll see you on Sunday for our beloved newsletter, Sunday Saunter.</p>
+      <div class="success-social">
+        <a href="https://www.instagram.com/heartofmencommunity/" target="_blank" rel="noopener" aria-label="Heart of Men on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://heartofmen.substack.com/" target="_blank" rel="noopener" aria-label="Heart of Men on Substack">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
