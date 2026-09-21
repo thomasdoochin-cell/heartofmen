@@ -47,7 +47,36 @@
     '.hom-nav-overlay a.hom-nav-social{color:#e8dfc8;}' +
     '.hom-nav-overlay a.hom-nav-social:hover,.hom-nav-overlay a.hom-nav-social:focus-visible{color:#ffffff;border-bottom-color:#ffffff;}' +
     '.hom-nav-overlay svg{width:1em;height:1em;fill:currentColor;flex-shrink:0;}' +
-    '@media (prefers-reduced-motion:reduce){.hom-nav-toggle .hom-nav-bars span,.hom-nav-overlay{transition:none;}}';
+    '@media (prefers-reduced-motion:reduce){.hom-nav-toggle .hom-nav-bars span,.hom-nav-overlay{transition:none;}}' +
+    /* ---- Sunday Saunter pop-up (shared by every page that loads nav.js) ---- */
+    '.hom-popup-overlay{position:fixed;inset:0;z-index:1200;background:rgba(14,12,9,0.82);' +
+      'display:flex;align-items:flex-start;justify-content:center;padding:1.5rem;overflow-y:auto;' +
+      'opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;}' +
+    '.hom-popup-overlay.is-open{opacity:1;visibility:visible;}' +
+    '.hom-popup-card{position:relative;margin:auto;background:#16110c;border:1px solid rgba(185,155,86,0.55);' +
+      "max-width:520px;width:100%;padding:3.25rem 2.25rem 2.5rem;text-align:center;" +
+      "font-family:'Playfair Display',Georgia,serif;}" +
+    '.hom-popup-close{position:absolute;top:0.6rem;right:1rem;background:none;border:none;color:#e8dfc8;' +
+      'font-size:1.7rem;line-height:1;cursor:pointer;padding:0.25rem;text-shadow:0 1px 4px rgba(0,0,0,0.8);z-index:2;}' +
+    '.hom-popup-close:hover{color:#b99b56;}' +
+    '.hom-popup-photo{display:block;width:calc(100% + 4.5rem);margin:-3.25rem -2.25rem 1.75rem;max-width:none;' +
+      'aspect-ratio:2100 / 700;object-fit:cover;object-position:center;}' +
+    ".hom-popup-head{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.9rem,4.6vw,2.3rem);" +
+      'font-weight:600;color:#e8dfc8;line-height:1.15;margin:0 0 1rem;}' +
+    '.hom-popup-body{font-size:0.98rem;line-height:1.65;color:#c9bfa8;margin:0 0 1.75rem;}' +
+    '.hom-popup-form{display:flex;gap:0;}' +
+    '.hom-popup-form input{flex:1;min-width:0;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;' +
+      "border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;}" +
+    '.hom-popup-form input:focus{border-color:#b99b56;}' +
+    '.hom-popup-form button{padding:1rem 1.5rem;background:#b99b56;color:#0e0c09;' +
+      "font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;" +
+      'font-weight:600;border:none;cursor:pointer;white-space:nowrap;}' +
+    '.hom-popup-form button:hover{background:#c9ad68;}' +
+    '.hom-popup-form button:disabled{opacity:0.6;cursor:default;}' +
+    '.hom-popup-success{padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;color:#b99b56;font-size:0.95rem;}' +
+    '.hom-popup-fine{font-size:0.78rem;color:#c9bfa8;margin:1rem 0 0;}' +
+    '@media (max-width:520px){.hom-popup-form{flex-direction:column;}' +
+      '.hom-popup-form input{border-right:1px solid #2a2418;border-bottom:none;}}';
 
   var style = document.createElement('style');
   style.textContent = css;
@@ -85,17 +114,8 @@
 
   var ul = document.createElement('ul');
 
-  // Free, Live Masterclass — CTA button pinned to the top of the menu (external, new tab)
-  var mcLi = document.createElement('li');
-  mcLi.className = 'hom-nav-cta-item';
-  var mcA = document.createElement('a');
-  mcA.className = 'hom-nav-cta';
-  mcA.href = 'https://luma.com/vi68x32g';
-  mcA.target = '_blank';
-  mcA.rel = 'noopener';
-  mcA.textContent = 'Free, Live Masterclass';
-  mcLi.appendChild(mcA);
-  ul.appendChild(mcLi);
+  // (The "Free, Live Masterclass" CTA button lived here; removed Sept 2026.
+  //  The .hom-nav-cta / .hom-nav-cta-item styles above are kept for the next one.)
 
   links.forEach(function (item) {
     var li = document.createElement('li');
@@ -151,6 +171,78 @@
   positionToggle();
   window.addEventListener('load', positionToggle);
   window.addEventListener('resize', positionToggle);
+
+  // ---- Sunday Saunter pop-up ----
+  // Shows once per visitor (localStorage), 15s after load, on any page loading nav.js.
+  // Set POPUP_ENABLED to false to switch it off everywhere.
+  (function () {
+    var POPUP_ENABLED = true;
+    var DELAY_MS = 15000;
+    var KEY = 'hom_saunter_popup_v2';
+    if (!POPUP_ENABLED) return;
+
+    var seen = null;
+    try { seen = localStorage.getItem(KEY); } catch (e) {}
+    if (seen) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'hom-popup-overlay';
+    overlay.id = 'hom-saunter-popup';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Sunday Saunter newsletter');
+    overlay.innerHTML =
+      '<div class="hom-popup-card">' +
+        '<button class="hom-popup-close" type="button" aria-label="Close">&times;</button>' +
+        '<img class="hom-popup-photo" src="/Images/sunday-saunter-header.jpg" alt="Sunday Saunter with Thomas Doochin" loading="lazy" decoding="async">' +
+        '<p class="hom-popup-head">Join our beloved Sunday Tradition</p>' +
+        '<p class="hom-popup-body">Each Sunday afternoon, we send a newsletter weaving inspiration from our programs, long-form reflections from our founder, and actionable insights to help you live a more audacious and authentic life in the week ahead.</p>' +
+        '<div class="hom-popup-form-wrap">' +
+          '<form class="hom-popup-form" action="https://formspree.io/f/xoealrwk" method="POST">' +
+            '<input type="hidden" name="_subject" value="Sunday Saunter signup (pop-up)">' +
+            '<input type="email" name="email" required placeholder="Your email address" aria-label="Your email address">' +
+            '<button type="submit">I\u2019m In</button>' +
+          '</form>' +
+        '</div>' +
+        '<p class="hom-popup-success" hidden>You\u2019re in \u2014 see you Sunday afternoon.</p>' +
+        '<p class="hom-popup-fine">Your email will not be shared outside of Heart of Men.</p>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var card = overlay.querySelector('.hom-popup-card');
+    var formWrap = overlay.querySelector('.hom-popup-form-wrap');
+    var form = overlay.querySelector('form');
+    var submitBtn = form.querySelector('button');
+    var success = overlay.querySelector('.hom-popup-success');
+
+    function close() { overlay.classList.remove('is-open'); }
+    overlay.querySelector('.hom-popup-close').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Request failed');
+        formWrap.hidden = true;
+        success.hidden = false;
+      }).catch(function () {
+        submitBtn.disabled = false;
+      });
+    });
+
+    setTimeout(function () {
+      overlay.classList.add('is-open');
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    }, DELAY_MS);
+  })();
 
   // ---- behaviour ----
   var isOpen = false;

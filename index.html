@@ -370,6 +370,25 @@
     .on-gold h2 { color: var(--black); }
 
     /* ---------- CTA form spacing ---------- */
+    .cta-closed {
+      max-width: 560px;
+      margin: 0 auto 1.4rem;
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--cream);
+    }
+
+    .cta-closed strong {
+      display: block;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
     .cta-note {
       color: var(--cream);
       font-size: clamp(1.15rem, 2.6vw, 1.5rem);
@@ -795,91 +814,6 @@
     }
 
     /* ---------- Sunday Saunter pop-up ---------- */
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(14, 12, 9, 0.82);
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 1.5rem;
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .popup-overlay.open { opacity: 1; visibility: visible; }
-
-    .popup-card {
-      position: relative;
-      margin: auto;
-      background: #16110c;
-      border: 1px solid rgba(185, 155, 86, 0.55);
-      max-width: 470px;
-      width: 100%;
-      padding: 3.25rem 2.25rem 2.5rem;
-      text-align: center;
-    }
-
-    .popup-close {
-      position: absolute;
-      top: 0.6rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      color: var(--cream);
-      font-size: 1.7rem;
-      line-height: 1;
-      cursor: pointer;
-      padding: 0.25rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-      z-index: 2;
-    }
-
-    .popup-close:hover { color: var(--gold); }
-
-    .popup-body a {
-      color: var(--gold);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .popup-body a:hover { color: var(--cream); }
-
-    .popup-photo {
-      display: block;
-      width: calc(100% + 4.5rem);
-      margin: -3.25rem -2.25rem 1.75rem;
-      max-width: none;
-      aspect-ratio: 1200 / 600;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .popup-head {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 2.4rem);
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .popup-body {
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--cream-muted);
-      margin-bottom: 1.75rem;
-    }
-
-    .popup-fine {
-      font-size: 0.78rem;
-      color: var(--cream-muted);
-      margin-top: 1rem;
-    }
-
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       .split { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
@@ -969,14 +903,15 @@
 
       <p class="cta-note">An 8-month journey for men ready to live and give their genius.</p>
 
+      <p class="cta-closed"><strong>Doors are closed for 2026.</strong> Join the waitlist for our next cohort.</p>
       <div id="fs-form-wrap-hero" style="max-width:480px;margin:0 auto;">
-        <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+        <form action="https://formspree.io/f/myezwzjo" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I&rsquo;m In</button>
         </form>
       </div>
       <div id="fs-success-hero" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open with a few quick questions. Didn't see it? <a href="/waitlist" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
       </div>
 
       <div class="hero-t">
@@ -1085,14 +1020,15 @@
       </div>
     </div>
     <div class="container" style="padding:0 1.5rem 5.5rem;">
+      <p class="cta-closed"><strong>Doors are closed for 2026.</strong> Join the waitlist for our next cohort.</p>
       <div id="fs-form-wrap-bridge" style="max-width:480px;margin:0 auto;">
-        <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+        <form action="https://formspree.io/f/myezwzjo" method="POST" class="fs-form" style="display:flex;gap:0;">
           <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
+          <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I&rsquo;m In</button>
         </form>
       </div>
       <div id="fs-success-bridge" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open with a few quick questions. Didn't see it? <a href="/waitlist" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
       </div>
     </div>
   </section>
@@ -1180,14 +1116,15 @@
       </div>
 
       <div style="margin-top:4rem;">
+        <p class="cta-closed"><strong>Doors are closed for 2026.</strong> Join the waitlist for our next cohort.</p>
         <div id="fs-form-wrap-not" style="max-width:480px;margin:0 auto;">
-          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <form action="https://formspree.io/f/myezwzjo" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I&rsquo;m In</button>
           </form>
         </div>
         <div id="fs-success-not" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open with a few quick questions. Didn't see it? <a href="/waitlist" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
         </div>
       </div>
     </div>
@@ -1312,7 +1249,7 @@
       <h2 class="section-header" style="text-align:center;">Are You Ready?</h2>
       <div class="tile-grid">
         <div class="tile price-card" style="padding-top:4.25rem;">
-          <div class="badge-band">2 Spots Remain</div>
+          <div class="badge-band">Enrollment Closed</div>
           <h3>Living Leadership</h3>
           <p>This journey will ask a real devotion from your time, money, and attention. And what you put in, you will receive back ten-fold. Acceptance into Living Leadership is by application given the intimate nature of the program.</p>
           <div class="price-big">$2250 <span>deposit</span></div>
@@ -1327,7 +1264,7 @@
           </ul>
         </div>
         <div class="tile price-card" style="padding-top:4.25rem;">
-          <div class="badge-band">Only Two Spots</div>
+          <div class="badge-band">Enrollment Closed</div>
           <h3>Living Leadership + Launch Support</h3>
           <p>This is for brothers standing at a significant creative threshold who want additional, tailored support for their business launch, artistic endeavor, or pivotal life passage. I will only be working with two brothers in this capacity. By application.</p>
           <div class="price-big">$2250 <span>deposit</span></div>
@@ -1351,14 +1288,15 @@
       </div>
 
       <div style="margin-top:4rem;text-align:center;">
+        <p class="cta-closed"><strong>Doors are closed for 2026.</strong> Join the waitlist for our next cohort.</p>
         <div id="fs-form-wrap-ready" style="max-width:480px;margin:0 auto;">
-          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <form action="https://formspree.io/f/myezwzjo" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I&rsquo;m In</button>
           </form>
         </div>
         <div id="fs-success-ready" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open with a few quick questions. Didn't see it? <a href="/waitlist" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
         </div>
         <a class="quiet-link" href="https://heartofmen.community/true-north-leadership">I feel the draw to this work, but I'm sincerely not ready/able to make a big commitment like this.</a>
       </div>
@@ -1466,14 +1404,15 @@
       </div>
 
       <div style="margin-top:4rem;">
+        <p class="cta-closed"><strong>Doors are closed for 2026.</strong> Join the waitlist for our next cohort.</p>
         <div id="fs-form-wrap-works" style="max-width:480px;margin:0 auto;">
-          <form action="https://formspree.io/f/meevlybn" method="POST" class="fs-form" style="display:flex;gap:0;">
+          <form action="https://formspree.io/f/myezwzjo" method="POST" class="fs-form" style="display:flex;gap:0;">
             <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">Take Your Seat</button>
+            <button type="submit" style="padding:1rem 1.75rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I&rsquo;m In</button>
           </form>
         </div>
         <div id="fs-success-works" style="display:none;max-width:480px;margin:0 auto;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open to finish your application. Didn't see it? <a href="https://form.typeform.com/to/TingvB3U" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;font-style:italic;">You're in — a new tab should open with a few quick questions. Didn't see it? <a href="/waitlist" target="_blank" rel="noopener" style="color:#b99b56;text-decoration:underline;text-underline-offset:3px;font-style:normal;">Continue here →</a></p>
         </div>
       </div>
     </div>
@@ -1529,25 +1468,6 @@
       <p class="footer-legal">All words on the site were crafted without the assistance of LLMs. All the photos you see are real moments from Heart of Men. Everything we make can be art. Copyright 2026.</p>
     </div>
   </footer>
-
-  <!-- ========== SUNDAY SAUNTER POP-UP ========== -->
-  <div class="popup-overlay" id="saunter-popup" role="dialog" aria-modal="true" aria-label="Sunday Saunter newsletter">
-    <div class="popup-card">
-      <button class="popup-close" aria-label="Close">&times;</button>
-      <img class="popup-photo" src="Images/Live-your-Genius-Sept-17.jpg" alt="Men's Leadership Masterclass — Live your Genius: Finding Direction in a Distracted Time. September 17th, 2:00 ET. Free for RSVPs." loading="lazy" decoding="async">
-      <p class="popup-body"><strong>You have a genius</strong>; I've yet to meet a man who doesn't. It doesn't mean you're meant to be John Lennon, Michelangelo, or Ross Gay. <strong>It does mean you have something quite distinct and potent to offer this world.</strong> <a href="https://luma.com/vi68x32g" target="_blank" rel="noopener">In these 90 minutes</a> I am going to show you there is indeed a way to clarify the signal through all the noise.<br><br>September 17th. 2:00pm ET. Recording made available to all who RSVP.</p>
-      <div id="fs-form-wrap-popup" style="max-width:100%;margin:0 auto;">
-        <form action="https://formspree.io/f/xoealrwk" method="POST" class="fs-form" style="display:flex;gap:0;">
-          <input type="email" name="email" required placeholder="Your email address" style="flex:1;padding:1rem 1.25rem;background:#1a1510;border:1px solid #2a2418;border-right:none;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;outline:none;min-width:0;">
-          <button type="submit" style="padding:1rem 1.5rem;background:#b99b56;color:#0e0c09;font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;white-space:nowrap;">I'm In</button>
-        </form>
-      </div>
-      <div id="fs-success-popup" style="display:none;padding:1rem 1.25rem;background:#1a1510;border:1px solid #b99b56;">
-        <p style="font-family:'Playfair Display',Georgia,serif;font-size:0.95rem;color:#b99b56;">You're in — we'll send you the details.</p>
-      </div>
-      <p class="popup-fine">Your email will not be shared outside of Heart of Men.</p>
-    </div>
-  </div>
 
   <script>
     (function() {
@@ -1666,25 +1586,7 @@
       });
     }
     initNewsletterForm('fs-form-wrap-saunter', 'fs-success-saunter');
-    initNewsletterForm('fs-form-wrap-popup', 'fs-success-popup');
 
-    (function() {
-      // Sunday Saunter pop-up — OFF for now. Set to true to bring it back.
-      const POPUP_ENABLED = false;
-      const KEY = 'hom_saunter_popup_v1';
-      const overlay = document.getElementById('saunter-popup');
-      if (!POPUP_ENABLED || !overlay) return;
-      let seen = null;
-      try { seen = localStorage.getItem(KEY); } catch (e) {}
-      if (seen) return;
-      const close = () => overlay.classList.remove('open');
-      overlay.querySelector('.popup-close').addEventListener('click', close);
-      overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
-      setTimeout(function() {
-        overlay.classList.add('open');
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      }, 13000);
-    })();
 
     function initTestimonialPager(testi) {
       const grid = testi.querySelector('.t-grid');
@@ -1714,7 +1616,7 @@
         const data = new FormData(formHero);
         const res = await fetch(formHero.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
+          window.open('/waitlist?email=' + encodeURIComponent(data.get('email') || ''), '_blank');
           wrapHero.style.display = 'none';
           successHero.style.display = 'block';
         }
@@ -1730,7 +1632,7 @@
         const data = new FormData(formBridge);
         const res = await fetch(formBridge.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
+          window.open('/waitlist?email=' + encodeURIComponent(data.get('email') || ''), '_blank');
           wrapBridge.style.display = 'none';
           successBridge.style.display = 'block';
         }
@@ -1746,7 +1648,7 @@
         const data = new FormData(formNot);
         const res = await fetch(formNot.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
+          window.open('/waitlist?email=' + encodeURIComponent(data.get('email') || ''), '_blank');
           wrapNot.style.display = 'none';
           successNot.style.display = 'block';
         }
@@ -1762,7 +1664,7 @@
         const data = new FormData(formReady);
         const res = await fetch(formReady.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
+          window.open('/waitlist?email=' + encodeURIComponent(data.get('email') || ''), '_blank');
           wrapReady.style.display = 'none';
           successReady.style.display = 'block';
         }
@@ -1778,7 +1680,7 @@
         const data = new FormData(formWorks);
         const res = await fetch(formWorks.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
         if (res.ok) {
-          window.open('https://form.typeform.com/to/TingvB3U', '_blank');
+          window.open('/waitlist?email=' + encodeURIComponent(data.get('email') || ''), '_blank');
           wrapWorks.style.display = 'none';
           successWorks.style.display = 'block';
         }

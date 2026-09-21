@@ -9,6 +9,7 @@
     { "source": "/pause", "destination": "/pause.html" },
     { "source": "/insiderlook", "destination": "/insiderlook.html" },
     { "source": "/geniusresources", "destination": "/geniusresources.html" },
+    { "source": "/waitlist", "destination": "/waitlist.html" },
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
 }
