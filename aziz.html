@@ -501,7 +501,7 @@
         <div class="cta-actions">
           <a class="btn" href="https://www.gleaningsfoundation.org/fiscally-sponsored/" target="_blank" rel="noopener">Give via PayPal</a>
           <span class="cta-or">or</span>
-          <button class="btn btn-ghost" id="email-thomas" type="button" data-a="thomas" data-b="heartofmen" data-c="org">Email Thomas · DAF</button>
+          <a class="btn btn-ghost" href="mailto:thomas@heartofmen.org?subject=Supporting%20Aziz">Email Thomas · DAF</a>
         </div>
       </div>
       <p class="thanks">Thank you for taking this in and caring about us as we care for Aziz and the gifted brothers who were dealt a challenging hand.</p>
@@ -522,11 +522,6 @@
       });
       video.addEventListener('play', function () { player.classList.add('is-playing'); });
 
-      var btn = document.getElementById('email-thomas');
-      btn.addEventListener('click', function () {
-        var to = btn.dataset.a + '@' + btn.dataset.b + '.' + btn.dataset.c;
-        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Supporting Aziz');
-      });
     })();
   </script>
 </body>
