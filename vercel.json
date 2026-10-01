@@ -10,6 +10,7 @@
     { "source": "/insiderlook", "destination": "/insiderlook.html" },
     { "source": "/geniusresources", "destination": "/geniusresources.html" },
     { "source": "/waitlist", "destination": "/waitlist.html" },
+    { "source": "/aziz", "destination": "/aziz.html" },
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
 }
