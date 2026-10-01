@@ -14,6 +14,7 @@ This file is the permanent memory for the Heart of Men website. **Read it before
   - `pause.html` — **hidden** page at `/pause` (`noindex`, not in nav/sitemap). One email field that posts to **Formspree `f/mnpqkajg`** (fetch, inline thank-you). People use it to pause enrollment-week emails; the owner checks submissions and updates Circle.so by hand.
   - `waitlist.html` — **hidden** page at `/waitlist` (`noindex`, not in nav/sitemap). The Typeform replacement: one page, one submit, posting to **Formspree `f/myezwzjo`** — name*, email*, phone, how they heard, "which programs interest you?" (multi-select checkboxes incl. an *Other* box that reveals a text field), and a free-text closer. Reads `?email=` off the URL and prefills it, because the landing-page CTAs pass the address through. Only name + email are required, to keep completion high.
   - `insiderlook.html` — **hidden** page at `/insiderlook` (`noindex`, not in nav/sitemap). Same build as `/pause`; one email field posting to **Formspree `f/meaqyzpd`**. Sign-ups for the 2–4 behind-the-scenes emails during enrollment week.
+  - `aziz.html` — **hidden** fundraising page at `/aziz` (`noindex`, not in nav/sitemap, no nav.js so no pop-up) for Aziz, a 2026–2027 Full Circle Fund Fellow. Photo hero, pull quote, **self-hosted video** (`Images/aziz-movie.mp4`, native `<video>` with a gold play-button overlay, `preload="metadata"`), his bio in his own words, and a gold "Email Thomas" CTA (mailto built in JS, same pattern as `/geniusresources`). Own OG card `Images/og-aziz.jpg`. A good template for future "Meet [Fellow]" pages.
   - `api/create-checkout-session.js` — serverless function (Node) that creates the embedded Checkout Session. `package.json` declares the `stripe` dep.
   - `nav.js` — shared nav injected on both pages (links `/` and `/full-circle-fund`).
   - `404.html` — custom branded error page (self-contained; root-absolute `/Images/...` paths so it renders from any URL).
@@ -54,6 +55,7 @@ The in-tool preview and the owner's own preview behave differently. Key facts:
 - **Images — use `sips`** (built into macOS, edits in place, keeps the filename so no code/ref changes). Section/carousel photos → `sips -Z 1600 -s formatOptions 72 "file.jpg"`. Headshots (display tiny) → `sips -Z 512 "file.png"`. This is how we cut `Images/` from ~57MB to ~29MB.
 - **`sips` CANNOT rewrite `.webp` or `.mp4`** (errors out). Leave WebP/video to other tools.
 - **Video — HandBrake** (free GUI). Preset: MP4 + Web Optimized, 720p (1280×720 is plenty for a darkened background), H.264, 30fps CFR, Constant Quality **RF ~28**, Encoder Preset "Slower", **remove the audio track** (videos are muted). Save with the identical filename to replace in place. This took the two background videos from 8.7MB total → 1.7MB.
+- **Large self-hosted video (no ffmpeg/HandBrakeCLI on this Mac):** `avconvert -p Preset1280x720` only picks a resolution, not a bitrate — a 1 GB 108s `.mov` came out at 156 MB, too big for GitHub (100 MB limit) and the web. What worked: a tiny Swift `AVAssetReader`→`AVAssetWriter` script, H.264 1280-wide at **~2.2 Mbps** + AAC 128k, `shouldOptimizeForNetworkUse = true` (fast start) → 31 MB, audio kept. Pull a poster frame with `AVAssetImageGenerator`. Keep ~≤35 MB per video; use `preload="metadata"` so it only streams on play.
 - **Never resize `og-image`/social cards** below 1200×630, and don't touch logos/favicons.
 - **Swapping the "Before we go further" photo (`.further-img`, currently `Ken Held.jpg`):** that slot is a tall column (~0.5 aspect) with `object-fit: cover`, and `.further-tiles` overlaps its right ~26% with `margin-left: -9rem`. A 16:9 photo therefore shows only **~33% of its width**, and only the left ~74% of that is unobstructed. Portrait/square photos fit naturally; for a landscape one you must set **`object-position`** on the `<img>` to land the subject in the unobstructed band (`84% 50%` for Ken Held keeps the face clear of the tiles). A `.further-img::after` gradient fades the right edge (bottom edge on mobile) so the photo runs under the text instead of fighting it.
 
@@ -88,6 +90,9 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
       { "source": "/confirm", "destination": "/confirm.html" },
       { "source": "/pause", "destination": "/pause.html" },
       { "source": "/insiderlook", "destination": "/insiderlook.html" },
+      { "source": "/geniusresources", "destination": "/geniusresources.html" },
+      { "source": "/waitlist", "destination": "/waitlist.html" },
+      { "source": "/aziz", "destination": "/aziz.html" },
       { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ] }
   ```
@@ -106,6 +111,7 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
 ## Social preview (Open Graph / Twitter)
 
 - Card image: `Images/og-living-leadership.jpg` (1200×630). Tags live in `<head>`: `og:*`, `twitter:card=summary_large_image`, canonical. **All absolute URLs must use the canonical host — currently the apex `https://heartofmen.org`** (www redirects to it, and a redirect hop can trip up scrapers). If Vercel's primary domain ever flips, update these to match. These URLs have flipped between apex and www before — double-check them against Vercel → Domains when editing head.
+- **Every new page gets its own social preview — always, without being asked.** Hidden/`noindex` pages included: they're exactly the ones shared by text and DM. Minimum set in `<head>`: `og:title`, `og:description`, `og:type`, `og:url` (canonical apex + clean path), `og:image` (absolute apex URL) + `og:image:width`/`height`, `twitter:card=summary_large_image`, `twitter:title`/`description`/`image`. Make a dedicated **1200×630** card from the page's best photo (e.g. `sips -c 630 1200 --cropOffset <y> 0 photo.jpg --out Images/og-<page>.jpg` after resizing the photo to 1200 wide), framed so the face survives the crop. Name it `og-<page>.jpg`.
 - After changing the card, **re-scrape**: opengraph.xyz and Facebook's Sharing Debugger. iMessage caches per-device and is stubborn — test from a fresh phone.
 - `/welcome` has its **own** card: title "Welcome In", image `Images/og-welcome.jpg` (1200×630, cropped from `Six Grid.png`), `og:url` `https://heartofmen.org/welcome`. Same canonical-host rule applies.
 
