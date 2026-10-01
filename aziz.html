@@ -371,6 +371,40 @@
 
     .btn:hover { background: #c9ad68; transform: translateY(-2px); }
 
+    a.btn { text-decoration: none; }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem 1.25rem;
+    }
+
+    .cta-or {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--cream-muted);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-ghost:hover { background: rgba(185, 155, 86, 0.12); }
+
+    .cta .thanks {
+      max-width: 560px;
+      margin: 2.75rem auto 0;
+      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.2rem, 2.6vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--cream);
+    }
+
     footer {
       text-align: center;
       padding: 0 1.5rem 3rem;
@@ -406,6 +440,8 @@
       .play span { width: 68px; height: 68px; }
       .play svg { width: 24px; height: 24px; }
       .cta-box { padding: 2.75rem 1.5rem; }
+      .cta-actions { flex-direction: column; }
+      .cta-actions .btn { width: 100%; }
     }
   </style>
 </head>
@@ -431,9 +467,9 @@
 
     <!-- ===== 2. QUOTE ===== -->
     <section class="quote">
-      <p class="quote-lead">Aziz called me a few days before our leadership program and said,</p>
+      <p class="quote-lead">Aziz called me a few days before our leadership program started this week and said,</p>
       <span class="mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>Thomas, I’m finally ready for the level of <strong>consistency, follow-through, and action</strong> that Living Leadership asks.</blockquote>
+      <blockquote>Thomas, I’m finally ready for the level of <strong>consistency, follow-through, and action</strong> that Living Leadership asks. Is there still a spot left?</blockquote>
       <p class="quote-after">There was no doubt in me I wanted him in; Aziz has enormous gifts and has had quite the challenging upbringing.</p>
     </section>
 
@@ -460,10 +496,15 @@
     <section class="cta">
       <div class="cta-box">
         <p class="eyebrow">Support Aziz</p>
-        <h2>We’re raising the support for Aziz’s program investment.</h2>
-        <p>Be in touch with Thomas if you’re aligned with this cause.</p>
-        <button class="btn" id="email-thomas" type="button" data-a="thomas" data-b="heartofmen" data-c="org">Email Thomas</button>
+        <h2>Fund Aziz’s Full Circle Fund Scholarship</h2>
+        <p>We’re raising the support to cover Aziz’s program investment. Give by PayPal through our fiscal sponsor, or be in touch with Thomas to give through a DAF.</p>
+        <div class="cta-actions">
+          <a class="btn" href="https://www.gleaningsfoundation.org/fiscally-sponsored/" target="_blank" rel="noopener">Give via PayPal</a>
+          <span class="cta-or">or</span>
+          <button class="btn btn-ghost" id="email-thomas" type="button" data-a="thomas" data-b="heartofmen" data-c="org">Email Thomas · DAF</button>
+        </div>
       </div>
+      <p class="thanks">Thank you for taking this in and caring about us as we care for Aziz and the gifted brothers who were dealt a challenging hand.</p>
     </section>
 
     <footer>
