@@ -15,6 +15,7 @@ This file is the permanent memory for the Heart of Men website. **Read it before
   - `waitlist.html` — **hidden** page at `/waitlist` (`noindex`, not in nav/sitemap). The Typeform replacement: one page, one submit, posting to **Formspree `f/myezwzjo`** — name*, email*, phone, how they heard, "which programs interest you?" (multi-select checkboxes incl. an *Other* box that reveals a text field), and a free-text closer. Reads `?email=` off the URL and prefills it, because the landing-page CTAs pass the address through. Only name + email are required, to keep completion high.
   - `insiderlook.html` — **hidden** page at `/insiderlook` (`noindex`, not in nav/sitemap). Same build as `/pause`; one email field posting to **Formspree `f/meaqyzpd`**. Sign-ups for the 2–4 behind-the-scenes emails during enrollment week.
   - `aziz.html` — **hidden** fundraising page at `/aziz` (`noindex`, not in nav/sitemap, no nav.js so no pop-up) for Aziz, a 2026–2027 Full Circle Fund Fellow. Photo hero, pull quote, **self-hosted video** (`Images/aziz-movie.mp4`, native `<video>` with a gold play-button overlay, `preload="metadata"`), his bio in his own words, and a gold "Email Thomas" CTA (mailto built in JS, same pattern as `/geniusresources`). Own OG card `Images/og-aziz.jpg`. A good template for future "Meet [Fellow]" pages.
+  - `goldenrepair.html` — **hidden** page at `/goldenrepair` (`noindex, nofollow`, not in nav/sitemap, no nav.js) for the Rites of Reunion "Golden Repair" session. Its own palette, matched to innatetraditions.com/rites-of-reunion (cream `#fff8f0`, red-brown `#61321e`, terracotta `#a15d3c`, sand `#d8b9a4`; Lora + Montserrat), not the HoM brand. Hours/minutes/seconds countdown to a fixed `TARGET` ISO instant in its script; at zero it swaps to "We're beginning." OG card `Images/og-goldenrepair.jpg`.
   - `api/create-checkout-session.js` — serverless function (Node) that creates the embedded Checkout Session. `package.json` declares the `stripe` dep.
   - `nav.js` — shared nav injected on both pages (links `/` and `/full-circle-fund`).
   - `404.html` — custom branded error page (self-contained; root-absolute `/Images/...` paths so it renders from any URL).
@@ -93,6 +94,7 @@ All below-the-fold `<img>` have `loading="lazy" decoding="async"`. The **only ea
       { "source": "/geniusresources", "destination": "/geniusresources.html" },
       { "source": "/waitlist", "destination": "/waitlist.html" },
       { "source": "/aziz", "destination": "/aziz.html" },
+      { "source": "/goldenrepair", "destination": "/goldenrepair.html" },
       { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ] }
   ```
