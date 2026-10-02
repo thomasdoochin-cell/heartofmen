@@ -124,6 +124,30 @@
       margin-top: 1rem;
     }
 
+    .holders {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.5rem, 6vw, 3rem);
+      margin-top: 2.75rem;
+    }
+
+    .holder img {
+      display: block;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--sand);
+      margin: 0 auto;
+    }
+
+    .holder-name {
+      margin-top: 0.75rem;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1rem;
+      color: var(--red);
+    }
+
     .learn {
       margin-top: 3rem;
       font-size: 0.95rem;
@@ -144,6 +168,7 @@
       main { padding: 2.5rem 1.25rem; }
       .rule { margin: 2rem auto; }
       .cd-unit { min-width: 3.5rem; }
+      .holder img { width: 96px; height: 96px; }
     }
   </style>
 </head>
@@ -163,6 +188,17 @@
       </div>
     </div>
     <p class="begun" id="cd-begun">We're beginning.</p>
+
+    <div class="holders">
+      <div class="holder">
+        <img src="/Images/gr-rachelle.jpg" alt="Rachelle Seliga" loading="lazy" decoding="async" />
+        <p class="holder-name">Rachelle Seliga</p>
+      </div>
+      <div class="holder">
+        <img src="/Images/gr-thomas.jpg" alt="Thomas Andrew Doochin" loading="lazy" decoding="async" />
+        <p class="holder-name">Thomas Andrew Doochin</p>
+      </div>
+    </div>
 
     <p class="learn">To learn more about Rites of Reunion, visit <a href="https://ritesofreunion.com" target="_blank" rel="noopener">ritesofreunion.com</a></p>
   </main>
