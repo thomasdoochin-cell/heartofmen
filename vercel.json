@@ -11,6 +11,7 @@
     { "source": "/geniusresources", "destination": "/geniusresources.html" },
     { "source": "/waitlist", "destination": "/waitlist.html" },
     { "source": "/aziz", "destination": "/aziz.html" },
+    { "source": "/goldenrepair", "destination": "/goldenrepair.html" },
     { "source": "/((?!Images/|_vercel/|.*\\.).*)", "destination": "/index.html" }
   ]
 }
